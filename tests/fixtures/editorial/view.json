@@ -1,0 +1,10 @@
+{
+  "id": 0,
+  "name": "All",
+  "picture": "https://cdns-images.dzcdn.net/images/misc//180x180-000000-80-0-0.jpg",
+  "picture_small": "https://cdns-images.dzcdn.net/images/misc//56x56-000000-80-0-0.jpg",
+  "picture_medium": "https://cdns-images.dzcdn.net/images/misc//250x250-000000-80-0-0.jpg",
+  "picture_big": "https://cdns-images.dzcdn.net/images/misc//500x500-000000-80-0-0.jpg",
+  "picture_xl": "https://cdns-images.dzcdn.net/images/misc//1000x1000-000000-80-0-0.jpg",
+  "type": "editorial"
+}

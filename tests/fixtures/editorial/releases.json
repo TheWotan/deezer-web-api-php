@@ -1,0 +1,386 @@
+{
+  "data": [
+    {
+      "id": 229620062,
+      "title": "Advice - The 3rd Mini Album",
+      "cover": "https://api.deezer.com/album/229620062/image",
+      "cover_small": "https://cdns-images.dzcdn.net/images/cover/0b91762df0fb42565d052c74b60bf2e0/56x56-000000-80-0-0.jpg",
+      "cover_medium": "https://cdns-images.dzcdn.net/images/cover/0b91762df0fb42565d052c74b60bf2e0/250x250-000000-80-0-0.jpg",
+      "cover_big": "https://cdns-images.dzcdn.net/images/cover/0b91762df0fb42565d052c74b60bf2e0/500x500-000000-80-0-0.jpg",
+      "cover_xl": "https://cdns-images.dzcdn.net/images/cover/0b91762df0fb42565d052c74b60bf2e0/1000x1000-000000-80-0-0.jpg",
+      "md5_image": "0b91762df0fb42565d052c74b60bf2e0",
+      "release_date": "2021-05-18",
+      "tracklist": "https://api.deezer.com/album/229620062/tracks",
+      "artist": {
+        "id": 7988496,
+        "name": "TAEMIN",
+        "tracklist": "https://api.deezer.com/artist/7988496/top?limit=50",
+        "type": "artist"
+      },
+      "type": "album"
+    },
+    {
+      "id": 230292532,
+      "title": "Перезвони мне +79995771202",
+      "cover": "https://api.deezer.com/album/230292532/image",
+      "cover_small": "https://cdns-images.dzcdn.net/images/cover/3ee486e5a62c3de6c760765f5980b386/56x56-000000-80-0-0.jpg",
+      "cover_medium": "https://cdns-images.dzcdn.net/images/cover/3ee486e5a62c3de6c760765f5980b386/250x250-000000-80-0-0.jpg",
+      "cover_big": "https://cdns-images.dzcdn.net/images/cover/3ee486e5a62c3de6c760765f5980b386/500x500-000000-80-0-0.jpg",
+      "cover_xl": "https://cdns-images.dzcdn.net/images/cover/3ee486e5a62c3de6c760765f5980b386/1000x1000-000000-80-0-0.jpg",
+      "md5_image": "3ee486e5a62c3de6c760765f5980b386",
+      "release_date": "2021-05-18",
+      "tracklist": "https://api.deezer.com/album/230292532/tracks",
+      "artist": {
+        "id": 4964540,
+        "name": "Anacondaz",
+        "tracklist": "https://api.deezer.com/artist/4964540/top?limit=50",
+        "type": "artist"
+      },
+      "type": "album"
+    },
+    {
+      "id": 223057232,
+      "title": "...And Again Into the Light",
+      "cover": "https://api.deezer.com/album/223057232/image",
+      "cover_small": "https://cdns-images.dzcdn.net/images/cover/93a4dd2575f3ea559d460fbbf0b64388/56x56-000000-80-0-0.jpg",
+      "cover_medium": "https://cdns-images.dzcdn.net/images/cover/93a4dd2575f3ea559d460fbbf0b64388/250x250-000000-80-0-0.jpg",
+      "cover_big": "https://cdns-images.dzcdn.net/images/cover/93a4dd2575f3ea559d460fbbf0b64388/500x500-000000-80-0-0.jpg",
+      "cover_xl": "https://cdns-images.dzcdn.net/images/cover/93a4dd2575f3ea559d460fbbf0b64388/1000x1000-000000-80-0-0.jpg",
+      "md5_image": "93a4dd2575f3ea559d460fbbf0b64388",
+      "release_date": "2021-05-15",
+      "tracklist": "https://api.deezer.com/album/223057232/tracks",
+      "artist": {
+        "id": 565916,
+        "name": "Panopticon",
+        "tracklist": "https://api.deezer.com/artist/565916/top?limit=50",
+        "type": "artist"
+      },
+      "type": "album"
+    },
+    {
+      "id": 209037352,
+      "title": "Voyager",
+      "cover": "https://api.deezer.com/album/209037352/image",
+      "cover_small": "https://cdns-images.dzcdn.net/images/cover/c864f30adb7aabc242ee60a21ffb43fb/56x56-000000-80-0-0.jpg",
+      "cover_medium": "https://cdns-images.dzcdn.net/images/cover/c864f30adb7aabc242ee60a21ffb43fb/250x250-000000-80-0-0.jpg",
+      "cover_big": "https://cdns-images.dzcdn.net/images/cover/c864f30adb7aabc242ee60a21ffb43fb/500x500-000000-80-0-0.jpg",
+      "cover_xl": "https://cdns-images.dzcdn.net/images/cover/c864f30adb7aabc242ee60a21ffb43fb/1000x1000-000000-80-0-0.jpg",
+      "md5_image": "c864f30adb7aabc242ee60a21ffb43fb",
+      "release_date": "2021-05-14",
+      "tracklist": "https://api.deezer.com/album/209037352/tracks",
+      "artist": {
+        "id": 13117393,
+        "name": "Current Joys",
+        "tracklist": "https://api.deezer.com/artist/13117393/top?limit=50",
+        "type": "artist"
+      },
+      "type": "album"
+    },
+    {
+      "id": 214095292,
+      "title": "Medieval Femme",
+      "cover": "https://api.deezer.com/album/214095292/image",
+      "cover_small": "https://cdns-images.dzcdn.net/images/cover/ea58780f39933ca031f1e50b93ba932c/56x56-000000-80-0-0.jpg",
+      "cover_medium": "https://cdns-images.dzcdn.net/images/cover/ea58780f39933ca031f1e50b93ba932c/250x250-000000-80-0-0.jpg",
+      "cover_big": "https://cdns-images.dzcdn.net/images/cover/ea58780f39933ca031f1e50b93ba932c/500x500-000000-80-0-0.jpg",
+      "cover_xl": "https://cdns-images.dzcdn.net/images/cover/ea58780f39933ca031f1e50b93ba932c/1000x1000-000000-80-0-0.jpg",
+      "md5_image": "ea58780f39933ca031f1e50b93ba932c",
+      "release_date": "2021-05-14",
+      "tracklist": "https://api.deezer.com/album/214095292/tracks",
+      "artist": {
+        "id": 3156491,
+        "name": "Fatima Al Qadiri",
+        "tracklist": "https://api.deezer.com/artist/3156491/top?limit=50",
+        "type": "artist"
+      },
+      "type": "album"
+    },
+    {
+      "id": 225281222,
+      "title": "Delta Kream",
+      "cover": "https://api.deezer.com/album/225281222/image",
+      "cover_small": "https://cdns-images.dzcdn.net/images/cover/4a02d3e0dafcc6a0b4b747fe317a96dc/56x56-000000-80-0-0.jpg",
+      "cover_medium": "https://cdns-images.dzcdn.net/images/cover/4a02d3e0dafcc6a0b4b747fe317a96dc/250x250-000000-80-0-0.jpg",
+      "cover_big": "https://cdns-images.dzcdn.net/images/cover/4a02d3e0dafcc6a0b4b747fe317a96dc/500x500-000000-80-0-0.jpg",
+      "cover_xl": "https://cdns-images.dzcdn.net/images/cover/4a02d3e0dafcc6a0b4b747fe317a96dc/1000x1000-000000-80-0-0.jpg",
+      "md5_image": "4a02d3e0dafcc6a0b4b747fe317a96dc",
+      "release_date": "2021-05-14",
+      "tracklist": "https://api.deezer.com/album/225281222/tracks",
+      "artist": {
+        "id": 2483,
+        "name": "The Black Keys",
+        "tracklist": "https://api.deezer.com/artist/2483/top?limit=50",
+        "type": "artist"
+      },
+      "type": "album"
+    },
+    {
+      "id": 223867762,
+      "title": "O_x",
+      "cover": "https://api.deezer.com/album/223867762/image",
+      "cover_small": "https://cdns-images.dzcdn.net/images/cover/3deaf341e7280895f844d7a458ee704d/56x56-000000-80-0-0.jpg",
+      "cover_medium": "https://cdns-images.dzcdn.net/images/cover/3deaf341e7280895f844d7a458ee704d/250x250-000000-80-0-0.jpg",
+      "cover_big": "https://cdns-images.dzcdn.net/images/cover/3deaf341e7280895f844d7a458ee704d/500x500-000000-80-0-0.jpg",
+      "cover_xl": "https://cdns-images.dzcdn.net/images/cover/3deaf341e7280895f844d7a458ee704d/1000x1000-000000-80-0-0.jpg",
+      "md5_image": "3deaf341e7280895f844d7a458ee704d",
+      "release_date": "2021-05-14",
+      "tracklist": "https://api.deezer.com/album/223867762/tracks",
+      "artist": {
+        "id": 130250082,
+        "name": "Стас Корольов",
+        "tracklist": "https://api.deezer.com/artist/130250082/top?limit=50",
+        "type": "artist"
+      },
+      "type": "album"
+    },
+    {
+      "id": 222753082,
+      "title": "Be Right Back",
+      "cover": "https://api.deezer.com/album/222753082/image",
+      "cover_small": "https://cdns-images.dzcdn.net/images/cover/4e48bbae7b79a5e748d9f6f978dbff4c/56x56-000000-80-0-0.jpg",
+      "cover_medium": "https://cdns-images.dzcdn.net/images/cover/4e48bbae7b79a5e748d9f6f978dbff4c/250x250-000000-80-0-0.jpg",
+      "cover_big": "https://cdns-images.dzcdn.net/images/cover/4e48bbae7b79a5e748d9f6f978dbff4c/500x500-000000-80-0-0.jpg",
+      "cover_xl": "https://cdns-images.dzcdn.net/images/cover/4e48bbae7b79a5e748d9f6f978dbff4c/1000x1000-000000-80-0-0.jpg",
+      "md5_image": "4e48bbae7b79a5e748d9f6f978dbff4c",
+      "release_date": "2021-05-14",
+      "tracklist": "https://api.deezer.com/album/222753082/tracks",
+      "artist": {
+        "id": 9945222,
+        "name": "Jorja Smith",
+        "tracklist": "https://api.deezer.com/artist/9945222/top?limit=50",
+        "type": "artist"
+      },
+      "type": "album"
+    },
+    {
+      "id": 212368872,
+      "title": "Zeitgeister",
+      "cover": "https://api.deezer.com/album/212368872/image",
+      "cover_small": "https://cdns-images.dzcdn.net/images/cover/c0232e3448697ed4cf34bb3563e3424a/56x56-000000-80-0-0.jpg",
+      "cover_medium": "https://cdns-images.dzcdn.net/images/cover/c0232e3448697ed4cf34bb3563e3424a/250x250-000000-80-0-0.jpg",
+      "cover_big": "https://cdns-images.dzcdn.net/images/cover/c0232e3448697ed4cf34bb3563e3424a/500x500-000000-80-0-0.jpg",
+      "cover_xl": "https://cdns-images.dzcdn.net/images/cover/c0232e3448697ed4cf34bb3563e3424a/1000x1000-000000-80-0-0.jpg",
+      "md5_image": "c0232e3448697ed4cf34bb3563e3424a",
+      "release_date": "2021-05-14",
+      "tracklist": "https://api.deezer.com/album/212368872/tracks",
+      "artist": {
+        "id": 7009,
+        "name": "Caliban",
+        "tracklist": "https://api.deezer.com/artist/7009/top?limit=50",
+        "type": "artist"
+      },
+      "type": "album"
+    },
+    {
+      "id": 226995102,
+      "title": "99%",
+      "cover": "https://api.deezer.com/album/226995102/image",
+      "cover_small": "https://cdns-images.dzcdn.net/images/cover/012b34a84e0c38166f0faa8fbad1b434/56x56-000000-80-0-0.jpg",
+      "cover_medium": "https://cdns-images.dzcdn.net/images/cover/012b34a84e0c38166f0faa8fbad1b434/250x250-000000-80-0-0.jpg",
+      "cover_big": "https://cdns-images.dzcdn.net/images/cover/012b34a84e0c38166f0faa8fbad1b434/500x500-000000-80-0-0.jpg",
+      "cover_xl": "https://cdns-images.dzcdn.net/images/cover/012b34a84e0c38166f0faa8fbad1b434/1000x1000-000000-80-0-0.jpg",
+      "md5_image": "012b34a84e0c38166f0faa8fbad1b434",
+      "release_date": "2021-05-14",
+      "tracklist": "https://api.deezer.com/album/226995102/tracks",
+      "artist": {
+        "id": 1046412,
+        "name": "Pixelord",
+        "tracklist": "https://api.deezer.com/artist/1046412/top?limit=50",
+        "type": "artist"
+      },
+      "type": "album"
+    },
+    {
+      "id": 224305522,
+      "title": "Slap House Party",
+      "cover": "https://api.deezer.com/album/224305522/image",
+      "cover_small": "https://cdns-images.dzcdn.net/images/cover/6bf117e12569b4cc50366830bfc46fa7/56x56-000000-80-0-0.jpg",
+      "cover_medium": "https://cdns-images.dzcdn.net/images/cover/6bf117e12569b4cc50366830bfc46fa7/250x250-000000-80-0-0.jpg",
+      "cover_big": "https://cdns-images.dzcdn.net/images/cover/6bf117e12569b4cc50366830bfc46fa7/500x500-000000-80-0-0.jpg",
+      "cover_xl": "https://cdns-images.dzcdn.net/images/cover/6bf117e12569b4cc50366830bfc46fa7/1000x1000-000000-80-0-0.jpg",
+      "md5_image": "6bf117e12569b4cc50366830bfc46fa7",
+      "release_date": "2021-05-14",
+      "tracklist": "https://api.deezer.com/album/224305522/tracks",
+      "artist": {
+        "id": 567203,
+        "name": "Lunax",
+        "tracklist": "https://api.deezer.com/artist/567203/top?limit=50",
+        "type": "artist"
+      },
+      "type": "album"
+    },
+    {
+      "id": 213264102,
+      "title": "Entropy",
+      "cover": "https://api.deezer.com/album/213264102/image",
+      "cover_small": "https://cdns-images.dzcdn.net/images/cover/55dfa5d6416887cbc0e51396d83c45e7/56x56-000000-80-0-0.jpg",
+      "cover_medium": "https://cdns-images.dzcdn.net/images/cover/55dfa5d6416887cbc0e51396d83c45e7/250x250-000000-80-0-0.jpg",
+      "cover_big": "https://cdns-images.dzcdn.net/images/cover/55dfa5d6416887cbc0e51396d83c45e7/500x500-000000-80-0-0.jpg",
+      "cover_xl": "https://cdns-images.dzcdn.net/images/cover/55dfa5d6416887cbc0e51396d83c45e7/1000x1000-000000-80-0-0.jpg",
+      "md5_image": "55dfa5d6416887cbc0e51396d83c45e7",
+      "release_date": "2021-05-14",
+      "tracklist": "https://api.deezer.com/album/213264102/tracks",
+      "artist": {
+        "id": 582700,
+        "name": "Acolyte",
+        "tracklist": "https://api.deezer.com/artist/582700/top?limit=50",
+        "type": "artist"
+      },
+      "type": "album"
+    },
+    {
+      "id": 213415002,
+      "title": "parallel universe pt. 1",
+      "cover": "https://api.deezer.com/album/213415002/image",
+      "cover_small": "https://cdns-images.dzcdn.net/images/cover/e1105ec468fbeaed8c25a35f384d7608/56x56-000000-80-0-0.jpg",
+      "cover_medium": "https://cdns-images.dzcdn.net/images/cover/e1105ec468fbeaed8c25a35f384d7608/250x250-000000-80-0-0.jpg",
+      "cover_big": "https://cdns-images.dzcdn.net/images/cover/e1105ec468fbeaed8c25a35f384d7608/500x500-000000-80-0-0.jpg",
+      "cover_xl": "https://cdns-images.dzcdn.net/images/cover/e1105ec468fbeaed8c25a35f384d7608/1000x1000-000000-80-0-0.jpg",
+      "md5_image": "e1105ec468fbeaed8c25a35f384d7608",
+      "release_date": "2021-05-14",
+      "tracklist": "https://api.deezer.com/album/213415002/tracks",
+      "artist": {
+        "id": 75054812,
+        "name": "Alaina Castillo",
+        "tracklist": "https://api.deezer.com/artist/75054812/top?limit=50",
+        "type": "artist"
+      },
+      "type": "album"
+    },
+    {
+      "id": 228464842,
+      "title": "Daddy's Home",
+      "cover": "https://api.deezer.com/album/228464842/image",
+      "cover_small": "https://cdns-images.dzcdn.net/images/cover/a6e6362e365fbdaf92e15d189adbc2e6/56x56-000000-80-0-0.jpg",
+      "cover_medium": "https://cdns-images.dzcdn.net/images/cover/a6e6362e365fbdaf92e15d189adbc2e6/250x250-000000-80-0-0.jpg",
+      "cover_big": "https://cdns-images.dzcdn.net/images/cover/a6e6362e365fbdaf92e15d189adbc2e6/500x500-000000-80-0-0.jpg",
+      "cover_xl": "https://cdns-images.dzcdn.net/images/cover/a6e6362e365fbdaf92e15d189adbc2e6/1000x1000-000000-80-0-0.jpg",
+      "md5_image": "a6e6362e365fbdaf92e15d189adbc2e6",
+      "release_date": "2021-05-14",
+      "tracklist": "https://api.deezer.com/album/228464842/tracks",
+      "artist": {
+        "id": 14630,
+        "name": "St. Vincent",
+        "tracklist": "https://api.deezer.com/artist/14630/top?limit=50",
+        "type": "artist"
+      },
+      "type": "album"
+    },
+    {
+      "id": 228599362,
+      "title": "Fat Pop",
+      "cover": "https://api.deezer.com/album/228599362/image",
+      "cover_small": "https://cdns-images.dzcdn.net/images/cover/27013bca760b00ec01e184712b987cc6/56x56-000000-80-0-0.jpg",
+      "cover_medium": "https://cdns-images.dzcdn.net/images/cover/27013bca760b00ec01e184712b987cc6/250x250-000000-80-0-0.jpg",
+      "cover_big": "https://cdns-images.dzcdn.net/images/cover/27013bca760b00ec01e184712b987cc6/500x500-000000-80-0-0.jpg",
+      "cover_xl": "https://cdns-images.dzcdn.net/images/cover/27013bca760b00ec01e184712b987cc6/1000x1000-000000-80-0-0.jpg",
+      "md5_image": "27013bca760b00ec01e184712b987cc6",
+      "release_date": "2021-05-14",
+      "tracklist": "https://api.deezer.com/album/228599362/tracks",
+      "artist": {
+        "id": 2802,
+        "name": "Paul Weller",
+        "tracklist": "https://api.deezer.com/artist/2802/top?limit=50",
+        "type": "artist"
+      },
+      "type": "album"
+    },
+    {
+      "id": 230155152,
+      "title": "Beam Me Up Scotty",
+      "cover": "https://api.deezer.com/album/230155152/image",
+      "cover_small": "https://cdns-images.dzcdn.net/images/cover/b95a4ee7ad0fec6c5d0f7a0e3878e29b/56x56-000000-80-0-0.jpg",
+      "cover_medium": "https://cdns-images.dzcdn.net/images/cover/b95a4ee7ad0fec6c5d0f7a0e3878e29b/250x250-000000-80-0-0.jpg",
+      "cover_big": "https://cdns-images.dzcdn.net/images/cover/b95a4ee7ad0fec6c5d0f7a0e3878e29b/500x500-000000-80-0-0.jpg",
+      "cover_xl": "https://cdns-images.dzcdn.net/images/cover/b95a4ee7ad0fec6c5d0f7a0e3878e29b/1000x1000-000000-80-0-0.jpg",
+      "md5_image": "b95a4ee7ad0fec6c5d0f7a0e3878e29b",
+      "release_date": "2021-05-14",
+      "tracklist": "https://api.deezer.com/album/230155152/tracks",
+      "artist": {
+        "id": 382937,
+        "name": "Nicki Minaj",
+        "tracklist": "https://api.deezer.com/artist/382937/top?limit=50",
+        "type": "artist"
+      },
+      "type": "album"
+    },
+    {
+      "id": 230087232,
+      "title": "OMOFOR",
+      "cover": "https://api.deezer.com/album/230087232/image",
+      "cover_small": "https://cdns-images.dzcdn.net/images/cover/ce747ebc79ebc0823b2749888730bcf3/56x56-000000-80-0-0.jpg",
+      "cover_medium": "https://cdns-images.dzcdn.net/images/cover/ce747ebc79ebc0823b2749888730bcf3/250x250-000000-80-0-0.jpg",
+      "cover_big": "https://cdns-images.dzcdn.net/images/cover/ce747ebc79ebc0823b2749888730bcf3/500x500-000000-80-0-0.jpg",
+      "cover_xl": "https://cdns-images.dzcdn.net/images/cover/ce747ebc79ebc0823b2749888730bcf3/1000x1000-000000-80-0-0.jpg",
+      "md5_image": "ce747ebc79ebc0823b2749888730bcf3",
+      "release_date": "2021-05-13",
+      "tracklist": "https://api.deezer.com/album/230087232/tracks",
+      "artist": {
+        "id": 10292790,
+        "name": "BOULEVARD DEPO",
+        "tracklist": "https://api.deezer.com/artist/10292790/top?limit=50",
+        "type": "artist"
+      },
+      "type": "album"
+    },
+    {
+      "id": 224392672,
+      "title": "The Löst Tapes Vol. 1 (Live in Madrid 1995)",
+      "cover": "https://api.deezer.com/album/224392672/image",
+      "cover_small": "https://cdns-images.dzcdn.net/images/cover/8dca9cb0b875c67b1e2bee1a14537533/56x56-000000-80-0-0.jpg",
+      "cover_medium": "https://cdns-images.dzcdn.net/images/cover/8dca9cb0b875c67b1e2bee1a14537533/250x250-000000-80-0-0.jpg",
+      "cover_big": "https://cdns-images.dzcdn.net/images/cover/8dca9cb0b875c67b1e2bee1a14537533/500x500-000000-80-0-0.jpg",
+      "cover_xl": "https://cdns-images.dzcdn.net/images/cover/8dca9cb0b875c67b1e2bee1a14537533/1000x1000-000000-80-0-0.jpg",
+      "md5_image": "8dca9cb0b875c67b1e2bee1a14537533",
+      "release_date": "2021-05-08",
+      "tracklist": "https://api.deezer.com/album/224392672/tracks",
+      "artist": {
+        "id": 2996,
+        "name": "Motörhead",
+        "tracklist": "https://api.deezer.com/artist/2996/top?limit=50",
+        "type": "artist"
+      },
+      "type": "album"
+    },
+    {
+      "id": 201083692,
+      "title": "Comatose",
+      "cover": "https://api.deezer.com/album/201083692/image",
+      "cover_small": "https://cdns-images.dzcdn.net/images/cover/f8810608ed0f786cae6f8a8aa792f6b1/56x56-000000-80-0-0.jpg",
+      "cover_medium": "https://cdns-images.dzcdn.net/images/cover/f8810608ed0f786cae6f8a8aa792f6b1/250x250-000000-80-0-0.jpg",
+      "cover_big": "https://cdns-images.dzcdn.net/images/cover/f8810608ed0f786cae6f8a8aa792f6b1/500x500-000000-80-0-0.jpg",
+      "cover_xl": "https://cdns-images.dzcdn.net/images/cover/f8810608ed0f786cae6f8a8aa792f6b1/1000x1000-000000-80-0-0.jpg",
+      "md5_image": "f8810608ed0f786cae6f8a8aa792f6b1",
+      "release_date": "2021-05-07",
+      "tracklist": "https://api.deezer.com/album/201083692/tracks",
+      "artist": {
+        "id": 7349274,
+        "name": "Ghost Iris",
+        "tracklist": "https://api.deezer.com/artist/7349274/top?limit=50",
+        "type": "artist"
+      },
+      "type": "album"
+    },
+    {
+      "id": 225027902,
+      "title": "Van Weezer",
+      "cover": "https://api.deezer.com/album/225027902/image",
+      "cover_small": "https://cdns-images.dzcdn.net/images/cover/62a9ac82a9cdbd2f3ae6f3d215e7ce8f/56x56-000000-80-0-0.jpg",
+      "cover_medium": "https://cdns-images.dzcdn.net/images/cover/62a9ac82a9cdbd2f3ae6f3d215e7ce8f/250x250-000000-80-0-0.jpg",
+      "cover_big": "https://cdns-images.dzcdn.net/images/cover/62a9ac82a9cdbd2f3ae6f3d215e7ce8f/500x500-000000-80-0-0.jpg",
+      "cover_xl": "https://cdns-images.dzcdn.net/images/cover/62a9ac82a9cdbd2f3ae6f3d215e7ce8f/1000x1000-000000-80-0-0.jpg",
+      "md5_image": "62a9ac82a9cdbd2f3ae6f3d215e7ce8f",
+      "release_date": "2021-05-07",
+      "tracklist": "https://api.deezer.com/album/225027902/tracks",
+      "artist": {
+        "id": 418,
+        "name": "Weezer",
+        "tracklist": "https://api.deezer.com/artist/418/top?limit=50",
+        "type": "artist"
+      },
+      "type": "album"
+    }
+  ],
+  "total": 200,
+  "next": "https://api.deezer.com/editorial/0/releases?output=jsonp&version=js-v1.0.0&callback=DZ.request.callbacks.dzcb_0060a513ca4701e79_457024079&index=20"
+}

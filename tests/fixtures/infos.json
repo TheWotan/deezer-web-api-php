@@ -1,0 +1,57 @@
+{
+  "country_iso": "UA",
+  "country": "Ukraine",
+  "open": true,
+  "pop": "fr",
+  "upload_token": "85a0f4498d0aa869584455e92663da5e",
+  "upload_token_lifetime": 14400,
+  "user_token": null,
+  "hosts": {
+    "stream": "http://e-cdn-proxy-{0}.deezer.com/mobile/1/",
+    "images": "http://cdn-images.dzcdn.net/images"
+  },
+  "ads": {
+    "audio": {
+      "default": {
+        "start": 1,
+        "interval": 3,
+        "unit": "track"
+      }
+    },
+    "display": {
+      "interstitial": {
+        "start": 900,
+        "interval": 900,
+        "unit": "sec"
+      }
+    },
+    "big_native_ads_home": {
+      "iphone": {
+        "enabled": false
+      },
+      "ipad": {
+        "enabled": false
+      },
+      "android": {
+        "enabled": false
+      },
+      "android_tablet": {
+        "enabled": false
+      }
+    }
+  },
+  "has_podcasts": true,
+  "offers": [
+    {
+      "id": 1,
+      "name": "Deezer Premium",
+      "amount": "3.99",
+      "currency": "EUR",
+      "displayed_amount": "3,99 €",
+      "tc": "https://e-cdns-files.dzcdn.net/pdf/CGV-ww.pdf",
+      "tc_html": "https://www.deezer.com/legal/cgu?layout=naked",
+      "tc_txt": "https://www.deezer.com/legal/cgu?layout=plaintext",
+      "try_and_buy": 30
+    }
+  ]
+}

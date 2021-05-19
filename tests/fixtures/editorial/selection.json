@@ -1,0 +1,224 @@
+{
+  "data": [
+    {
+      "id": "62094842",
+      "title": "Dance on the Blacktop",
+      "cover": "https://api.deezer.com/album/62094842/image",
+      "cover_small": "https://cdns-images.dzcdn.net/images/cover/889dae251e5f322913cc3be614202a93/56x56-000000-80-0-0.jpg",
+      "cover_medium": "https://cdns-images.dzcdn.net/images/cover/889dae251e5f322913cc3be614202a93/250x250-000000-80-0-0.jpg",
+      "cover_big": "https://cdns-images.dzcdn.net/images/cover/889dae251e5f322913cc3be614202a93/500x500-000000-80-0-0.jpg",
+      "cover_xl": "https://cdns-images.dzcdn.net/images/cover/889dae251e5f322913cc3be614202a93/1000x1000-000000-80-0-0.jpg",
+      "md5_image": "889dae251e5f322913cc3be614202a93",
+      "genre_id": 85,
+      "record_type": "album",
+      "tracklist": "https://api.deezer.com/album/62094842/tracks",
+      "explicit_lyrics": false,
+      "artist": {
+        "id": "388063",
+        "name": "Nothing",
+        "link": "https://www.deezer.com/artist/388063",
+        "tracklist": "https://api.deezer.com/artist/388063/top?limit=50",
+        "type": "artist"
+      },
+      "type": "album"
+    },
+    {
+      "id": "206467172",
+      "title": "Inertia",
+      "cover": "https://api.deezer.com/album/206467172/image",
+      "cover_small": "https://cdns-images.dzcdn.net/images/cover/78ee82e4bef4378764e34f9c82496ef8/56x56-000000-80-0-0.jpg",
+      "cover_medium": "https://cdns-images.dzcdn.net/images/cover/78ee82e4bef4378764e34f9c82496ef8/250x250-000000-80-0-0.jpg",
+      "cover_big": "https://cdns-images.dzcdn.net/images/cover/78ee82e4bef4378764e34f9c82496ef8/500x500-000000-80-0-0.jpg",
+      "cover_xl": "https://cdns-images.dzcdn.net/images/cover/78ee82e4bef4378764e34f9c82496ef8/1000x1000-000000-80-0-0.jpg",
+      "md5_image": "78ee82e4bef4378764e34f9c82496ef8",
+      "genre_id": 464,
+      "record_type": "album",
+      "tracklist": "https://api.deezer.com/album/206467172/tracks",
+      "explicit_lyrics": true,
+      "artist": {
+        "id": "4583650",
+        "name": "Scar Of The Sun",
+        "link": "https://www.deezer.com/artist/4583650",
+        "tracklist": "https://api.deezer.com/artist/4583650/top?limit=50",
+        "type": "artist"
+      },
+      "type": "album"
+    },
+    {
+      "id": "219398502",
+      "title": "Club Hexagon III",
+      "cover": "https://api.deezer.com/album/219398502/image",
+      "cover_small": "https://cdns-images.dzcdn.net/images/cover/7a7ff4e9340ddb5f6c453f77d8e55311/56x56-000000-80-0-0.jpg",
+      "cover_medium": "https://cdns-images.dzcdn.net/images/cover/7a7ff4e9340ddb5f6c453f77d8e55311/250x250-000000-80-0-0.jpg",
+      "cover_big": "https://cdns-images.dzcdn.net/images/cover/7a7ff4e9340ddb5f6c453f77d8e55311/500x500-000000-80-0-0.jpg",
+      "cover_xl": "https://cdns-images.dzcdn.net/images/cover/7a7ff4e9340ddb5f6c453f77d8e55311/1000x1000-000000-80-0-0.jpg",
+      "md5_image": "7a7ff4e9340ddb5f6c453f77d8e55311",
+      "genre_id": 85,
+      "record_type": "album",
+      "tracklist": "https://api.deezer.com/album/219398502/tracks",
+      "explicit_lyrics": true,
+      "artist": {
+        "id": "5080",
+        "name": "Various Artists",
+        "link": "https://www.deezer.com/artist/5080",
+        "tracklist": "https://api.deezer.com/artist/5080/top?limit=50",
+        "type": "artist"
+      },
+      "type": "album"
+    },
+    {
+      "id": "79628972",
+      "title": "GREY Area",
+      "cover": "https://api.deezer.com/album/79628972/image",
+      "cover_small": "https://cdns-images.dzcdn.net/images/cover/eca090e92f14fe76c3f3b48634fd64c3/56x56-000000-80-0-0.jpg",
+      "cover_medium": "https://cdns-images.dzcdn.net/images/cover/eca090e92f14fe76c3f3b48634fd64c3/250x250-000000-80-0-0.jpg",
+      "cover_big": "https://cdns-images.dzcdn.net/images/cover/eca090e92f14fe76c3f3b48634fd64c3/500x500-000000-80-0-0.jpg",
+      "cover_xl": "https://cdns-images.dzcdn.net/images/cover/eca090e92f14fe76c3f3b48634fd64c3/1000x1000-000000-80-0-0.jpg",
+      "md5_image": "eca090e92f14fe76c3f3b48634fd64c3",
+      "genre_id": 116,
+      "record_type": "album",
+      "tracklist": "https://api.deezer.com/album/79628972/tracks",
+      "explicit_lyrics": true,
+      "artist": {
+        "id": "4578590",
+        "name": "Little Simz",
+        "link": "https://www.deezer.com/artist/4578590",
+        "tracklist": "https://api.deezer.com/artist/4578590/top?limit=50",
+        "type": "artist"
+      },
+      "type": "album"
+    },
+    {
+      "id": "231835",
+      "title": "Koko Taylor",
+      "cover": "https://api.deezer.com/album/231835/image",
+      "cover_small": "https://cdns-images.dzcdn.net/images/cover/7cc8210515e2a6f207c7e1e6cd8baa97/56x56-000000-80-0-0.jpg",
+      "cover_medium": "https://cdns-images.dzcdn.net/images/cover/7cc8210515e2a6f207c7e1e6cd8baa97/250x250-000000-80-0-0.jpg",
+      "cover_big": "https://cdns-images.dzcdn.net/images/cover/7cc8210515e2a6f207c7e1e6cd8baa97/500x500-000000-80-0-0.jpg",
+      "cover_xl": "https://cdns-images.dzcdn.net/images/cover/7cc8210515e2a6f207c7e1e6cd8baa97/1000x1000-000000-80-0-0.jpg",
+      "md5_image": "7cc8210515e2a6f207c7e1e6cd8baa97",
+      "genre_id": 152,
+      "record_type": "album",
+      "tracklist": "https://api.deezer.com/album/231835/tracks",
+      "explicit_lyrics": false,
+      "artist": {
+        "id": "8992",
+        "name": "Koko Taylor",
+        "link": "https://www.deezer.com/artist/8992",
+        "tracklist": "https://api.deezer.com/artist/8992/top?limit=50",
+        "type": "artist"
+      },
+      "type": "album"
+    },
+    {
+      "id": "186216012",
+      "title": "L.A.B. IV",
+      "cover": "https://api.deezer.com/album/186216012/image",
+      "cover_small": "https://cdns-images.dzcdn.net/images/cover/d85b88fc57f8d7737b5f777ea10a8d9d/56x56-000000-80-0-0.jpg",
+      "cover_medium": "https://cdns-images.dzcdn.net/images/cover/d85b88fc57f8d7737b5f777ea10a8d9d/250x250-000000-80-0-0.jpg",
+      "cover_big": "https://cdns-images.dzcdn.net/images/cover/d85b88fc57f8d7737b5f777ea10a8d9d/500x500-000000-80-0-0.jpg",
+      "cover_xl": "https://cdns-images.dzcdn.net/images/cover/d85b88fc57f8d7737b5f777ea10a8d9d/1000x1000-000000-80-0-0.jpg",
+      "md5_image": "d85b88fc57f8d7737b5f777ea10a8d9d",
+      "genre_id": 132,
+      "record_type": "album",
+      "tracklist": "https://api.deezer.com/album/186216012/tracks",
+      "explicit_lyrics": false,
+      "artist": {
+        "id": "1031587",
+        "name": "L.A.B.",
+        "link": "https://www.deezer.com/artist/1031587",
+        "tracklist": "https://api.deezer.com/artist/1031587/top?limit=50",
+        "type": "artist"
+      },
+      "type": "album"
+    },
+    {
+      "id": "217864252",
+      "title": "FILMS",
+      "cover": "https://api.deezer.com/album/217864252/image",
+      "cover_small": "https://cdns-images.dzcdn.net/images/cover/4175256b83fd74742dcfc176018473aa/56x56-000000-80-0-0.jpg",
+      "cover_medium": "https://cdns-images.dzcdn.net/images/cover/4175256b83fd74742dcfc176018473aa/250x250-000000-80-0-0.jpg",
+      "cover_big": "https://cdns-images.dzcdn.net/images/cover/4175256b83fd74742dcfc176018473aa/500x500-000000-80-0-0.jpg",
+      "cover_xl": "https://cdns-images.dzcdn.net/images/cover/4175256b83fd74742dcfc176018473aa/1000x1000-000000-80-0-0.jpg",
+      "md5_image": "4175256b83fd74742dcfc176018473aa",
+      "genre_id": 132,
+      "record_type": "album",
+      "tracklist": "https://api.deezer.com/album/217864252/tracks",
+      "explicit_lyrics": false,
+      "artist": {
+        "id": "1684522",
+        "name": "Thibault Cauvin",
+        "link": "https://www.deezer.com/artist/1684522",
+        "tracklist": "https://api.deezer.com/artist/1684522/top?limit=50",
+        "type": "artist"
+      },
+      "type": "album"
+    },
+    {
+      "id": "223234732",
+      "title": "Where My Heart Is",
+      "cover": "https://api.deezer.com/album/223234732/image",
+      "cover_small": "https://cdns-images.dzcdn.net/images/cover/8a8eb6dc3086b2c78e0c8ac2a31bbcec/56x56-000000-80-0-0.jpg",
+      "cover_medium": "https://cdns-images.dzcdn.net/images/cover/8a8eb6dc3086b2c78e0c8ac2a31bbcec/250x250-000000-80-0-0.jpg",
+      "cover_big": "https://cdns-images.dzcdn.net/images/cover/8a8eb6dc3086b2c78e0c8ac2a31bbcec/500x500-000000-80-0-0.jpg",
+      "cover_xl": "https://cdns-images.dzcdn.net/images/cover/8a8eb6dc3086b2c78e0c8ac2a31bbcec/1000x1000-000000-80-0-0.jpg",
+      "md5_image": "8a8eb6dc3086b2c78e0c8ac2a31bbcec",
+      "genre_id": 522,
+      "record_type": "album",
+      "tracklist": "https://api.deezer.com/album/223234732/tracks",
+      "explicit_lyrics": false,
+      "artist": {
+        "id": "14627677",
+        "name": "Brock Gonyea",
+        "link": "https://www.deezer.com/artist/14627677",
+        "tracklist": "https://api.deezer.com/artist/14627677/top?limit=50",
+        "type": "artist"
+      },
+      "type": "album"
+    },
+    {
+      "id": "216772852",
+      "title": "Chosen Family (with Elton John)",
+      "cover": "https://api.deezer.com/album/216772852/image",
+      "cover_small": "https://cdns-images.dzcdn.net/images/cover/77b1952b6fa21cc4e65ee18421aad924/56x56-000000-80-0-0.jpg",
+      "cover_medium": "https://cdns-images.dzcdn.net/images/cover/77b1952b6fa21cc4e65ee18421aad924/250x250-000000-80-0-0.jpg",
+      "cover_big": "https://cdns-images.dzcdn.net/images/cover/77b1952b6fa21cc4e65ee18421aad924/500x500-000000-80-0-0.jpg",
+      "cover_xl": "https://cdns-images.dzcdn.net/images/cover/77b1952b6fa21cc4e65ee18421aad924/1000x1000-000000-80-0-0.jpg",
+      "md5_image": "77b1952b6fa21cc4e65ee18421aad924",
+      "genre_id": 85,
+      "record_type": "single",
+      "tracklist": "https://api.deezer.com/album/216772852/tracks",
+      "explicit_lyrics": false,
+      "artist": {
+        "id": "4680004",
+        "name": "Rina Sawayama",
+        "link": "https://www.deezer.com/artist/4680004",
+        "tracklist": "https://api.deezer.com/artist/4680004/top?limit=50",
+        "type": "artist"
+      },
+      "type": "album"
+    },
+    {
+      "id": "1223674",
+      "title": "Exit",
+      "cover": "https://api.deezer.com/album/1223674/image",
+      "cover_small": "https://cdns-images.dzcdn.net/images/cover/6385d074723bf25465734f32e17f60f8/56x56-000000-80-0-0.jpg",
+      "cover_medium": "https://cdns-images.dzcdn.net/images/cover/6385d074723bf25465734f32e17f60f8/250x250-000000-80-0-0.jpg",
+      "cover_big": "https://cdns-images.dzcdn.net/images/cover/6385d074723bf25465734f32e17f60f8/500x500-000000-80-0-0.jpg",
+      "cover_xl": "https://cdns-images.dzcdn.net/images/cover/6385d074723bf25465734f32e17f60f8/1000x1000-000000-80-0-0.jpg",
+      "md5_image": "6385d074723bf25465734f32e17f60f8",
+      "genre_id": 85,
+      "record_type": "album",
+      "tracklist": "https://api.deezer.com/album/1223674/tracks",
+      "explicit_lyrics": false,
+      "artist": {
+        "id": "56338",
+        "name": "Shugo Tokumaru",
+        "link": "https://www.deezer.com/artist/56338",
+        "tracklist": "https://api.deezer.com/artist/56338/top?limit=50",
+        "type": "artist"
+      },
+      "type": "album"
+    }
+  ]
+}
