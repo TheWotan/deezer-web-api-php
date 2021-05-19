@@ -17,7 +17,7 @@ abstract class AbstractResourceTest extends TestCase
         $stub = $this->createPartialMock(Deezer\Request::class, ["send", "getLastResponse"]);
 
         $expectedReturn = [
-            "body" => json_decode(file_get_contents("tests/fixtures/$fixtureName.json"))
+            "body" => json_decode(file_get_contents(__DIR__ . "/../fixtures/$fixtureName.json"))
         ];
 
         $stub->expects($this->any())
