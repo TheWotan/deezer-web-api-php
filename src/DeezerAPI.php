@@ -8,7 +8,13 @@ use Deezer\Resources\AlbumResource;
 use Deezer\Resources\ArtistResource;
 use Deezer\Resources\ChartResource;
 use Deezer\Resources\EditorialResource;
+use Deezer\Resources\GenreResource;
+use Deezer\Resources\PlaylistResource;
+use Deezer\Resources\RadioResource;
 use Deezer\Resources\ResourceInterface;
+use Deezer\Resources\SearchResource;
+use Deezer\Resources\TrackResource;
+use Deezer\Resources\UserResource;
 
 /**
  * Class DeezerAPI
@@ -18,6 +24,12 @@ use Deezer\Resources\ResourceInterface;
  * @property AlbumResource $album
  * @property ChartResource $chart
  * @property EditorialResource $editorial
+ * @property GenreResource $genre
+ * @property RadioResource $radio
+ * @property SearchResource $search
+ * @property TrackResource $track
+ * @property PlaylistResource $playlist
+ * @property UserResource $user
  */
 class DeezerAPI
 {
@@ -151,5 +163,34 @@ class DeezerAPI
         } catch (DeezerAPIException $e) {
             throw $e;
         }
+    }
+
+
+    /**
+     * Get the user's options
+     * https://developers.deezer.com/api/options
+     *
+     * @return array|object An object of type options
+     * @throws DeezerAPIException
+     */
+    public function options()
+    {
+        $response = $this->sendRequest('GET', "/options");
+
+        return $response['body'];
+    }
+
+    /**
+     * Get the information about the API in the current country
+     * https://developers.deezer.com/api/infos
+     *
+     * @return array|object An object of type infos
+     * @throws DeezerAPIException
+     */
+    public function infos()
+    {
+        $response = $this->sendRequest('GET', "/infos");
+
+        return $response['body'];
     }
 }

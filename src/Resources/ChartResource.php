@@ -14,13 +14,13 @@ class ChartResource extends AbstractResource
      * Get a charts of a specified genre
      * https://developers.deezer.com/api/chart
      *
-     * @param $genreId
+     * @param $id - The genre's Deezer id
      * @return array|object A charts of a specified genre
      * @throws DeezerAPIException
      */
-    public function get($genreId)
+    public function get($id)
     {
-        $response = $this->api->sendRequest('GET', "/chart/{$genreId}");
+        $response = $this->api->sendRequest('GET', "/chart/{$id}");
 
         return $response['body'];
     }
@@ -29,13 +29,13 @@ class ChartResource extends AbstractResource
      * Returns the Top tracks.
      * https://developers.deezer.com/api/chart/tracks
      *
-     * @param $genreId
+     * @param $id - The genre's Deezer id
      * @return array|object A list of object of type track
      * @throws DeezerAPIException
      */
-    public function getTracks($genreId)
+    public function getTracks($id)
     {
-        $response = $this->api->sendRequest('GET', "/chart/{$genreId}/tracks");
+        $response = $this->api->sendRequest('GET', "/chart/{$id}/tracks");
 
         return $response['body'];
     }
@@ -44,13 +44,13 @@ class ChartResource extends AbstractResource
      * Returns the Top albums.
      * https://developers.deezer.com/api/chart/albums
      *
-     * @param $genreId
+     * @param $id - The genre's Deezer id
      * @return array|object A list of object of type album
      * @throws DeezerAPIException
      */
-    public function getAlbums($genreId)
+    public function getAlbums($id)
     {
-        $response = $this->api->sendRequest('GET', "/chart/{$genreId}/albums");
+        $response = $this->api->sendRequest('GET', "/chart/{$id}/albums");
 
         return $response['body'];
     }
@@ -59,13 +59,13 @@ class ChartResource extends AbstractResource
      * Returns the Top artists.
      * https://developers.deezer.com/api/chart/artists
      *
-     * @param $genreId
+     * @param $id - The genre's Deezer id
      * @return array|object A list of object of type artist
      * @throws DeezerAPIException
      */
-    public function getArtists($genreId)
+    public function getArtists($id)
     {
-        $response = $this->api->sendRequest('GET', "/chart/{$genreId}/artists");
+        $response = $this->api->sendRequest('GET', "/chart/{$id}/artists");
 
         return $response['body'];
     }
@@ -75,13 +75,13 @@ class ChartResource extends AbstractResource
      * Returns the Top playlists.
      * https://developers.deezer.com/api/chart/playlists
      *
-     * @param $genreId
+     * @param $id - The genre's Deezer id
      * @return array|object A list of object of type playlist
      * @throws DeezerAPIException
      */
-    public function getPlaylists($genreId)
+    public function getPlaylists($id)
     {
-        $response = $this->api->sendRequest('GET', "/chart/{$genreId}/playlists");
+        $response = $this->api->sendRequest('GET', "/chart/{$id}/playlists");
 
         return $response['body'];
     }
@@ -90,13 +90,13 @@ class ChartResource extends AbstractResource
      * Returns the Top podcasts.
      * https://developers.deezer.com/api/chart/podcasts
      *
-     * @param $genreId
+     * @param $id - The genre's Deezer id
      * @return array|object A list of object of type podcast
      * @throws DeezerAPIException
      */
-    public function getPodcasts($genreId)
+    public function getPodcasts($id)
     {
-        $response = $this->api->sendRequest('GET', "/chart/{$genreId}/podcasts");
+        $response = $this->api->sendRequest('GET', "/chart/{$id}/podcasts");
 
         return $response['body'];
     }
