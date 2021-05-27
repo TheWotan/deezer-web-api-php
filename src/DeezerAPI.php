@@ -41,7 +41,6 @@ class DeezerAPI
         'return_assoc' => false,
     ];
     protected $request = null;
-    protected $session = null;
 
 
     /** @var array Cache of resources. */
@@ -52,13 +51,11 @@ class DeezerAPI
      * Set options and class instances to use.
      *
      * @param array|object $options Optional. Options to set.
-     * @param Session $session Optional. The Session object to use.
      * @param Request $request Optional. The Request object to use.
      */
-    public function __construct($options = [], $session = null, $request = null)
+    public function __construct($options = [], $request = null)
     {
-        //$this->setOptions($options);
-        //$this->setSession($session);
+        $this->setOptions($options);
 
         $this->request = $request ?: new Request();
     }
@@ -110,6 +107,17 @@ class DeezerAPI
         return new $class($this);
     }
 
+    /**
+     * Set options
+     *
+     * @param array|object $options Options to set.
+     *
+     * @return void
+     */
+    public function setOptions($options)
+    {
+        $this->options = array_merge($this->options, (array) $options);
+    }
 
     /**
      * Add authorization headers.
@@ -120,9 +128,7 @@ class DeezerAPI
      */
     protected function authHeaders($headers = [])
     {
-        $accessToken = $this->session ? $this->session->getAccessToken() : $this->accessToken;
-
-        if ($accessToken) {
+        if ($this->accessToken) {
             $headers = array_merge($headers, [
                 'Authorization' => 'Bearer ' . $accessToken,
             ]);
