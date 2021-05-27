@@ -1,4 +1,4 @@
-# Deezer Web API PHP
+# Deezer Web API PHP (UNDER DEVELOPMENT)
 
 ## Contributing
 Contributions are more than welcome! See [CONTRIBUTING.md](/CONTRIBUTING.md) for more info.
