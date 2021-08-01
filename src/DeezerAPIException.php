@@ -4,7 +4,9 @@ declare(strict_types=1);
 
 namespace Deezer;
 
-class DeezerAPIException extends \Exception
+use Exception;
+
+class DeezerAPIException extends Exception
 {
     protected $type;
 

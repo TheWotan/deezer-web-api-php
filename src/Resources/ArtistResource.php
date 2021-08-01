@@ -14,13 +14,13 @@ class ArtistResource extends AbstractResource
      * Get An artist object
      * https://developers.deezer.com/api/artist
      *
-     * @param $id - The artist's Deezer id
+     * @param int $id - The artist's Deezer id
      * @return array|object An artist object
      * @throws DeezerAPIException
      */
-    public function get($id)
+    public function get(int $id)
     {
-        $response = $this->api->sendRequest('GET', "/artist/{$id}");
+        $response = $this->api->sendRequest('GET', "/artist/$id");
 
         return $response['body'];
     }
@@ -29,13 +29,13 @@ class ArtistResource extends AbstractResource
      * Get the top 5 tracks of an artist
      * https://developers.deezer.com/api/artist/top
      *
-     * @param $id - The artist's Deezer id
+     * @param int $id - The artist's Deezer id
      * @return array|object A list of object of type track
      * @throws DeezerAPIException
      */
-    public function getTop($id)
+    public function getTop(int $id)
     {
-        $response = $this->api->sendRequest('GET', "/artist/{$id}/top");
+        $response = $this->api->sendRequest('GET', "/artist/$id/top");
 
         return $response['body'];
     }
@@ -44,13 +44,13 @@ class ArtistResource extends AbstractResource
      * Return a list of artist's albums. Represented by an array of Album objects
      * https://developers.deezer.com/api/artist/albums
      *
-     * @param $id - The artist's Deezer id
+     * @param int $id - The artist's Deezer id
      * @return array|object A list of object of type album
      * @throws DeezerAPIException
      */
-    public function getAlbums($id)
+    public function getAlbums(int $id)
     {
-        $response = $this->api->sendRequest('GET', "/artist/{$id}/albums");
+        $response = $this->api->sendRequest('GET', "/artist/$id/albums");
 
         return $response['body'];
     }
@@ -59,13 +59,13 @@ class ArtistResource extends AbstractResource
      * Return a list of artist's fans. Represented by an array of User objects
      * https://developers.deezer.com/api/artist/fans
      *
-     * @param $id - The artist's Deezer id
+     * @param int $id - The artist's Deezer id
      * @return array|object A list of object of type user
      * @throws DeezerAPIException
      */
-    public function getFans($id)
+    public function getFans(int $id)
     {
-        $response = $this->api->sendRequest('GET', "/artist/{$id}/fans");
+        $response = $this->api->sendRequest('GET', "/artist/$id/fans");
 
         return $response['body'];
     }
@@ -74,13 +74,13 @@ class ArtistResource extends AbstractResource
      * Return a list of related artists. Represented by an array of Artist objects
      * https://developers.deezer.com/api/artist/related
      *
-     * @param $id - The artist's Deezer id
+     * @param int $id - The artist's Deezer id
      * @return array|object A list of object of type artist
      * @throws DeezerAPIException
      */
-    public function getRelated($id)
+    public function getRelated(int $id)
     {
-        $response = $this->api->sendRequest('GET', "/artist/{$id}/related");
+        $response = $this->api->sendRequest('GET', "/artist/$id/related");
 
         return $response['body'];
     }
@@ -89,13 +89,13 @@ class ArtistResource extends AbstractResource
      * Return a list of tracks. Represented by an array of Track object
      * https://developers.deezer.com/api/artist/radio
      *
-     * @param $id - The artist's Deezer id
+     * @param int $id - The artist's Deezer id
      * @return array|object A list of object of type track
      * @throws DeezerAPIException
      */
-    public function getRadio($id)
+    public function getRadio(int $id)
     {
-        $response = $this->api->sendRequest('GET', "/artist/{$id}/radio");
+        $response = $this->api->sendRequest('GET', "/artist/$id/radio");
 
         return $response['body'];
     }
@@ -104,13 +104,13 @@ class ArtistResource extends AbstractResource
      * Return a list of artist's playlists. Represented by an array of Playlist object
      * https://developers.deezer.com/api/artist/playlists
      *
-     * @param $id - The artist's Deezer id
+     * @param int $id - The artist's Deezer id
      * @return array|object A list of object of type playlist
      * @throws DeezerAPIException
      */
-    public function getPlaylists($id)
+    public function getPlaylists(int $id)
     {
-        $response = $this->api->sendRequest('GET', "/artist/{$id}/playlists");
+        $response = $this->api->sendRequest('GET', "/artist/$id/playlists");
 
         return $response['body'];
     }

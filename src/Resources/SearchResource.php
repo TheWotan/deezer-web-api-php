@@ -14,11 +14,11 @@ class SearchResource extends AbstractResource
      * Search tracks
      * https://developers.deezer.com/api/search
      *
-     * @param $query - Search query
+     * @param string $query - Search query
      * @return array|object A list of object of type track
      * @throws DeezerAPIException
      */
-    public function search($query)
+    public function search(string $query)
     {
         $response = $this->api->sendRequest('GET', "/search", ['q' => $query]);
 
@@ -29,11 +29,11 @@ class SearchResource extends AbstractResource
      * Search tracks
      * https://developers.deezer.com/api/search/tracks
      *
-     * @param $query - Search query
+     * @param string $query - Search query
      * @return array|object A list of object of type track
      * @throws DeezerAPIException
      */
-    public function track($query)
+    public function track(string $query)
     {
         $response = $this->api->sendRequest('GET', "/search/track", ['q' => $query]);
 
@@ -44,11 +44,11 @@ class SearchResource extends AbstractResource
      * Search albums.
      * https://developers.deezer.com/api/search/album
      *
-     * @param $query - Search query
+     * @param string $query - Search query
      * @return array|object A list of object of type album
      * @throws DeezerAPIException
      */
-    public function album($query)
+    public function album(string $query)
     {
         $response = $this->api->sendRequest('GET', "/search/album", ['q' => $query]);
 
@@ -59,11 +59,11 @@ class SearchResource extends AbstractResource
      * Search artists.
      * https://developers.deezer.com/api/search/artist
      *
-     * @param $query - Search query
+     * @param string $query - Search query
      * @return array|object A list of object of type artist
      * @throws DeezerAPIException
      */
-    public function artist($query)
+    public function artist(string $query)
     {
         $response = $this->api->sendRequest('GET', "/search/artist", ['q' => $query]);
 
@@ -74,11 +74,11 @@ class SearchResource extends AbstractResource
      * Search playlists.
      * https://developers.deezer.com/api/search/playlist
      *
-     * @param $query - Search query
+     * @param string $query - Search query
      * @return array|object A list of object of type playlist
      * @throws DeezerAPIException
      */
-    public function playlist($query)
+    public function playlist(string $query)
     {
         $response = $this->api->sendRequest('GET', "/search/playlist", ['q' => $query]);
 
@@ -89,11 +89,11 @@ class SearchResource extends AbstractResource
      * Search radios.
      * https://developers.deezer.com/api/search/radio
      *
-     * @param $query - Search query
+     * @param string $query - Search query
      * @return array|object A list of object of type radio
      * @throws DeezerAPIException
      */
-    public function radio($query)
+    public function radio(string $query)
     {
         $response = $this->api->sendRequest('GET', "/search/radio", ['q' => $query]);
 
@@ -104,11 +104,11 @@ class SearchResource extends AbstractResource
      * Search users.
      * https://developers.deezer.com/api/search/user
      *
-     * @param $query - Search query
+     * @param string $query - Search query
      * @return array|object A list of object of type user
      * @throws DeezerAPIException
      */
-    public function user($query)
+    public function user(string $query)
     {
         $response = $this->api->sendRequest('GET', "/search/user", ['q' => $query]);
 
@@ -119,11 +119,11 @@ class SearchResource extends AbstractResource
      * Get user search history.
      * https://developers.deezer.com/api/search/history
      *
-     * @param $query - Search query
+     * @param string $query - Search query
      * @return array|object A list of object of type track, album, artist, playlist, podcast, radio
      * @throws DeezerAPIException
      */
-    public function history($query)
+    public function history(string $query)
     {
         $response = $this->api->sendRequest('GET', "/search/history", ['q' => $query]);
 

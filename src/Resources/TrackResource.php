@@ -14,13 +14,13 @@ class TrackResource extends AbstractResource
      * Get An track object
      * https://developers.deezer.com/api/track
      *
-     * @param $id - The track's Deezer id
+     * @param int $id - The track's Deezer id
      * @return array|object An track object
      * @throws DeezerAPIException
      */
-    public function get($id)
+    public function get(int $id)
     {
-        $response = $this->api->sendRequest('GET', "/track/{$id}");
+        $response = $this->api->sendRequest('GET', "/track/$id");
 
         return $response['body'];
     }

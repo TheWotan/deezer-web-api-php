@@ -14,13 +14,13 @@ class UserResource extends AbstractResource
      * A user object
      * https://developers.deezer.com/api/user
      *
-     * @param $id - The user's Deezer id
+     * @param int $id - The user's Deezer id
      * @return array|object A list of object of type user
      * @throws DeezerAPIException
      */
-    public function get($id)
+    public function get(int $id)
     {
-        $response = $this->api->sendRequest('GET', "/user/{$id}");
+        $response = $this->api->sendRequest('GET', "/user/$id");
 
         return $response['body'];
     }
@@ -167,7 +167,7 @@ class UserResource extends AbstractResource
     }
 
     /**
-     * Return a list of user's personnal song, represented by an array of Tracks
+     * Return a list of user's personal song, represented by an array of Tracks
      * https://developers.deezer.com/api/user/personal_songs
      *
      * @return array|object A list of object of type track

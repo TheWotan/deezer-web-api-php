@@ -28,13 +28,13 @@ class EditorialResource extends AbstractResource
      * Get An editorial object
      * https://developers.deezer.com/api/editorial
      *
-     * @param $id - The editorial's Deezer id
+     * @param int $id - The editorial's Deezer id
      * @return array|object An editorial object
      * @throws DeezerAPIException
      */
-    public function get($id)
+    public function get(int $id)
     {
-        $response = $this->api->sendRequest('GET', "/editorial/{$id}");
+        $response = $this->api->sendRequest('GET', "/editorial/$id");
 
         return $response['body'];
     }
@@ -43,13 +43,13 @@ class EditorialResource extends AbstractResource
      * Return a list of albums selected every week by the Deezer Team.
      * https://developers.deezer.com/api/editorial/selection
      *
-     * @param $id - The editorial's Deezer id
+     * @param int $id - The editorial's Deezer id
      * @return array|object A list of object of type track
      * @throws DeezerAPIException
      */
-    public function getSelection($id)
+    public function getSelection(int $id)
     {
-        $response = $this->api->sendRequest('GET', "/editorial/{$id}/selection");
+        $response = $this->api->sendRequest('GET', "/editorial/$id/selection");
 
         return $response['body'];
     }
@@ -58,13 +58,13 @@ class EditorialResource extends AbstractResource
      * This method returns five lists : Top track, Top album, Top artist, Top playlist and Top podcasts.
      * https://developers.deezer.com/api/editorial/charts
      *
-     * @param $id - The editorial's Deezer id
+     * @param int $id - The editorial's Deezer id
      * @return array|object A five lists of object of type: track, album, artist, playlist, podcast
      * @throws DeezerAPIException
      */
-    public function getCharts($id)
+    public function getCharts(int $id)
     {
-        $response = $this->api->sendRequest('GET', "/editorial/{$id}/charts");
+        $response = $this->api->sendRequest('GET', "/editorial/$id/charts");
 
         return $response['body'];
     }
@@ -73,13 +73,13 @@ class EditorialResource extends AbstractResource
      * This method returns the new releases per genre for the current country
      * https://developers.deezer.com/api/editorial/releases
      *
-     * @param $id - The editorial's Deezer id
+     * @param int $id - The editorial's Deezer id
      * @return array|object A list of object of type album
      * @throws DeezerAPIException
      */
-    public function getReleases($id)
+    public function getReleases(int $id)
     {
-        $response = $this->api->sendRequest('GET', "/editorial/{$id}/releases");
+        $response = $this->api->sendRequest('GET', "/editorial/$id/releases");
 
         return $response['body'];
     }

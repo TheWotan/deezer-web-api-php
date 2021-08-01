@@ -14,13 +14,13 @@ class PlaylistResource extends AbstractResource
      * Get An playlist object
      * https://developers.deezer.com/api/playlist
      *
-     * @param $id - The playlist deezer ID
+     * @param int $id - The playlist deezer ID
      * @return array|object An playlist object
      * @throws DeezerAPIException
      */
-    public function get($id)
+    public function get(int $id)
     {
-        $response = $this->api->sendRequest('GET', "/playlist/{$id}");
+        $response = $this->api->sendRequest('GET', "/playlist/$id");
 
         return $response['body'];
     }
@@ -29,13 +29,13 @@ class PlaylistResource extends AbstractResource
      * Return a list of playlist's fans. Represented by an array of User objects
      * https://developers.deezer.com/api/playlist/fans
      *
-     * @param $id - The playlist deezer ID
+     * @param int $id - The playlist deezer ID
      * @return array|object A list of object of type user
      * @throws DeezerAPIException
      */
-    public function getFans($id)
+    public function getFans(int $id)
     {
-        $response = $this->api->sendRequest('GET', "/playlist/{$id}/fans");
+        $response = $this->api->sendRequest('GET', "/playlist/$id/fans");
 
         return $response['body'];
     }
@@ -44,13 +44,13 @@ class PlaylistResource extends AbstractResource
      * Return a list of playlist's tracks. Represented by an array of Track object
      * https://developers.deezer.com/api/playlist/tracks
      *
-     * @param $id - The playlist deezer ID
+     * @param int $id - The playlist deezer ID
      * @return array|object A list of object of type track
      * @throws DeezerAPIException
      */
-    public function getTracks($id)
+    public function getTracks(int $id)
     {
-        $response = $this->api->sendRequest('GET', "/playlist/{$id}/tracks");
+        $response = $this->api->sendRequest('GET', "/playlist/$id/tracks");
 
         return $response['body'];
     }
@@ -59,13 +59,13 @@ class PlaylistResource extends AbstractResource
      * Return a list of playlist's recommendation tracks. Represented by an array of Track object
      * https://developers.deezer.com/api/playlist/tracks
      *
-     * @param $id - The playlist deezer ID
+     * @param int $id - The playlist deezer ID
      * @return array|object A list of object of type track
      * @throws DeezerAPIException
      */
-    public function getRadio($id)
+    public function getRadio(int $id)
     {
-        $response = $this->api->sendRequest('GET', "/playlist/{$id}/radio");
+        $response = $this->api->sendRequest('GET', "/playlist/$id/radio");
 
         return $response['body'];
     }

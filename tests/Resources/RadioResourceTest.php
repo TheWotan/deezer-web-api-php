@@ -1,33 +1,46 @@
 <?php
 
-require_once "AbstractResourceTest.php";
+declare(strict_types=1);
+
+use Deezer\DeezerAPIException;
+
+require_once __DIR__ . "/AbstractResourceTest.php";
 
 class RadioResourceTest extends AbstractResourceTest
 {
-    private $id = 6;
+    private const ID = 6;
 
+    /**
+     * @throws DeezerAPIException
+     */
     public function testRealGet()
     {
-        $response = $this->apiReal->radio->get($this->id);
+        $response = $this->apiReal->radio->get(self::ID);
 
-        $this->assertEquals($this->id, $response->id);
+        $this->assertEquals(self::ID, $response->id);
     }
 
+    /**
+     * @throws DeezerAPIException
+     */
     public function testGet()
     {
         $api = $this->setupApi(
             "GET",
-            "/radio/{$this->id}",
+            "/radio/" . self::ID,
             [],
             [],
             "radio/view"
         );
 
-        $response = $api->radio->get($this->id);
+        $response = $api->radio->get(self::ID);
 
         $this->assertObjectHasAttribute("id", $response);
     }
 
+    /**
+     * @throws DeezerAPIException
+     */
     public function testList()
     {
         $api = $this->setupApi(
@@ -43,6 +56,9 @@ class RadioResourceTest extends AbstractResourceTest
         $this->assertObjectHasAttribute("data", $response);
     }
 
+    /**
+     * @throws DeezerAPIException
+     */
     public function testGetGenres()
     {
         $api = $this->setupApi(
@@ -58,6 +74,9 @@ class RadioResourceTest extends AbstractResourceTest
         $this->assertObjectHasAttribute("data", $response);
     }
 
+    /**
+     * @throws DeezerAPIException
+     */
     public function testGetLists()
     {
         $api = $this->setupApi(
@@ -73,6 +92,9 @@ class RadioResourceTest extends AbstractResourceTest
         $this->assertObjectHasAttribute("data", $response);
     }
 
+    /**
+     * @throws DeezerAPIException
+     */
     public function testGetTop()
     {
         $api = $this->setupApi(
@@ -88,17 +110,20 @@ class RadioResourceTest extends AbstractResourceTest
         $this->assertObjectHasAttribute("data", $response);
     }
 
+    /**
+     * @throws DeezerAPIException
+     */
     public function testGetTracks()
     {
         $api = $this->setupApi(
             "GET",
-            "/radio/{$this->id}/tracks",
+            "/radio/" . self::ID . "/tracks",
             [],
             [],
             "radio/tracks"
         );
 
-        $response = $api->radio->getTracks($this->id);
+        $response = $api->radio->getTracks(self::ID);
 
         $this->assertObjectHasAttribute("data", $response);
     }

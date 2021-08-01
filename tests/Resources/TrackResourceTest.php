@@ -1,29 +1,39 @@
 <?php
 
-require_once "AbstractResourceTest.php";
+declare(strict_types=1);
+
+use Deezer\DeezerAPIException;
+
+require_once __DIR__ . "/AbstractResourceTest.php";
 
 class TrackResourceTest extends AbstractResourceTest
 {
-    private $id = 3135556;
+    private const ID = 3135556;
 
+    /**
+     * @throws DeezerAPIException
+     */
     public function testRealGet()
     {
-        $response = $this->apiReal->track->get($this->id);
+        $response = $this->apiReal->track->get(self::ID);
 
-        $this->assertEquals($this->id, $response->id);
+        $this->assertEquals(self::ID, $response->id);
     }
 
+    /**
+     * @throws DeezerAPIException
+     */
     public function testGet()
     {
         $api = $this->setupApi(
             "GET",
-            "/track/{$this->id}",
+            "/track/" . self::ID,
             [],
             [],
             "track/view"
         );
 
-        $response = $api->track->get($this->id);
+        $response = $api->track->get(self::ID);
 
         $this->assertObjectHasAttribute("id", $response);
     }

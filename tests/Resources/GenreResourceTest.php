@@ -1,33 +1,46 @@
 <?php
 
-require_once "AbstractResourceTest.php";
+declare(strict_types=1);
+
+use Deezer\DeezerAPIException;
+
+require_once __DIR__ . "/AbstractResourceTest.php";
 
 class GenreResourceTest extends AbstractResourceTest
 {
-    private $id = 132;
+    private const ID = 132;
 
+    /**
+     * @throws DeezerAPIException
+     */
     public function testRealGet()
     {
-        $response = $this->apiReal->editorial->get($this->id);
+        $response = $this->apiReal->editorial->get(self::ID);
 
-        $this->assertEquals($this->id, $response->id);
+        $this->assertEquals(self::ID, $response->id);
     }
 
+    /**
+     * @throws DeezerAPIException
+     */
     public function testGet()
     {
         $api = $this->setupApi(
             "GET",
-            "/genre/{$this->id}",
+            "/genre/" . self::ID,
             [],
             [],
             "genre/view"
         );
 
-        $response = $api->genre->get($this->id);
+        $response = $api->genre->get(self::ID);
 
         $this->assertObjectHasAttribute("id", $response);
     }
 
+    /**
+     * @throws DeezerAPIException
+     */
     public function testList()
     {
         $api = $this->setupApi(
@@ -43,32 +56,61 @@ class GenreResourceTest extends AbstractResourceTest
         $this->assertObjectHasAttribute("data", $response);
     }
 
+    /**
+     * @throws DeezerAPIException
+     */
     public function testGetArtists()
     {
         $api = $this->setupApi(
             "GET",
-            "/genre/{$this->id}/artists",
+            "/genre/" . self::ID . "/artists",
             [],
             [],
             "genre/artists"
         );
 
-        $response = $api->genre->getArtists($this->id);
+        $response = $api->genre->getArtists(self::ID);
 
         $this->assertObjectHasAttribute("data", $response);
     }
 
+    /**
+     * @throws DeezerAPIException
+     */
     public function testGetRadios()
     {
         $api = $this->setupApi(
             "GET",
-            "/genre/{$this->id}/radios",
+            "/genre/" . self::ID . "/radios",
             [],
             [],
             "genre/radios"
         );
 
-        $response = $api->genre->getRadios($this->id);
+        $response = $api->genre->getRadios(self::ID);
+
+        $this->assertObjectHasAttribute("data", $response);
+    }
+
+    /**
+     * @throws DeezerAPIException
+     */
+    public function testGetPodcasts()
+    {
+        $api = $this->setupApi(
+            "GET",
+            "/genre/" . self::ID . "/podcasts",
+            [],
+            [],
+            "genre/podcasts"
+        );
+
+        // Stop here and mark this test as incomplete.
+        $this->markTestIncomplete(
+            'This test has not been implemented yet.'
+        );
+
+        $response = $api->genre->getPodcasts(self::ID);
 
         $this->assertObjectHasAttribute("data", $response);
     }

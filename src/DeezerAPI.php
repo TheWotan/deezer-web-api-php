@@ -92,7 +92,7 @@ class DeezerAPI
      * @return ResourceInterface
      * @throws \RuntimeException
      */
-    private function loadResource($service)
+    private function loadResource($service): ResourceInterface
     {
         $service = ucfirst($service);
 
@@ -130,7 +130,7 @@ class DeezerAPI
     {
         if ($this->accessToken) {
             $headers = array_merge($headers, [
-                'Authorization' => 'Bearer ' . $accessToken,
+                'Authorization' => 'Bearer ' . $this->accessToken,
             ]);
         }
 
@@ -156,9 +156,9 @@ class DeezerAPI
      */
     public function sendRequest($method, $uri, $parameters = [], $headers = [])
     {
-        $this->request->setOptions([
-            'return_assoc' => $this->options['return_assoc'],
-        ]);
+//        $this->request->setOptions([
+//            'return_assoc' => true,//$this->options['return_assoc'],
+//        ]);
 
         try {
             $headers = $this->authHeaders($headers);

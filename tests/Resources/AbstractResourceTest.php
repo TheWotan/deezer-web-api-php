@@ -1,6 +1,8 @@
 <?php
+
 declare(strict_types=1);
 
+use Deezer\DeezerAPI;
 use PHPUnit\Framework\TestCase;
 
 abstract class AbstractResourceTest extends TestCase
@@ -37,7 +39,7 @@ abstract class AbstractResourceTest extends TestCase
         return $stub;
     }
 
-    protected function setupApi($expectedMethod, $expectedUri, $expectedParameters, $expectedHeaders, $fixtureName)
+    protected function setupApi($expectedMethod, $expectedUri, $expectedParameters, $expectedHeaders, $fixtureName): DeezerAPI
     {
         $stub = $this->setupStub(
             $expectedMethod,
@@ -47,6 +49,6 @@ abstract class AbstractResourceTest extends TestCase
             $fixtureName
         );
 
-        return new Deezer\DeezerAPI([], null, $stub);
+        return new Deezer\DeezerAPI([], $stub);
     }
 }

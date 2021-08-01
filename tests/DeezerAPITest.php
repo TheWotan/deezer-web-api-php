@@ -2,7 +2,8 @@
 
 declare(strict_types=1);
 
-use Deezer\Request;
+use Deezer\DeezerAPI;
+use Deezer\DeezerAPIException;
 
 class DeezerAPITest extends PHPUnit\Framework\TestCase
 {
@@ -38,7 +39,7 @@ class DeezerAPITest extends PHPUnit\Framework\TestCase
         return $stub;
     }
 
-    protected function setupApi($expectedMethod, $expectedUri, $expectedParameters, $expectedHeaders, $fixtureName)
+    protected function setupApi($expectedMethod, $expectedUri, $expectedParameters, $expectedHeaders, $fixtureName): DeezerAPI
     {
         $stub = $this->setupStub(
             $expectedMethod,
@@ -48,9 +49,12 @@ class DeezerAPITest extends PHPUnit\Framework\TestCase
             $fixtureName
         );
 
-        return new Deezer\DeezerAPI([], null, $stub);
+        return new Deezer\DeezerAPI([], $stub);
     }
 
+    /**
+     * @throws DeezerAPIException
+     */
     public function testInfos()
     {
         $api = $this->setupApi(
@@ -66,12 +70,19 @@ class DeezerAPITest extends PHPUnit\Framework\TestCase
         $this->assertObjectHasAttribute("country_iso", $response);
     }
 
+    /**
+     * @throws DeezerAPIException
+     */
     public function testRealInfos()
     {
         $response = $this->apiReal->infos();
 
         $this->assertObjectHasAttribute("country_iso", $response);
     }
+
+    /**
+     * @throws DeezerAPIException
+     */
     public function testOptions()
     {
         $api = $this->setupApi(
@@ -87,6 +98,9 @@ class DeezerAPITest extends PHPUnit\Framework\TestCase
         $this->assertObjectHasAttribute("type", $response);
     }
 
+    /**
+     * @throws DeezerAPIException
+     */
     public function testRealOptions()
     {
         $response = $this->apiReal->options();

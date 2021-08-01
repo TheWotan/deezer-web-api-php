@@ -1,14 +1,21 @@
 <?php
 
-require_once "AbstractResourceTest.php";
+declare(strict_types=1);
+
+use Deezer\DeezerAPIException;
+
+require_once __DIR__ . "/AbstractResourceTest.php";
 
 class ChartResourceTest extends AbstractResourceTest
 {
-    private $id = 0;
+    private const ID = 0;
 
+    /**
+     * @throws DeezerAPIException
+     */
     public function testRealGet()
     {
-        $response = $this->apiReal->chart->get($this->id);
+        $response = $this->apiReal->chart->get(self::ID);
 
         $this->assertObjectHasAttribute("tracks", $response);
         $this->assertObjectHasAttribute("albums", $response);
@@ -17,17 +24,20 @@ class ChartResourceTest extends AbstractResourceTest
         $this->assertObjectHasAttribute("podcasts", $response);
     }
 
+    /**
+     * @throws DeezerAPIException
+     */
     public function testGet()
     {
         $api = $this->setupApi(
             "GET",
-            "/chart/{$this->id}",
+            "/chart/" . self::ID,
             [],
             [],
             "chart/view"
         );
 
-        $response = $api->chart->get($this->id);
+        $response = $api->chart->get(self::ID);
 
         $this->assertObjectHasAttribute("tracks", $response);
         $this->assertObjectHasAttribute("albums", $response);
@@ -36,77 +46,92 @@ class ChartResourceTest extends AbstractResourceTest
         $this->assertObjectHasAttribute("podcasts", $response);
     }
 
+    /**
+     * @throws DeezerAPIException
+     */
     public function testGetTracks()
     {
         $api = $this->setupApi(
             "GET",
-            "/chart/{$this->id}/tracks",
+            "/chart/" . self::ID . "/tracks",
             [],
             [],
             "chart/tracks"
         );
 
-        $response = $api->chart->getTracks($this->id);
+        $response = $api->chart->getTracks(self::ID);
 
         $this->assertObjectHasAttribute("data", $response);
     }
 
+    /**
+     * @throws DeezerAPIException
+     */
     public function testGetAlbums()
     {
         $api = $this->setupApi(
             "GET",
-            "/chart/{$this->id}/albums",
+            "/chart/" . self::ID . "/albums",
             [],
             [],
             "chart/albums"
         );
 
-        $response = $api->chart->getAlbums($this->id);
+        $response = $api->chart->getAlbums(self::ID);
 
         $this->assertObjectHasAttribute("data", $response);
     }
 
+    /**
+     * @throws DeezerAPIException
+     */
     public function testGetArtists()
     {
         $api = $this->setupApi(
             "GET",
-            "/chart/{$this->id}/artists",
+            "/chart/" . self::ID . "/artists",
             [],
             [],
             "chart/artists"
         );
 
-        $response = $api->chart->getArtists($this->id);
+        $response = $api->chart->getArtists(self::ID);
 
         $this->assertObjectHasAttribute("data", $response);
     }
 
+    /**
+     * @throws DeezerAPIException
+     */
     public function testGetPlaylists()
     {
         $api = $this->setupApi(
             "GET",
-            "/chart/{$this->id}/playlists",
+            "/chart/" . self::ID . "/playlists",
             [],
             [],
             "chart/playlists"
         );
 
-        $response = $api->chart->getPlaylists($this->id);
+        $response = $api->chart->getPlaylists(self::ID);
 
         $this->assertObjectHasAttribute("data", $response);
     }
 
+    /**
+     * @throws DeezerAPIException
+     */
     public function testGetPodcasts()
     {
         $api = $this->setupApi(
             "GET",
-            "/chart/{$this->id}/podcasts",
+            "/chart/" . self::ID . "/podcasts",
             [],
             [],
             "chart/podcasts"
         );
 
-        $response = $api->chart->getPodcasts($this->id);
+        $response = $api->chart->getPodcasts(self::ID);
 
         $this->assertObjectHasAttribute("data", $response);
     }
