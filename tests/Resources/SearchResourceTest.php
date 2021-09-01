@@ -36,6 +36,9 @@ class SearchResourceTest extends AbstractResourceTest
         $response = $api->search->search(self::QUERY);
 
         $this->assertObjectHasAttribute("data", $response);
+        foreach ($response->data as $datum) {
+            $this->assertEquals("track", $datum->type);
+        }
     }
 
     /**
@@ -54,6 +57,9 @@ class SearchResourceTest extends AbstractResourceTest
         $response = $api->search->track(self::QUERY);
 
         $this->assertObjectHasAttribute("data", $response);
+        foreach ($response->data as $datum) {
+            $this->assertEquals("track", $datum->type);
+        }
     }
 
     /**
@@ -72,6 +78,9 @@ class SearchResourceTest extends AbstractResourceTest
         $response = $api->search->album(self::QUERY);
 
         $this->assertObjectHasAttribute("data", $response);
+        foreach ($response->data as $datum) {
+            $this->assertEquals("album", $datum->type);
+        }
     }
 
     /**
@@ -90,6 +99,9 @@ class SearchResourceTest extends AbstractResourceTest
         $response = $api->search->artist(self::QUERY);
 
         $this->assertObjectHasAttribute("data", $response);
+        foreach ($response->data as $datum) {
+            $this->assertEquals("artist", $datum->type);
+        }
     }
 
     /**
@@ -108,6 +120,9 @@ class SearchResourceTest extends AbstractResourceTest
         $response = $api->search->playlist(self::QUERY);
 
         $this->assertObjectHasAttribute("data", $response);
+        foreach ($response->data as $datum) {
+            $this->assertEquals("playlist", $datum->type);
+        }
     }
 
     /**
@@ -126,6 +141,9 @@ class SearchResourceTest extends AbstractResourceTest
         $response = $api->search->radio(self::QUERY);
 
         $this->assertObjectHasAttribute("data", $response);
+        foreach ($response->data as $datum) {
+            $this->assertEquals("radio", $datum->type);
+        }
     }
 
     /**
@@ -144,6 +162,9 @@ class SearchResourceTest extends AbstractResourceTest
         $response = $api->search->user(self::QUERY);
 
         $this->assertObjectHasAttribute("data", $response);
+        foreach ($response->data as $datum) {
+            $this->assertEquals("user", $datum->type);
+        }
     }
 
     /**
@@ -161,11 +182,9 @@ class SearchResourceTest extends AbstractResourceTest
 
         $response = $api->search->history(self::QUERY);
 
-        // Stop here and mark this test as incomplete.
-        $this->markTestIncomplete(
-            'This test has not been implemented yet.'
-        );
-
         $this->assertObjectHasAttribute("data", $response);
+        foreach ($response->data as $datum) {
+            $this->assertObjectHasAttribute("query", $datum);
+        }
     }
 }

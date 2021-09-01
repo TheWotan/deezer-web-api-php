@@ -44,7 +44,7 @@ class EditorialResource extends AbstractResource
      * https://developers.deezer.com/api/editorial/selection
      *
      * @param int $id - The editorial's Deezer id
-     * @return array|object A list of object of type track
+     * @return array|object A list of object of type album
      * @throws DeezerAPIException
      */
     public function getSelection(int $id)

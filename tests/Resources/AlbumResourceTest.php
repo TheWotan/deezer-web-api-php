@@ -38,6 +38,7 @@ class AlbumResourceTest extends AbstractResourceTest
         $response = $api->album->get(self::ID);
 
         $this->assertObjectHasAttribute("id", $response);
+        $this->assertEquals("album", $response->type);
     }
 
     /**
@@ -56,6 +57,9 @@ class AlbumResourceTest extends AbstractResourceTest
         $response = $api->album->getFans(self::ID);
 
         $this->assertObjectHasAttribute("data", $response);
+        foreach ($response->data as $datum) {
+            $this->assertEquals("user", $datum->type);
+        }
     }
 
     /**
@@ -74,5 +78,8 @@ class AlbumResourceTest extends AbstractResourceTest
         $response = $api->album->getTracks(self::ID);
 
         $this->assertObjectHasAttribute("data", $response);
+        foreach ($response->data as $datum) {
+            $this->assertEquals("track", $datum->type);
+        }
     }
 }

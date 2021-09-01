@@ -85,7 +85,7 @@ class UserResource extends AbstractResource
      * Return a list of user's Folder.
      * https://developers.deezer.com/api/user/folders
      *
-     * @return array|object A list of object of type track
+     * @return array|object A list of object of type folder
      * @throws DeezerAPIException
      */
     public function getFolders()

@@ -8,8 +8,10 @@ use Deezer\Resources\AlbumResource;
 use Deezer\Resources\ArtistResource;
 use Deezer\Resources\ChartResource;
 use Deezer\Resources\EditorialResource;
+use Deezer\Resources\EpisodeResource;
 use Deezer\Resources\GenreResource;
 use Deezer\Resources\PlaylistResource;
+use Deezer\Resources\PodcastResource;
 use Deezer\Resources\RadioResource;
 use Deezer\Resources\ResourceInterface;
 use Deezer\Resources\SearchResource;
@@ -30,6 +32,8 @@ use Deezer\Resources\UserResource;
  * @property TrackResource $track
  * @property PlaylistResource $playlist
  * @property UserResource $user
+ * @property PodcastResource $podcast
+ * @property EpisodeResource $episode
  */
 class DeezerAPI
 {
@@ -120,6 +124,18 @@ class DeezerAPI
     }
 
     /**
+     * Set the access token to use.
+     *
+     * @param string $accessToken The access token.
+     *
+     * @return void
+     */
+    public function setAccessToken(string $accessToken)
+    {
+        $this->accessToken = $accessToken;
+    }
+
+    /**
      * Add authorization headers.
      *
      * @param $headers array. Optional. Additional headers to merge with the authorization headers.
@@ -161,7 +177,9 @@ class DeezerAPI
 //        ]);
 
         try {
-            $headers = $this->authHeaders($headers);
+            if ($this->accessToken) {
+                $parameters['access_token'] = $this->accessToken;
+            }
 
             //$parameters['output'] = 'json';
 

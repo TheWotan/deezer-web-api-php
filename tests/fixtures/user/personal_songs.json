@@ -1,0 +1,32 @@
+{
+  "data": [
+    {
+      "id": "-3016559262",
+      "readable": true,
+      "title": "1a6bb7b4b113ba2986ff08e8cabe7dd5e49c86fc.mp3",
+      "isrc": "",
+      "link": "https://www.deezer.com/track/-3016559262",
+      "duration": "30",
+      "rank": 0,
+      "explicit_lyrics": false,
+      "explicit_content_lyrics": 0,
+      "explicit_content_cover": 0,
+      "md5_image": "",
+      "artist": {
+        "name": "",
+        "tracklist": "",
+        "type": "artist"
+      },
+      "album": {
+        "id": 0,
+        "title": "",
+        "link": "https://www.deezer.com/album/0",
+        "md5_image": "",
+        "tracklist": "",
+        "type": "album"
+      },
+      "type": "track"
+    }
+  ],
+  "total": 1
+}

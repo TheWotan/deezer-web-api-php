@@ -1,0 +1,16 @@
+{
+  "data": [
+    {
+      "id": "1738975342",
+      "name": "Алина.Рожкова",
+      "picture": "https://api.deezer.com/user/1738975342/image",
+      "picture_small": "https://cdns-images.dzcdn.net/images/user/16645922f11376e1a89a0162ab4c7c2e/56x56-000000-80-0-0.jpg",
+      "picture_medium": "https://cdns-images.dzcdn.net/images/user/16645922f11376e1a89a0162ab4c7c2e/250x250-000000-80-0-0.jpg",
+      "picture_big": "https://cdns-images.dzcdn.net/images/user/16645922f11376e1a89a0162ab4c7c2e/500x500-000000-80-0-0.jpg",
+      "picture_xl": "https://cdns-images.dzcdn.net/images/user/16645922f11376e1a89a0162ab4c7c2e/1000x1000-000000-80-0-0.jpg",
+      "tracklist": "https://api.deezer.com/user/1738975342/flow",
+      "type": "user"
+    }
+  ],
+  "total": 1
+}

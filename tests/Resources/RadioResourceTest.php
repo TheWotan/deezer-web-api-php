@@ -36,6 +36,8 @@ class RadioResourceTest extends AbstractResourceTest
         $response = $api->radio->get(self::ID);
 
         $this->assertObjectHasAttribute("id", $response);
+        $this->assertEquals(self::ID, $response->id);
+        $this->assertEquals("radio", $response->type);
     }
 
     /**
@@ -54,6 +56,9 @@ class RadioResourceTest extends AbstractResourceTest
         $response = $api->radio->list();
 
         $this->assertObjectHasAttribute("data", $response);
+        foreach ($response->data as $datum) {
+            $this->assertEquals("radio", $datum->type);
+        }
     }
 
     /**
@@ -72,6 +77,12 @@ class RadioResourceTest extends AbstractResourceTest
         $response = $api->radio->getGenres();
 
         $this->assertObjectHasAttribute("data", $response);
+        foreach ($response->data as $datum) {
+            $this->assertObjectHasAttribute("radios", $datum);
+            foreach ($datum->radios as $radio) {
+                $this->assertEquals("radio", $radio->type);
+            }
+        }
     }
 
     /**
@@ -90,6 +101,9 @@ class RadioResourceTest extends AbstractResourceTest
         $response = $api->radio->getLists();
 
         $this->assertObjectHasAttribute("data", $response);
+        foreach ($response->data as $datum) {
+            $this->assertEquals("radio", $datum->type);
+        }
     }
 
     /**
@@ -108,6 +122,9 @@ class RadioResourceTest extends AbstractResourceTest
         $response = $api->radio->getTop();
 
         $this->assertObjectHasAttribute("data", $response);
+        foreach ($response->data as $datum) {
+            $this->assertEquals("radio", $datum->type);
+        }
     }
 
     /**
@@ -126,5 +143,8 @@ class RadioResourceTest extends AbstractResourceTest
         $response = $api->radio->getTracks(self::ID);
 
         $this->assertObjectHasAttribute("data", $response);
+        foreach ($response->data as $datum) {
+            $this->assertEquals("track", $datum->type);
+        }
     }
 }

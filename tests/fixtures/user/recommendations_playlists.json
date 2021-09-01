@@ -1,0 +1,148 @@
+{
+  "data": [
+    {
+      "id": "2905701862",
+      "title": "Feel Good Rock",
+      "public": true,
+      "nb_tracks": 50,
+      "link": "https://www.deezer.com/playlist/2905701862",
+      "picture": "https://api.deezer.com/playlist/2905701862/image",
+      "picture_small": "https://cdns-images.dzcdn.net/images/playlist/24ffdf6ee10c13c546155d344e8c8b90/56x56-000000-80-0-0.jpg",
+      "picture_medium": "https://cdns-images.dzcdn.net/images/playlist/24ffdf6ee10c13c546155d344e8c8b90/250x250-000000-80-0-0.jpg",
+      "picture_big": "https://cdns-images.dzcdn.net/images/playlist/24ffdf6ee10c13c546155d344e8c8b90/500x500-000000-80-0-0.jpg",
+      "picture_xl": "https://cdns-images.dzcdn.net/images/playlist/24ffdf6ee10c13c546155d344e8c8b90/1000x1000-000000-80-0-0.jpg",
+      "checksum": "500886c83369f079a303b70f804167bb",
+      "tracklist": "https://api.deezer.com/playlist/2905701862/tracks",
+      "creation_date": "0000-00-00 00:00:00",
+      "md5_image": "24ffdf6ee10c13c546155d344e8c8b90",
+      "picture_type": "playlist",
+      "user": {
+        "id": 753566875,
+        "name": "Rod - Deezer Rock Editor",
+        "tracklist": "https://api.deezer.com/user/753566875/flow",
+        "type": "user"
+      },
+      "type": "playlist"
+    },
+    {
+      "id": "2865616602",
+      "title": "Women of Rock",
+      "public": true,
+      "nb_tracks": 50,
+      "link": "https://www.deezer.com/playlist/2865616602",
+      "picture": "https://api.deezer.com/playlist/2865616602/image",
+      "picture_small": "https://cdns-images.dzcdn.net/images/playlist/6842e6412eaac41595bad2cbf24c830a/56x56-000000-80-0-0.jpg",
+      "picture_medium": "https://cdns-images.dzcdn.net/images/playlist/6842e6412eaac41595bad2cbf24c830a/250x250-000000-80-0-0.jpg",
+      "picture_big": "https://cdns-images.dzcdn.net/images/playlist/6842e6412eaac41595bad2cbf24c830a/500x500-000000-80-0-0.jpg",
+      "picture_xl": "https://cdns-images.dzcdn.net/images/playlist/6842e6412eaac41595bad2cbf24c830a/1000x1000-000000-80-0-0.jpg",
+      "checksum": "0153e4b80874b0c6076ebd55fc829d61",
+      "tracklist": "https://api.deezer.com/playlist/2865616602/tracks",
+      "creation_date": "0000-00-00 00:00:00",
+      "md5_image": "6842e6412eaac41595bad2cbf24c830a",
+      "picture_type": "playlist",
+      "user": {
+        "id": 753566875,
+        "name": "Rod - Deezer Rock Editor",
+        "tracklist": "https://api.deezer.com/user/753566875/flow",
+        "type": "user"
+      },
+      "type": "playlist"
+    },
+    {
+      "id": "8074584322",
+      "title": "00s Pop Rock",
+      "public": true,
+      "nb_tracks": 50,
+      "link": "https://www.deezer.com/playlist/8074584322",
+      "picture": "https://api.deezer.com/playlist/8074584322/image",
+      "picture_small": "https://cdns-images.dzcdn.net/images/playlist/6f3560f0bb698ece3dc24707c53861ad/56x56-000000-80-0-0.jpg",
+      "picture_medium": "https://cdns-images.dzcdn.net/images/playlist/6f3560f0bb698ece3dc24707c53861ad/250x250-000000-80-0-0.jpg",
+      "picture_big": "https://cdns-images.dzcdn.net/images/playlist/6f3560f0bb698ece3dc24707c53861ad/500x500-000000-80-0-0.jpg",
+      "picture_xl": "https://cdns-images.dzcdn.net/images/playlist/6f3560f0bb698ece3dc24707c53861ad/1000x1000-000000-80-0-0.jpg",
+      "checksum": "039b642cb67205869e107a903369de2d",
+      "tracklist": "https://api.deezer.com/playlist/8074584322/tracks",
+      "creation_date": "0000-00-00 00:00:00",
+      "md5_image": "6f3560f0bb698ece3dc24707c53861ad",
+      "picture_type": "playlist",
+      "user": {
+        "id": 753566875,
+        "name": "Rod - Deezer Rock Editor",
+        "tracklist": "https://api.deezer.com/user/753566875/flow",
+        "type": "user"
+      },
+      "type": "playlist"
+    },
+    {
+      "id": "7117747564",
+      "title": "Piano Hits",
+      "public": true,
+      "nb_tracks": 50,
+      "link": "https://www.deezer.com/playlist/7117747564",
+      "picture": "https://api.deezer.com/playlist/7117747564/image",
+      "picture_small": "https://cdns-images.dzcdn.net/images/playlist/f889d554f105c779b7bb98878bb02bd0/56x56-000000-80-0-0.jpg",
+      "picture_medium": "https://cdns-images.dzcdn.net/images/playlist/f889d554f105c779b7bb98878bb02bd0/250x250-000000-80-0-0.jpg",
+      "picture_big": "https://cdns-images.dzcdn.net/images/playlist/f889d554f105c779b7bb98878bb02bd0/500x500-000000-80-0-0.jpg",
+      "picture_xl": "https://cdns-images.dzcdn.net/images/playlist/f889d554f105c779b7bb98878bb02bd0/1000x1000-000000-80-0-0.jpg",
+      "checksum": "82df1a776cd4d53032af0aa99d20fc01",
+      "tracklist": "https://api.deezer.com/playlist/7117747564/tracks",
+      "creation_date": "0000-00-00 00:00:00",
+      "md5_image": "f889d554f105c779b7bb98878bb02bd0",
+      "picture_type": "playlist",
+      "user": {
+        "id": 846571671,
+        "name": "Alice - Deezer Moods Editor",
+        "tracklist": "https://api.deezer.com/user/846571671/flow",
+        "type": "user"
+      },
+      "type": "playlist"
+    },
+    {
+      "id": "8027597282",
+      "title": "90s Pop Rock",
+      "public": true,
+      "nb_tracks": 50,
+      "link": "https://www.deezer.com/playlist/8027597282",
+      "picture": "https://api.deezer.com/playlist/8027597282/image",
+      "picture_small": "https://cdns-images.dzcdn.net/images/playlist/0c86027c8aa32bd0878642753aafd0ff/56x56-000000-80-0-0.jpg",
+      "picture_medium": "https://cdns-images.dzcdn.net/images/playlist/0c86027c8aa32bd0878642753aafd0ff/250x250-000000-80-0-0.jpg",
+      "picture_big": "https://cdns-images.dzcdn.net/images/playlist/0c86027c8aa32bd0878642753aafd0ff/500x500-000000-80-0-0.jpg",
+      "picture_xl": "https://cdns-images.dzcdn.net/images/playlist/0c86027c8aa32bd0878642753aafd0ff/1000x1000-000000-80-0-0.jpg",
+      "checksum": "5260794127222b72691aa0094dedad2b",
+      "tracklist": "https://api.deezer.com/playlist/8027597282/tracks",
+      "creation_date": "0000-00-00 00:00:00",
+      "md5_image": "0c86027c8aa32bd0878642753aafd0ff",
+      "picture_type": "playlist",
+      "user": {
+        "id": 753566875,
+        "name": "Rod - Deezer Rock Editor",
+        "tracklist": "https://api.deezer.com/user/753566875/flow",
+        "type": "user"
+      },
+      "type": "playlist"
+    },
+    {
+      "id": "9100526582",
+      "title": "Go for gold",
+      "public": true,
+      "nb_tracks": 50,
+      "link": "https://www.deezer.com/playlist/9100526582",
+      "picture": "https://api.deezer.com/playlist/9100526582/image",
+      "picture_small": "https://cdns-images.dzcdn.net/images/playlist/3489c652e9d61cce5541246a0cf3ee37/56x56-000000-80-0-0.jpg",
+      "picture_medium": "https://cdns-images.dzcdn.net/images/playlist/3489c652e9d61cce5541246a0cf3ee37/250x250-000000-80-0-0.jpg",
+      "picture_big": "https://cdns-images.dzcdn.net/images/playlist/3489c652e9d61cce5541246a0cf3ee37/500x500-000000-80-0-0.jpg",
+      "picture_xl": "https://cdns-images.dzcdn.net/images/playlist/3489c652e9d61cce5541246a0cf3ee37/1000x1000-000000-80-0-0.jpg",
+      "checksum": "87bf738e56ddaa8f2b145b78f4a2d6c0",
+      "tracklist": "https://api.deezer.com/playlist/9100526582/tracks",
+      "creation_date": "0000-00-00 00:00:00",
+      "md5_image": "3489c652e9d61cce5541246a0cf3ee37",
+      "picture_type": "playlist",
+      "user": {
+        "id": 753546365,
+        "name": "Fábio - Deezer Pop Editor",
+        "tracklist": "https://api.deezer.com/user/753546365/flow",
+        "type": "user"
+      },
+      "type": "playlist"
+    }
+  ]
+}

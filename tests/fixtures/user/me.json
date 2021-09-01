@@ -1,0 +1,27 @@
+{
+  "id": "3110477044",
+  "name": "Dmytro Mostovliuk",
+  "lastname": "Мостовлюк",
+  "firstname": "Дмитро",
+  "status": 0,
+  "birthday": "0000-00-00",
+  "inscription_date": "2019-09-18",
+  "gender": "",
+  "link": "https://www.deezer.com/profile/3110477044",
+  "picture": "https://api.deezer.com/user/3110477044/image",
+  "picture_small": "https://cdns-images.dzcdn.net/images/user/306607ed827dcb1e3c4073870de96daa/56x56-000000-80-0-0.jpg",
+  "picture_medium": "https://cdns-images.dzcdn.net/images/user/306607ed827dcb1e3c4073870de96daa/250x250-000000-80-0-0.jpg",
+  "picture_big": "https://cdns-images.dzcdn.net/images/user/306607ed827dcb1e3c4073870de96daa/500x500-000000-80-0-0.jpg",
+  "picture_xl": "https://cdns-images.dzcdn.net/images/user/306607ed827dcb1e3c4073870de96daa/1000x1000-000000-80-0-0.jpg",
+  "country": "UA",
+  "lang": "en",
+  "is_kid": false,
+  "explicit_content_level": "explicit_display",
+  "explicit_content_levels_available": [
+    "explicit_display",
+    "explicit_no_recommendation",
+    "explicit_hide"
+  ],
+  "tracklist": "https://api.deezer.com/user/3110477044/flow",
+  "type": "user"
+}

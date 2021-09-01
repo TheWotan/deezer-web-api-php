@@ -36,6 +36,7 @@ class EditorialResourceTest extends AbstractResourceTest
         $response = $api->editorial->get(self::ID);
 
         $this->assertObjectHasAttribute("id", $response);
+        $this->assertEquals("editorial", $response->type);
     }
 
     /**
@@ -54,6 +55,9 @@ class EditorialResourceTest extends AbstractResourceTest
         $response = $api->editorial->list();
 
         $this->assertObjectHasAttribute("data", $response);
+        foreach ($response->data as $datum) {
+            $this->assertEquals("editorial", $datum->type);
+        }
     }
 
     /**
@@ -72,10 +76,25 @@ class EditorialResourceTest extends AbstractResourceTest
         $response = $api->editorial->getCharts(self::ID);
 
         $this->assertObjectHasAttribute("artists", $response);
+        foreach ($response->artists->data as $datum) {
+            $this->assertEquals("artist", $datum->type);
+        }
         $this->assertObjectHasAttribute("tracks", $response);
+        foreach ($response->tracks->data as $datum) {
+            $this->assertEquals("track", $datum->type);
+        }
         $this->assertObjectHasAttribute("albums", $response);
+        foreach ($response->albums->data as $datum) {
+            $this->assertEquals("album", $datum->type);
+        }
         $this->assertObjectHasAttribute("playlists", $response);
+        foreach ($response->playlists->data as $datum) {
+            $this->assertEquals("playlist", $datum->type);
+        }
         $this->assertObjectHasAttribute("podcasts", $response);
+        foreach ($response->podcasts->data as $datum) {
+            $this->assertEquals("podcast", $datum->type);
+        }
     }
 
     /**
@@ -94,6 +113,9 @@ class EditorialResourceTest extends AbstractResourceTest
         $response = $api->editorial->getSelection(self::ID);
 
         $this->assertObjectHasAttribute("data", $response);
+        foreach ($response->data as $datum) {
+            $this->assertEquals("album", $datum->type);
+        }
     }
 
     /**
@@ -112,5 +134,8 @@ class EditorialResourceTest extends AbstractResourceTest
         $response = $api->editorial->getReleases(self::ID);
 
         $this->assertObjectHasAttribute("data", $response);
+        foreach ($response->data as $datum) {
+            $this->assertEquals("album", $datum->type);
+        }
     }
 }

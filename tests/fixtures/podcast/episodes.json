@@ -1,0 +1,21 @@
+{
+  "data": [
+    {
+      "id": 58259,
+      "title": "Pilot Episode 2 - Morning Program",
+      "release_date": "2015-12-22 01:43:09",
+      "duration": 632,
+      "picture": "https://cdns-images.dzcdn.net/images/talk/d451bd73d8647c66f1195dc8d66e7293/180x180-000000-80-0-0.jpg",
+      "type": "episode"
+    },
+    {
+      "id": 58275,
+      "title": "Pilot Episode 1  - Beginning to Beginning",
+      "release_date": "2015-12-13 19:29:17",
+      "duration": 1860,
+      "picture": "https://cdns-images.dzcdn.net/images/talk/d451bd73d8647c66f1195dc8d66e7293/180x180-000000-80-0-0.jpg",
+      "type": "episode"
+    }
+  ],
+  "total": 2
+}

@@ -6,16 +6,16 @@ use Deezer\DeezerAPIException;
 
 require_once __DIR__ . "/AbstractResourceTest.php";
 
-class TrackResourceTest extends AbstractResourceTest
+class EpisodeResourceTest extends AbstractResourceTest
 {
-    private const ID = 3135556;
+    private const ID = 58275;
 
     /**
      * @throws DeezerAPIException
      */
     public function testRealGet()
     {
-        $response = $this->apiReal->track->get(self::ID);
+        $response = $this->apiReal->episode->get(self::ID);
 
         $this->assertEquals(self::ID, $response->id);
     }
@@ -27,16 +27,16 @@ class TrackResourceTest extends AbstractResourceTest
     {
         $api = $this->setupApi(
             "GET",
-            "/track/" . self::ID,
+            "/episode/" . self::ID,
             [],
             [],
-            "track/view"
+            "episode/view"
         );
 
-        $response = $api->track->get(self::ID);
+        $response = $api->episode->get(self::ID);
 
         $this->assertObjectHasAttribute("id", $response);
         $this->assertEquals(self::ID, $response->id);
-        $this->assertEquals("track", $response->type);
+        $this->assertEquals("episode", $response->type);
     }
 }

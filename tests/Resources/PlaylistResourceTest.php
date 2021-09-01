@@ -36,6 +36,8 @@ class PlaylistResourceTest extends AbstractResourceTest
         $response = $api->playlist->get(self::ID);
 
         $this->assertObjectHasAttribute("id", $response);
+        $this->assertEquals(self::ID, $response->id);
+        $this->assertEquals('playlist', $response->type);
     }
 
     /**
@@ -54,6 +56,9 @@ class PlaylistResourceTest extends AbstractResourceTest
         $response = $api->playlist->getTracks(self::ID);
 
         $this->assertObjectHasAttribute("data", $response);
+        foreach ($response->data as $datum) {
+            $this->assertEquals("track", $datum->type);
+        }
     }
 
     /**
@@ -72,6 +77,9 @@ class PlaylistResourceTest extends AbstractResourceTest
         $response = $api->playlist->getFans(self::ID);
 
         $this->assertObjectHasAttribute("data", $response);
+        foreach ($response->data as $datum) {
+            $this->assertEquals("user", $datum->type);
+        }
     }
 
     /**
@@ -89,11 +97,9 @@ class PlaylistResourceTest extends AbstractResourceTest
 
         $response = $api->playlist->getRadio(self::ID);
 
-        // Stop here and mark this test as incomplete.
-        $this->markTestIncomplete(
-            'This test has not been implemented yet.'
-        );
-
         $this->assertObjectHasAttribute("data", $response);
+        foreach ($response->data as $datum) {
+            $this->assertEquals("track", $datum->type);
+        }
     }
 }

@@ -39,11 +39,26 @@ class ChartResourceTest extends AbstractResourceTest
 
         $response = $api->chart->get(self::ID);
 
-        $this->assertObjectHasAttribute("tracks", $response);
-        $this->assertObjectHasAttribute("albums", $response);
         $this->assertObjectHasAttribute("artists", $response);
+        foreach ($response->artists->data as $datum) {
+            $this->assertEquals("artist", $datum->type);
+        }
+        $this->assertObjectHasAttribute("tracks", $response);
+        foreach ($response->tracks->data as $datum) {
+            $this->assertEquals("track", $datum->type);
+        }
+        $this->assertObjectHasAttribute("albums", $response);
+        foreach ($response->albums->data as $datum) {
+            $this->assertEquals("album", $datum->type);
+        }
         $this->assertObjectHasAttribute("playlists", $response);
+        foreach ($response->playlists->data as $datum) {
+            $this->assertEquals("playlist", $datum->type);
+        }
         $this->assertObjectHasAttribute("podcasts", $response);
+        foreach ($response->podcasts->data as $datum) {
+            $this->assertEquals("podcast", $datum->type);
+        }
     }
 
     /**
@@ -62,6 +77,9 @@ class ChartResourceTest extends AbstractResourceTest
         $response = $api->chart->getTracks(self::ID);
 
         $this->assertObjectHasAttribute("data", $response);
+        foreach ($response->data as $datum) {
+            $this->assertEquals("track", $datum->type);
+        }
     }
 
     /**
@@ -80,6 +98,9 @@ class ChartResourceTest extends AbstractResourceTest
         $response = $api->chart->getAlbums(self::ID);
 
         $this->assertObjectHasAttribute("data", $response);
+        foreach ($response->data as $datum) {
+            $this->assertEquals("album", $datum->type);
+        }
     }
 
     /**
@@ -98,6 +119,9 @@ class ChartResourceTest extends AbstractResourceTest
         $response = $api->chart->getArtists(self::ID);
 
         $this->assertObjectHasAttribute("data", $response);
+        foreach ($response->data as $datum) {
+            $this->assertEquals("artist", $datum->type);
+        }
     }
 
     /**
@@ -116,6 +140,9 @@ class ChartResourceTest extends AbstractResourceTest
         $response = $api->chart->getPlaylists(self::ID);
 
         $this->assertObjectHasAttribute("data", $response);
+        foreach ($response->data as $datum) {
+            $this->assertEquals("playlist", $datum->type);
+        }
     }
 
     /**
@@ -134,5 +161,8 @@ class ChartResourceTest extends AbstractResourceTest
         $response = $api->chart->getPodcasts(self::ID);
 
         $this->assertObjectHasAttribute("data", $response);
+        foreach ($response->data as $datum) {
+            $this->assertEquals("podcast", $datum->type);
+        }
     }
 }

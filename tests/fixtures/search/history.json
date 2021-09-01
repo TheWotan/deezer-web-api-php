@@ -1,7 +1,18 @@
 {
-  "error": {
-    "type": "OAuthException",
-    "message": "An active access token must be used to query information about the current user",
-    "code": 200
-  }
+  "data": [
+    {
+      "query": "daft punk – discovery",
+      "result": null
+    },
+    {
+      "query": "eminem – lose yourself",
+      "result": null
+    },
+    {
+      "query": "eminem",
+      "result": null
+    }
+  ],
+  "count": 3,
+  "total": 3
 }

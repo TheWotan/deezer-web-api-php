@@ -36,6 +36,8 @@ class GenreResourceTest extends AbstractResourceTest
         $response = $api->genre->get(self::ID);
 
         $this->assertObjectHasAttribute("id", $response);
+        $this->assertEquals(self::ID, $response->id);
+        $this->assertEquals('genre', $response->type);
     }
 
     /**
@@ -54,6 +56,9 @@ class GenreResourceTest extends AbstractResourceTest
         $response = $api->genre->list();
 
         $this->assertObjectHasAttribute("data", $response);
+        foreach ($response->data as $datum) {
+            $this->assertEquals("genre", $datum->type);
+        }
     }
 
     /**
@@ -72,6 +77,9 @@ class GenreResourceTest extends AbstractResourceTest
         $response = $api->genre->getArtists(self::ID);
 
         $this->assertObjectHasAttribute("data", $response);
+        foreach ($response->data as $datum) {
+            $this->assertEquals("artist", $datum->type);
+        }
     }
 
     /**
@@ -90,6 +98,9 @@ class GenreResourceTest extends AbstractResourceTest
         $response = $api->genre->getRadios(self::ID);
 
         $this->assertObjectHasAttribute("data", $response);
+        foreach ($response->data as $datum) {
+            $this->assertEquals("radio", $datum->type);
+        }
     }
 
     /**
@@ -105,13 +116,12 @@ class GenreResourceTest extends AbstractResourceTest
             "genre/podcasts"
         );
 
-        // Stop here and mark this test as incomplete.
-        $this->markTestSkipped(
-            'Not supported.'
-        );
-
         $response = $api->genre->getPodcasts(self::ID);
 
         $this->assertObjectHasAttribute("data", $response);
+
+        foreach ($response->data as $datum) {
+            $this->assertEquals("podcast", $datum->type);
+        }
     }
 }
