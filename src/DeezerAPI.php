@@ -165,7 +165,7 @@ class DeezerAPI
 
             //$parameters['output'] = 'json';
 
-            return $this->request->send($method, $uri, $parameters, $headers);
+            return $this->request->send($method, Request::API_URL . $uri, $parameters, $headers);
         } catch (DeezerAPIException $e) {
             throw $e;
         }

@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 use Deezer\DeezerAPI;
 use Deezer\DeezerAPIException;
+use Deezer\Request;
 
 class DeezerAPITest extends PHPUnit\Framework\TestCase
 {
@@ -26,7 +27,7 @@ class DeezerAPITest extends PHPUnit\Framework\TestCase
             ->method("send")
             ->with(
                 $this->equalTo($expectedMethod),
-                $this->equalTo($expectedUri),
+                $this->equalTo(Request::API_URL . $expectedUri),
                 $this->equalTo($expectedParameters),
                 $this->equalTo($expectedHeaders)
             )

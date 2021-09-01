@@ -3,6 +3,7 @@
 declare(strict_types=1);
 
 use Deezer\DeezerAPI;
+use Deezer\Request;
 use PHPUnit\Framework\TestCase;
 
 abstract class AbstractResourceTest extends TestCase
@@ -43,7 +44,7 @@ abstract class AbstractResourceTest extends TestCase
     {
         $stub = $this->setupStub(
             $expectedMethod,
-            $expectedUri,
+            Request::API_URL . $expectedUri,
             $expectedParameters,
             $expectedHeaders,
             $fixtureName

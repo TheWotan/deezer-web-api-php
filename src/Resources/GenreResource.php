@@ -40,6 +40,7 @@ class GenreResource extends AbstractResource
     }
 
     /**
+     * Not supported
      * Returns all podcasts for a genre
      * https://developers.deezer.com/api/genre/podcasts
      *

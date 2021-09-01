@@ -106,8 +106,8 @@ class GenreResourceTest extends AbstractResourceTest
         );
 
         // Stop here and mark this test as incomplete.
-        $this->markTestIncomplete(
-            'This test has not been implemented yet.'
+        $this->markTestSkipped(
+            'Not supported.'
         );
 
         $response = $api->genre->getPodcasts(self::ID);

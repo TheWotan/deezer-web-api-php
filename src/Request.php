@@ -87,7 +87,7 @@ class Request
             CURLOPT_HEADER => true,
             CURLOPT_HTTPHEADER => [],
             CURLOPT_RETURNTRANSFER => true,
-            CURLOPT_URL => rtrim(self::API_URL . $url, '/'),
+            CURLOPT_URL => rtrim($url, '/'),
         ];
 
         foreach ($headers as $key => $val) {
@@ -132,15 +132,18 @@ class Request
 
         [$headers, $body] = $this->splitResponse($response);
 
-        $body = json_decode($body, $this->options['return_assoc']);
+        $bodyParsed = json_decode($body, $this->options['return_assoc']);
+        if (!$bodyParsed) {
+            parse_str($body, $bodyParsed);
+        }
         $status = (int) curl_getinfo($ch, CURLINFO_HTTP_CODE);
         $headers = $this->parseHeaders($headers);
 
         $this->lastResponse = [
-            'body' => $body,
+            'body' => $bodyParsed,
             'headers' => $headers,
             'status' => $status,
-            'url' => self::API_URL . $url,
+            'url' => $url,
         ];
 
         curl_close($ch);
