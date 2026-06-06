@@ -8,10 +8,11 @@ class Request
 {
     public const API_URL = 'https://api.deezer.com';
 
-    protected $lastResponse = [];
-    protected $options = [
+    protected array $lastResponse = [];
+    protected array $options = [
         'curl_options' => [],
-        'return_assoc' => false
+        'return_assoc' => false,
+        'verify_ssl'   => true,
     ];
 
     /**
@@ -82,13 +83,19 @@ class Request
         }
 
         $options = [
-//            CURLOPT_CAINFO => __DIR__ . '/cacert.pem', //todo: a nada li?
             CURLOPT_ENCODING => '',
             CURLOPT_HEADER => true,
             CURLOPT_HTTPHEADER => [],
             CURLOPT_RETURNTRANSFER => true,
             CURLOPT_URL => rtrim($url, '/'),
         ];
+
+        if ($this->options['verify_ssl']) {
+            $options[CURLOPT_CAINFO] = __DIR__ . '/cacert.pem';
+            $options[CURLOPT_SSL_VERIFYPEER] = true;
+        } else {
+            $options[CURLOPT_SSL_VERIFYPEER] = false;
+        }
 
         foreach ($headers as $key => $val) {
             $options[CURLOPT_HTTPHEADER][] = "$key: $val";
@@ -97,9 +104,14 @@ class Request
         $method = strtoupper($method);
 
         switch ($method) {
-            case 'DELETE': // No break //todo: add correct support of method DELETE
+            case 'DELETE':
+                $options[CURLOPT_CUSTOMREQUEST] = 'DELETE';
+                if ($parameters) {
+                    $options[CURLOPT_POSTFIELDS] = $parameters;
+                }
+                break;
             case 'PUT':
-                $options[CURLOPT_CUSTOMREQUEST] = $method;
+                $options[CURLOPT_CUSTOMREQUEST] = 'PUT';
                 $options[CURLOPT_POSTFIELDS] = $parameters;
 
                 break;
@@ -125,15 +137,17 @@ class Request
         $response = curl_exec($ch);
 
         if (curl_error($ch)) {
+            $errno = curl_errno($ch);
+            $error = curl_error($ch);
             curl_close($ch);
 
-            throw new DeezerAPIException('cURL transport error: ' . curl_errno($ch) . ' ' . curl_error($ch));
+            throw new DeezerAPIException('cURL transport error: ' . $errno . ' ' . $error);
         }
 
         [$headers, $body] = $this->splitResponse($response);
 
         $bodyParsed = json_decode($body, $this->options['return_assoc']);
-        if (!$bodyParsed) {
+        if (json_last_error() !== JSON_ERROR_NONE) {
             parse_str($body, $bodyParsed);
         }
         $status = (int) curl_getinfo($ch, CURLINFO_HTTP_CODE);
@@ -149,11 +163,11 @@ class Request
         curl_close($ch);
 
         if ($status >= 400) {
-            $this->handleResponseError($body, $status);
+            $this->handleResponseError($bodyParsed, $status);
         }
 
-        if (isset($body->error)) {
-            $this->handleResponseError($body);
+        if (is_object($bodyParsed) && isset($bodyParsed->error)) {
+            $this->handleResponseError($bodyParsed);
         }
 
         return $this->lastResponse;
@@ -206,6 +220,9 @@ class Request
 
         $parsedHeaders = [];
         foreach ($headers as $header) {
+            if (strpos($header, ':') === false) {
+                continue;
+            }
             [$key, $value] = explode(':', $header, 2);
 
             $key = strtolower($key);

@@ -3,12 +3,13 @@
 namespace Deezer\Resources;
 
 use Deezer\DeezerAPIException;
+use Deezer\Resources\Interfaces\UserResourceInterface;
 
 /**
  * Class UserResource
  * @package Deezer\Resources
  */
-class UserResource extends AbstractResource
+class UserResource extends AbstractResource implements UserResourceInterface
 {
     /**
      * A user object
@@ -359,6 +360,246 @@ class UserResource extends AbstractResource
     public function getChartsArtists()
     {
         $response = $this->api->sendRequest('GET', "/user/me/charts/artists");
+
+        return $response['body'];
+    }
+
+    /**
+     * Return a list of a user's favorite albums by user ID
+     * https://developers.deezer.com/api/user/albums
+     *
+     * @param int $id - The user's Deezer id
+     * @return array|object A list of object of type album
+     * @throws DeezerAPIException
+     */
+    public function getAlbumsById(int $id)
+    {
+        $response = $this->api->sendRequest('GET', "/user/$id/albums");
+
+        return $response['body'];
+    }
+
+    /**
+     * Return a list of a user's favorite artists by user ID
+     * https://developers.deezer.com/api/user/artists
+     *
+     * @param int $id - The user's Deezer id
+     * @return array|object A list of object of type artist
+     * @throws DeezerAPIException
+     */
+    public function getArtistsById(int $id)
+    {
+        $response = $this->api->sendRequest('GET', "/user/$id/artists");
+
+        return $response['body'];
+    }
+
+    /**
+     * Return a list of a user's followings by user ID
+     * https://developers.deezer.com/api/user/following
+     *
+     * @param int $id - The user's Deezer id
+     * @return array|object A list of object of type user
+     * @throws DeezerAPIException
+     */
+    public function getFollowingsById(int $id)
+    {
+        $response = $this->api->sendRequest('GET', "/user/$id/following");
+
+        return $response['body'];
+    }
+
+    /**
+     * Return a list of a user's followers by user ID
+     * https://developers.deezer.com/api/user/followers
+     *
+     * @param int $id - The user's Deezer id
+     * @return array|object A list of object of type user
+     * @throws DeezerAPIException
+     */
+    public function getFollowersById(int $id)
+    {
+        $response = $this->api->sendRequest('GET', "/user/$id/followers");
+
+        return $response['body'];
+    }
+
+    /**
+     * Return a list of a user's playlists by user ID
+     * https://developers.deezer.com/api/user/playlists
+     *
+     * @param int $id - The user's Deezer id
+     * @return array|object A list of object of type playlist
+     * @throws DeezerAPIException
+     */
+    public function getPlaylistsById(int $id)
+    {
+        $response = $this->api->sendRequest('GET', "/user/$id/playlists");
+
+        return $response['body'];
+    }
+
+    /**
+     * Add an album to the user's library
+     * https://developers.deezer.com/api/user/albums
+     *
+     * @param int $albumId - The album's Deezer id
+     * @return bool True if successful
+     * @throws DeezerAPIException
+     */
+    public function addAlbum(int $albumId): bool
+    {
+        $response = $this->api->sendRequest('POST', "/user/me/albums", ['album_id' => $albumId]);
+
+        return (bool) $response['body'];
+    }
+
+    /**
+     * Remove an album from the user's library
+     * https://developers.deezer.com/api/user/albums
+     *
+     * @param int $albumId - The album's Deezer id
+     * @return bool True if successful
+     * @throws DeezerAPIException
+     */
+    public function removeAlbum(int $albumId): bool
+    {
+        $response = $this->api->sendRequest('DELETE', "/user/me/albums", ['album_id' => $albumId]);
+
+        return (bool) $response['body'];
+    }
+
+    /**
+     * Follow an artist
+     * https://developers.deezer.com/api/user/artists
+     *
+     * @param int $artistId - The artist's Deezer id
+     * @return bool True if successful
+     * @throws DeezerAPIException
+     */
+    public function followArtist(int $artistId): bool
+    {
+        $response = $this->api->sendRequest('POST', "/user/me/artists", ['artist_id' => $artistId]);
+
+        return (bool) $response['body'];
+    }
+
+    /**
+     * Unfollow an artist
+     * https://developers.deezer.com/api/user/artists
+     *
+     * @param int $artistId - The artist's Deezer id
+     * @return bool True if successful
+     * @throws DeezerAPIException
+     */
+    public function unfollowArtist(int $artistId): bool
+    {
+        $response = $this->api->sendRequest('DELETE', "/user/me/artists", ['artist_id' => $artistId]);
+
+        return (bool) $response['body'];
+    }
+
+    /**
+     * Follow a user
+     * https://developers.deezer.com/api/user/following
+     *
+     * @param int $userId - The user's Deezer id to follow
+     * @return bool True if successful
+     * @throws DeezerAPIException
+     */
+    public function followUser(int $userId): bool
+    {
+        $response = $this->api->sendRequest('POST', "/user/me/following", ['user_id' => $userId]);
+
+        return (bool) $response['body'];
+    }
+
+    /**
+     * Unfollow a user
+     * https://developers.deezer.com/api/user/following
+     *
+     * @param int $userId - The user's Deezer id to unfollow
+     * @return bool True if successful
+     * @throws DeezerAPIException
+     */
+    public function unfollowUser(int $userId): bool
+    {
+        $response = $this->api->sendRequest('DELETE', "/user/me/following", ['user_id' => $userId]);
+
+        return (bool) $response['body'];
+    }
+
+    /**
+     * Add a track to the user's library
+     * https://developers.deezer.com/api/user/tracks
+     *
+     * @param int $trackId - The track's Deezer id
+     * @return bool True if successful
+     * @throws DeezerAPIException
+     */
+    public function addTrack(int $trackId): bool
+    {
+        $response = $this->api->sendRequest('POST', "/user/me/tracks", ['track_id' => $trackId]);
+
+        return (bool) $response['body'];
+    }
+
+    /**
+     * Remove a track from the user's library
+     * https://developers.deezer.com/api/user/tracks
+     *
+     * @param int $trackId - The track's Deezer id
+     * @return bool True if successful
+     * @throws DeezerAPIException
+     */
+    public function removeTrack(int $trackId): bool
+    {
+        $response = $this->api->sendRequest('DELETE', "/user/me/tracks", ['track_id' => $trackId]);
+
+        return (bool) $response['body'];
+    }
+
+    /**
+     * Add a radio to the user's library
+     * https://developers.deezer.com/api/user/radios
+     *
+     * @param int $radioId - The radio's Deezer id
+     * @return bool True if successful
+     * @throws DeezerAPIException
+     */
+    public function addRadio(int $radioId): bool
+    {
+        $response = $this->api->sendRequest('POST', "/user/me/radios", ['radio_id' => $radioId]);
+
+        return (bool) $response['body'];
+    }
+
+    /**
+     * Remove a radio from the user's library
+     * https://developers.deezer.com/api/user/radios
+     *
+     * @param int $radioId - The radio's Deezer id
+     * @return bool True if successful
+     * @throws DeezerAPIException
+     */
+    public function removeRadio(int $radioId): bool
+    {
+        $response = $this->api->sendRequest('DELETE', "/user/me/radios", ['radio_id' => $radioId]);
+
+        return (bool) $response['body'];
+    }
+
+    /**
+     * Create a playlist for the current user
+     * https://developers.deezer.com/api/user/playlists
+     *
+     * @param string $title - The playlist title
+     * @return array|object A playlist object
+     * @throws DeezerAPIException
+     */
+    public function createPlaylist(string $title)
+    {
+        $response = $this->api->sendRequest('POST', "/user/me/playlists", ['title' => $title]);
 
         return $response['body'];
     }

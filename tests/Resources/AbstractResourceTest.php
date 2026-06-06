@@ -12,7 +12,7 @@ abstract class AbstractResourceTest extends TestCase
 
     protected function setUp(): void
     {
-        $this->apiReal = new Deezer\DeezerAPI();
+        $this->apiReal = new Deezer\DeezerAPI([], null);
     }
 
     protected function setupStub($expectedMethod, $expectedUri, $expectedParameters, $expectedHeaders, $fixtureName)
@@ -50,6 +50,6 @@ abstract class AbstractResourceTest extends TestCase
             $fixtureName
         );
 
-        return new Deezer\DeezerAPI([], $stub);
+        return new Deezer\DeezerAPI([], null, $stub);
     }
 }

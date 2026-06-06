@@ -17,50 +17,53 @@ use Deezer\Resources\ResourceInterface;
 use Deezer\Resources\SearchResource;
 use Deezer\Resources\TrackResource;
 use Deezer\Resources\UserResource;
+use Deezer\TokenProviderInterface;
 
 /**
  * Class DeezerAPI
  * @package Deezer
  *
- * @property ArtistResource $artist
- * @property AlbumResource $album
- * @property ChartResource $chart
- * @property EditorialResource $editorial
- * @property GenreResource $genre
- * @property RadioResource $radio
- * @property SearchResource $search
- * @property TrackResource $track
- * @property PlaylistResource $playlist
- * @property UserResource $user
- * @property PodcastResource $podcast
- * @property EpisodeResource $episode
+ * @property \Deezer\Resources\Interfaces\AlbumResourceInterface $album
+ * @property \Deezer\Resources\Interfaces\ArtistResourceInterface $artist
+ * @property \Deezer\Resources\Interfaces\ChartResourceInterface $chart
+ * @property \Deezer\Resources\Interfaces\CommentResourceInterface $comment
+ * @property \Deezer\Resources\Interfaces\EditorialResourceInterface $editorial
+ * @property \Deezer\Resources\Interfaces\EpisodeResourceInterface $episode
+ * @property \Deezer\Resources\Interfaces\GenreResourceInterface $genre
+ * @property \Deezer\Resources\Interfaces\PlaylistResourceInterface $playlist
+ * @property \Deezer\Resources\Interfaces\PodcastResourceInterface $podcast
+ * @property \Deezer\Resources\Interfaces\RadioResourceInterface $radio
+ * @property \Deezer\Resources\Interfaces\SearchResourceInterface $search
+ * @property \Deezer\Resources\Interfaces\TrackResourceInterface $track
+ * @property \Deezer\Resources\Interfaces\UserResourceInterface $user
  */
 class DeezerAPI
 {
-    protected $accessToken = '';
-    protected $lastResponse = [];
-    protected $options = [
+    protected string $accessToken = '';
+    protected array $lastResponse = [];
+    protected array $options = [
         'auto_refresh' => false,
         'auto_retry' => false,
         'return_assoc' => false,
     ];
-    protected $request = null;
-
+    protected ?Request $request = null;
+    private ?TokenProviderInterface $tokenProvider = null;
 
     /** @var array Cache of resources. */
-    private $resources = [];
+    private array $resources = [];
 
     /**
      * Constructor
      * Set options and class instances to use.
      *
-     * @param array|object $options Optional. Options to set.
-     * @param Request $request Optional. The Request object to use.
+     * @param array $options Optional. Options to set.
+     * @param TokenProviderInterface|null $tokenProvider Optional. Token provider to use.
+     * @param Request|null $request Optional. The Request object to use.
      */
-    public function __construct($options = [], $request = null)
+    public function __construct(array $options = [], ?TokenProviderInterface $tokenProvider = null, ?Request $request = null)
     {
         $this->setOptions($options);
-
+        $this->tokenProvider = $tokenProvider;
         $this->request = $request ?: new Request();
     }
 
@@ -135,24 +138,10 @@ class DeezerAPI
         $this->accessToken = $accessToken;
     }
 
-    /**
-     * Add authorization headers.
-     *
-     * @param $headers array. Optional. Additional headers to merge with the authorization headers.
-     *
-     * @return array Authorization headers, optionally merged with the passed ones.
-     */
-    protected function authHeaders($headers = [])
+    public function setResource(string $name, ResourceInterface $resource): void
     {
-        if ($this->accessToken) {
-            $headers = array_merge($headers, [
-                'Authorization' => 'Bearer ' . $this->accessToken,
-            ]);
-        }
-
-        return $headers;
+        $this->resources[$name] = $resource;
     }
-
 
     /**
      * Send a request to the Deezer API, automatically refreshing the access token as needed.
@@ -172,16 +161,17 @@ class DeezerAPI
      */
     public function sendRequest($method, $uri, $parameters = [], $headers = [])
     {
-//        $this->request->setOptions([
-//            'return_assoc' => true,//$this->options['return_assoc'],
-//        ]);
+        if ($this->tokenProvider !== null) {
+            if ($this->tokenProvider->isExpired()) {
+                $this->tokenProvider->refresh();
+            }
+            $this->accessToken = $this->tokenProvider->getToken();
+        }
 
         try {
             if ($this->accessToken) {
                 $parameters['access_token'] = $this->accessToken;
             }
-
-            //$parameters['output'] = 'json';
 
             return $this->request->send($method, Request::API_URL . $uri, $parameters, $headers);
         } catch (DeezerAPIException $e) {

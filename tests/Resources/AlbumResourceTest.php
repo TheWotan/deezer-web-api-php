@@ -2,7 +2,9 @@
 
 declare(strict_types=1);
 
+use Deezer\DeezerAPI;
 use Deezer\DeezerAPIException;
+use Deezer\Request;
 
 require_once __DIR__ . "/AbstractResourceTest.php";
 
@@ -81,5 +83,22 @@ class AlbumResourceTest extends AbstractResourceTest
         foreach ($response->data as $datum) {
             $this->assertEquals("track", $datum->type);
         }
+    }
+
+    /**
+     * @throws DeezerAPIException
+     */
+    public function testGetComments(): void
+    {
+        $stub = $this->createPartialMock(Request::class, ['send', 'getLastResponse']);
+        $return = ['body' => json_decode(file_get_contents('tests/fixtures/album/comments.json'))];
+        $stub->method('send')
+            ->with('GET', Request::API_URL . '/album/302127/comments', [], [])
+            ->willReturn($return);
+        $stub->method('getLastResponse')->willReturn($return);
+        $api = new DeezerAPI([], null, $stub);
+
+        $result = $api->album->getComments(302127);
+        $this->assertObjectHasAttribute('data', $result);
     }
 }

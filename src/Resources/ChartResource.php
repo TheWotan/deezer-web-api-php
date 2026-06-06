@@ -3,12 +3,13 @@
 namespace Deezer\Resources;
 
 use Deezer\DeezerAPIException;
+use Deezer\Resources\Interfaces\ChartResourceInterface;
 
 /**
  * Class ChartResource
  * @package Deezer\Resources
  */
-class ChartResource extends AbstractResource
+class ChartResource extends AbstractResource implements ChartResourceInterface
 {
     /**
      * Get a charts of a specified genre

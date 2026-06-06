@@ -3,12 +3,13 @@
 namespace Deezer\Resources;
 
 use Deezer\DeezerAPIException;
+use Deezer\Resources\Interfaces\AlbumResourceInterface;
 
 /**
  * Class AlbumResource
  * @package Deezer\Resources
  */
-class AlbumResource extends AbstractResource
+class AlbumResource extends AbstractResource implements AlbumResourceInterface
 {
     /**
      * Get An album object
@@ -21,6 +22,21 @@ class AlbumResource extends AbstractResource
     public function get(int $id)
     {
         $response = $this->api->sendRequest('GET', "/album/$id");
+
+        return $response['body'];
+    }
+
+    /**
+     * Return a list of album's comments. Represented by an array of Comment objects
+     * https://developers.deezer.com/api/album/comments
+     *
+     * @param int $id - The album's Deezer id
+     * @return array|object A list of object of type comment
+     * @throws DeezerAPIException
+     */
+    public function getComments(int $id)
+    {
+        $response = $this->api->sendRequest('GET', "/album/$id/comments");
 
         return $response['body'];
     }

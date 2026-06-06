@@ -14,9 +14,9 @@
         "ext-json": "*"
     },
     "autoload": {
-        "classmap": [
-            "src/"
-        ]
+        "psr-4": {
+            "Deezer\\": "src/"
+        }
     },
     "scripts": {
         "test": "phpcs src -v && phpunit"

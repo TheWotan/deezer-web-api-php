@@ -12,7 +12,7 @@ class DeezerAPITest extends PHPUnit\Framework\TestCase
 
     protected function setUp(): void
     {
-        $this->apiReal = new Deezer\DeezerAPI();
+        $this->apiReal = new Deezer\DeezerAPI([], null);
     }
 
     protected function setupStub($expectedMethod, $expectedUri, $expectedParameters, $expectedHeaders, $fixtureName)
@@ -50,7 +50,7 @@ class DeezerAPITest extends PHPUnit\Framework\TestCase
             $fixtureName
         );
 
-        return new Deezer\DeezerAPI([], $stub);
+        return new Deezer\DeezerAPI([], null, $stub);
     }
 
     /**
@@ -107,5 +107,26 @@ class DeezerAPITest extends PHPUnit\Framework\TestCase
         $response = $this->apiReal->options();
 
         $this->assertObjectHasAttribute("type", $response);
+    }
+
+    public function testDeezerAPIUsesTokenProviderBeforeRequest(): void
+    {
+        $provider = new \Deezer\Providers\StaticTokenProvider('provider_token');
+
+        $stub = $this->createPartialMock(\Deezer\Request::class, ['send', 'getLastResponse']);
+        $stub->expects($this->once())
+            ->method('send')
+            ->with(
+                $this->equalTo('GET'),
+                $this->stringContains('/infos'),
+                $this->callback(function ($params) {
+                    return isset($params['access_token']) && $params['access_token'] === 'provider_token';
+                }),
+                $this->anything()
+            )
+            ->willReturn(['body' => json_decode('{"country_iso":"UA"}')]);
+
+        $api = new \Deezer\DeezerAPI([], $provider, $stub);
+        $api->infos();
     }
 }
