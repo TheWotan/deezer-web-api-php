@@ -15,6 +15,7 @@ class AlbumResourceTest extends AbstractResourceTest
 
     /**
      * @throws DeezerAPIException
+     * @group real-api
      */
     public function testRealGet()
     {
@@ -39,7 +40,7 @@ class AlbumResourceTest extends AbstractResourceTest
 
         $response = $api->album->get(self::ID);
 
-        $this->assertObjectHasAttribute("id", $response);
+        $this->assertObjectHasProperty("id", $response);
         $this->assertEquals("album", $response->type);
     }
 
@@ -58,7 +59,7 @@ class AlbumResourceTest extends AbstractResourceTest
 
         $response = $api->album->getFans(self::ID);
 
-        $this->assertObjectHasAttribute("data", $response);
+        $this->assertObjectHasProperty("data", $response);
         foreach ($response->data as $datum) {
             $this->assertEquals("user", $datum->type);
         }
@@ -79,7 +80,7 @@ class AlbumResourceTest extends AbstractResourceTest
 
         $response = $api->album->getTracks(self::ID);
 
-        $this->assertObjectHasAttribute("data", $response);
+        $this->assertObjectHasProperty("data", $response);
         foreach ($response->data as $datum) {
             $this->assertEquals("track", $datum->type);
         }
@@ -99,6 +100,6 @@ class AlbumResourceTest extends AbstractResourceTest
         $api = new DeezerAPI([], null, $stub);
 
         $result = $api->album->getComments(302127);
-        $this->assertObjectHasAttribute('data', $result);
+        $this->assertObjectHasProperty('data', $result);
     }
 }

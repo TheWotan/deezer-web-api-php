@@ -12,6 +12,7 @@ class EditorialResourceTest extends AbstractResourceTest
 
     /**
      * @throws DeezerAPIException
+     * @group real-api
      */
     public function testRealGet()
     {
@@ -35,7 +36,7 @@ class EditorialResourceTest extends AbstractResourceTest
 
         $response = $api->editorial->get(self::ID);
 
-        $this->assertObjectHasAttribute("id", $response);
+        $this->assertObjectHasProperty("id", $response);
         $this->assertEquals("editorial", $response->type);
     }
 
@@ -54,7 +55,7 @@ class EditorialResourceTest extends AbstractResourceTest
 
         $response = $api->editorial->list();
 
-        $this->assertObjectHasAttribute("data", $response);
+        $this->assertObjectHasProperty("data", $response);
         foreach ($response->data as $datum) {
             $this->assertEquals("editorial", $datum->type);
         }
@@ -75,23 +76,23 @@ class EditorialResourceTest extends AbstractResourceTest
 
         $response = $api->editorial->getCharts(self::ID);
 
-        $this->assertObjectHasAttribute("artists", $response);
+        $this->assertObjectHasProperty("artists", $response);
         foreach ($response->artists->data as $datum) {
             $this->assertEquals("artist", $datum->type);
         }
-        $this->assertObjectHasAttribute("tracks", $response);
+        $this->assertObjectHasProperty("tracks", $response);
         foreach ($response->tracks->data as $datum) {
             $this->assertEquals("track", $datum->type);
         }
-        $this->assertObjectHasAttribute("albums", $response);
+        $this->assertObjectHasProperty("albums", $response);
         foreach ($response->albums->data as $datum) {
             $this->assertEquals("album", $datum->type);
         }
-        $this->assertObjectHasAttribute("playlists", $response);
+        $this->assertObjectHasProperty("playlists", $response);
         foreach ($response->playlists->data as $datum) {
             $this->assertEquals("playlist", $datum->type);
         }
-        $this->assertObjectHasAttribute("podcasts", $response);
+        $this->assertObjectHasProperty("podcasts", $response);
         foreach ($response->podcasts->data as $datum) {
             $this->assertEquals("podcast", $datum->type);
         }
@@ -112,7 +113,7 @@ class EditorialResourceTest extends AbstractResourceTest
 
         $response = $api->editorial->getSelection(self::ID);
 
-        $this->assertObjectHasAttribute("data", $response);
+        $this->assertObjectHasProperty("data", $response);
         foreach ($response->data as $datum) {
             $this->assertEquals("album", $datum->type);
         }
@@ -133,7 +134,7 @@ class EditorialResourceTest extends AbstractResourceTest
 
         $response = $api->editorial->getReleases(self::ID);
 
-        $this->assertObjectHasAttribute("data", $response);
+        $this->assertObjectHasProperty("data", $response);
         foreach ($response->data as $datum) {
             $this->assertEquals("album", $datum->type);
         }

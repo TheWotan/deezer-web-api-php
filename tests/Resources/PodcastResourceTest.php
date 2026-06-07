@@ -12,6 +12,7 @@ class PodcastResourceTest extends AbstractResourceTest
 
     /**
      * @throws DeezerAPIException
+     * @group real-api
      */
     public function testRealGet()
     {
@@ -35,7 +36,7 @@ class PodcastResourceTest extends AbstractResourceTest
 
         $response = $api->podcast->get(self::ID);
 
-        $this->assertObjectHasAttribute("id", $response);
+        $this->assertObjectHasProperty("id", $response);
         $this->assertEquals(self::ID, $response->id);
         $this->assertEquals("podcast", $response->type);
     }
@@ -55,7 +56,7 @@ class PodcastResourceTest extends AbstractResourceTest
 
         $response = $api->podcast->getEpisodes(self::ID);
 
-        $this->assertObjectHasAttribute("data", $response);
+        $this->assertObjectHasProperty("data", $response);
         foreach ($response->data as $datum) {
             $this->assertEquals("episode", $datum->type);
         }

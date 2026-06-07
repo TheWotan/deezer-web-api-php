@@ -12,16 +12,17 @@ class ChartResourceTest extends AbstractResourceTest
 
     /**
      * @throws DeezerAPIException
+     * @group real-api
      */
     public function testRealGet()
     {
         $response = $this->apiReal->chart->get(self::ID);
 
-        $this->assertObjectHasAttribute("tracks", $response);
-        $this->assertObjectHasAttribute("albums", $response);
-        $this->assertObjectHasAttribute("artists", $response);
-        $this->assertObjectHasAttribute("playlists", $response);
-        $this->assertObjectHasAttribute("podcasts", $response);
+        $this->assertObjectHasProperty("tracks", $response);
+        $this->assertObjectHasProperty("albums", $response);
+        $this->assertObjectHasProperty("artists", $response);
+        $this->assertObjectHasProperty("playlists", $response);
+        $this->assertObjectHasProperty("podcasts", $response);
     }
 
     /**
@@ -39,23 +40,23 @@ class ChartResourceTest extends AbstractResourceTest
 
         $response = $api->chart->get(self::ID);
 
-        $this->assertObjectHasAttribute("artists", $response);
+        $this->assertObjectHasProperty("artists", $response);
         foreach ($response->artists->data as $datum) {
             $this->assertEquals("artist", $datum->type);
         }
-        $this->assertObjectHasAttribute("tracks", $response);
+        $this->assertObjectHasProperty("tracks", $response);
         foreach ($response->tracks->data as $datum) {
             $this->assertEquals("track", $datum->type);
         }
-        $this->assertObjectHasAttribute("albums", $response);
+        $this->assertObjectHasProperty("albums", $response);
         foreach ($response->albums->data as $datum) {
             $this->assertEquals("album", $datum->type);
         }
-        $this->assertObjectHasAttribute("playlists", $response);
+        $this->assertObjectHasProperty("playlists", $response);
         foreach ($response->playlists->data as $datum) {
             $this->assertEquals("playlist", $datum->type);
         }
-        $this->assertObjectHasAttribute("podcasts", $response);
+        $this->assertObjectHasProperty("podcasts", $response);
         foreach ($response->podcasts->data as $datum) {
             $this->assertEquals("podcast", $datum->type);
         }
@@ -76,7 +77,7 @@ class ChartResourceTest extends AbstractResourceTest
 
         $response = $api->chart->getTracks(self::ID);
 
-        $this->assertObjectHasAttribute("data", $response);
+        $this->assertObjectHasProperty("data", $response);
         foreach ($response->data as $datum) {
             $this->assertEquals("track", $datum->type);
         }
@@ -97,7 +98,7 @@ class ChartResourceTest extends AbstractResourceTest
 
         $response = $api->chart->getAlbums(self::ID);
 
-        $this->assertObjectHasAttribute("data", $response);
+        $this->assertObjectHasProperty("data", $response);
         foreach ($response->data as $datum) {
             $this->assertEquals("album", $datum->type);
         }
@@ -118,7 +119,7 @@ class ChartResourceTest extends AbstractResourceTest
 
         $response = $api->chart->getArtists(self::ID);
 
-        $this->assertObjectHasAttribute("data", $response);
+        $this->assertObjectHasProperty("data", $response);
         foreach ($response->data as $datum) {
             $this->assertEquals("artist", $datum->type);
         }
@@ -139,7 +140,7 @@ class ChartResourceTest extends AbstractResourceTest
 
         $response = $api->chart->getPlaylists(self::ID);
 
-        $this->assertObjectHasAttribute("data", $response);
+        $this->assertObjectHasProperty("data", $response);
         foreach ($response->data as $datum) {
             $this->assertEquals("playlist", $datum->type);
         }
@@ -160,7 +161,7 @@ class ChartResourceTest extends AbstractResourceTest
 
         $response = $api->chart->getPodcasts(self::ID);
 
-        $this->assertObjectHasAttribute("data", $response);
+        $this->assertObjectHasProperty("data", $response);
         foreach ($response->data as $datum) {
             $this->assertEquals("podcast", $datum->type);
         }

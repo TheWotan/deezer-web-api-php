@@ -15,6 +15,7 @@ class ArtistResourceTest extends AbstractResourceTest
 
     /**
      * @throws DeezerAPIException
+     * @group real-api
      */
     public function testRealGet()
     {
@@ -39,7 +40,7 @@ class ArtistResourceTest extends AbstractResourceTest
 
         $response = $api->artist->get(self::ID);
 
-        $this->assertObjectHasAttribute("id", $response);
+        $this->assertObjectHasProperty("id", $response);
         $this->assertEquals("artist", $response->type);
     }
 
@@ -58,7 +59,7 @@ class ArtistResourceTest extends AbstractResourceTest
 
         $response = $api->artist->getTop(self::ID);
 
-        $this->assertObjectHasAttribute("data", $response);
+        $this->assertObjectHasProperty("data", $response);
         foreach ($response->data as $datum) {
             $this->assertEquals("track", $datum->type);
         }
@@ -79,7 +80,7 @@ class ArtistResourceTest extends AbstractResourceTest
 
         $response = $api->artist->getAlbums(self::ID);
 
-        $this->assertObjectHasAttribute("data", $response);
+        $this->assertObjectHasProperty("data", $response);
         foreach ($response->data as $datum) {
             $this->assertEquals("album", $datum->type);
         }
@@ -100,7 +101,7 @@ class ArtistResourceTest extends AbstractResourceTest
 
         $response = $api->artist->getRelated(self::ID);
 
-        $this->assertObjectHasAttribute("data", $response);
+        $this->assertObjectHasProperty("data", $response);
         foreach ($response->data as $datum) {
             $this->assertEquals("artist", $datum->type);
         }
@@ -121,7 +122,7 @@ class ArtistResourceTest extends AbstractResourceTest
 
         $response = $api->artist->getRadio(self::ID);
 
-        $this->assertObjectHasAttribute("data", $response);
+        $this->assertObjectHasProperty("data", $response);
         foreach ($response->data as $datum) {
             $this->assertEquals("track", $datum->type);
         }
@@ -142,7 +143,7 @@ class ArtistResourceTest extends AbstractResourceTest
 
         $response = $api->artist->getFans(self::ID);
 
-        $this->assertObjectHasAttribute("data", $response);
+        $this->assertObjectHasProperty("data", $response);
         foreach ($response->data as $datum) {
             $this->assertEquals("user", $datum->type);
         }
@@ -163,7 +164,7 @@ class ArtistResourceTest extends AbstractResourceTest
 
         $response = $api->artist->getPlaylists(self::ID);
 
-        $this->assertObjectHasAttribute("data", $response);
+        $this->assertObjectHasProperty("data", $response);
         foreach ($response->data as $datum) {
             $this->assertEquals("playlist", $datum->type);
         }
@@ -183,6 +184,6 @@ class ArtistResourceTest extends AbstractResourceTest
         $api = new DeezerAPI([], null, $stub);
 
         $result = $api->artist->getComments(27);
-        $this->assertObjectHasAttribute('data', $result);
+        $this->assertObjectHasProperty('data', $result);
     }
 }

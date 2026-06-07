@@ -14,12 +14,13 @@ class SearchResourceTest extends AbstractResourceTest
 
     /**
      * @throws DeezerAPIException
+     * @group real-api
      */
     public function testRealGet()
     {
         $response = $this->apiReal->search->search(self::QUERY);
 
-        $this->assertObjectHasAttribute("data", $response);
+        $this->assertObjectHasProperty("data", $response);
     }
 
     /**
@@ -37,7 +38,7 @@ class SearchResourceTest extends AbstractResourceTest
 
         $response = $api->search->search(self::QUERY);
 
-        $this->assertObjectHasAttribute("data", $response);
+        $this->assertObjectHasProperty("data", $response);
         foreach ($response->data as $datum) {
             $this->assertEquals("track", $datum->type);
         }
@@ -58,7 +59,7 @@ class SearchResourceTest extends AbstractResourceTest
 
         $response = $api->search->track(self::QUERY);
 
-        $this->assertObjectHasAttribute("data", $response);
+        $this->assertObjectHasProperty("data", $response);
         foreach ($response->data as $datum) {
             $this->assertEquals("track", $datum->type);
         }
@@ -79,7 +80,7 @@ class SearchResourceTest extends AbstractResourceTest
 
         $response = $api->search->album(self::QUERY);
 
-        $this->assertObjectHasAttribute("data", $response);
+        $this->assertObjectHasProperty("data", $response);
         foreach ($response->data as $datum) {
             $this->assertEquals("album", $datum->type);
         }
@@ -100,7 +101,7 @@ class SearchResourceTest extends AbstractResourceTest
 
         $response = $api->search->artist(self::QUERY);
 
-        $this->assertObjectHasAttribute("data", $response);
+        $this->assertObjectHasProperty("data", $response);
         foreach ($response->data as $datum) {
             $this->assertEquals("artist", $datum->type);
         }
@@ -121,7 +122,7 @@ class SearchResourceTest extends AbstractResourceTest
 
         $response = $api->search->playlist(self::QUERY);
 
-        $this->assertObjectHasAttribute("data", $response);
+        $this->assertObjectHasProperty("data", $response);
         foreach ($response->data as $datum) {
             $this->assertEquals("playlist", $datum->type);
         }
@@ -142,7 +143,7 @@ class SearchResourceTest extends AbstractResourceTest
 
         $response = $api->search->radio(self::QUERY);
 
-        $this->assertObjectHasAttribute("data", $response);
+        $this->assertObjectHasProperty("data", $response);
         foreach ($response->data as $datum) {
             $this->assertEquals("radio", $datum->type);
         }
@@ -163,7 +164,7 @@ class SearchResourceTest extends AbstractResourceTest
 
         $response = $api->search->user(self::QUERY);
 
-        $this->assertObjectHasAttribute("data", $response);
+        $this->assertObjectHasProperty("data", $response);
         foreach ($response->data as $datum) {
             $this->assertEquals("user", $datum->type);
         }
@@ -184,9 +185,9 @@ class SearchResourceTest extends AbstractResourceTest
 
         $response = $api->search->history(self::QUERY);
 
-        $this->assertObjectHasAttribute("data", $response);
+        $this->assertObjectHasProperty("data", $response);
         foreach ($response->data as $datum) {
-            $this->assertObjectHasAttribute("query", $datum);
+            $this->assertObjectHasProperty("query", $datum);
         }
     }
 
@@ -204,6 +205,6 @@ class SearchResourceTest extends AbstractResourceTest
         $api = new DeezerAPI([], null, $stub);
 
         $result = $api->search->podcast('tech');
-        $this->assertObjectHasAttribute('data', $result);
+        $this->assertObjectHasProperty('data', $result);
     }
 }

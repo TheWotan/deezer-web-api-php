@@ -68,17 +68,18 @@ class DeezerAPITest extends PHPUnit\Framework\TestCase
 
         $response = $api->infos();
 
-        $this->assertObjectHasAttribute("country_iso", $response);
+        $this->assertObjectHasProperty("country_iso", $response);
     }
 
     /**
      * @throws DeezerAPIException
+     * @group real-api
      */
     public function testRealInfos()
     {
         $response = $this->apiReal->infos();
 
-        $this->assertObjectHasAttribute("country_iso", $response);
+        $this->assertObjectHasProperty("country_iso", $response);
     }
 
     /**
@@ -96,17 +97,18 @@ class DeezerAPITest extends PHPUnit\Framework\TestCase
 
         $response = $api->options();
 
-        $this->assertObjectHasAttribute("type", $response);
+        $this->assertObjectHasProperty("type", $response);
     }
 
     /**
      * @throws DeezerAPIException
+     * @group real-api
      */
     public function testRealOptions()
     {
         $response = $this->apiReal->options();
 
-        $this->assertObjectHasAttribute("type", $response);
+        $this->assertObjectHasProperty("type", $response);
     }
 
     public function testDeezerAPIUsesTokenProviderBeforeRequest(): void
