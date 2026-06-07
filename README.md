@@ -137,7 +137,7 @@ try {
 
 ## IDE Type Support
 
-All methods are annotated with PHPStan-compatible `@return object{...}` shapes via named types defined in `src/Types.php`. IDEs (PhpStorm, VS Code + Intelephense) provide field-level autocompletion for API responses.
+All methods are annotated with inline `@return object{...}` shapes. IDEs (PhpStorm, VS Code + Intelephense) provide field-level autocompletion for API responses out of the box, with no plugins required.
 
 ---
 
