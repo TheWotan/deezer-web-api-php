@@ -6,47 +6,249 @@ namespace Deezer\Resources\Interfaces;
 
 use Deezer\Resources\ResourceInterface;
 
+/**
+ * Interface UserResourceInterface
+ */
 interface UserResourceInterface extends ResourceInterface
 {
-    public function get(int $id);
-    public function me();
-    public function getAlbums();
-    public function getAlbumsById(int $id);
-    public function getArtists();
-    public function getArtistsById(int $id);
-    public function getFlow();
-    public function getFolders();
-    public function getFollowings();
-    public function getFollowers();
-    public function getFollowingsById(int $id);
-    public function getFollowersById(int $id);
-    public function getHistory();
-    public function getPermissions();
-    public function getOptions();
-    public function getPersonalSongs();
-    public function getPlaylists();
-    public function getPlaylistsById(int $id);
-    public function getRadios();
-    public function getTracks();
-    public function getRecommendationsAlbums();
-    public function getRecommendationsReleases();
-    public function getRecommendationsArtists();
-    public function getRecommendationsPlaylists();
-    public function getRecommendationsTracks();
-    public function getRecommendationsRadios();
-    public function getChartsTracks();
-    public function getChartsAlbums();
-    public function getChartsPlaylists();
-    public function getChartsArtists();
+    /**
+     * @auth none
+     * @param int $id - The user's Deezer id
+     * @return object{
+     *   id: int, name: string, lastname: string, firstname: string,
+     *   email: string, status: int, birthday: string,
+     *   inscription_date: string, gender: string, link: string,
+     *   picture: string, picture_small: string, picture_medium: string,
+     *   picture_big: string, picture_xl: string,
+     *   lang: string, is_kid: bool, explicit_content_level: string,
+     *   explicit_content_levels_available: string[],
+     *   tracklist: string, type: string
+     * }
+     */
+    public function get(int $id): object;
+    /**
+     * @auth required
+     * @return object{
+     *   id: int, name: string, lastname: string, firstname: string,
+     *   email: string, status: int, birthday: string,
+     *   inscription_date: string, gender: string, link: string,
+     *   picture: string, picture_small: string, picture_medium: string,
+     *   picture_big: string, picture_xl: string,
+     *   lang: string, is_kid: bool, explicit_content_level: string,
+     *   explicit_content_levels_available: string[],
+     *   tracklist: string, type: string
+     * }
+     */
+    public function me(): object;
+    /**
+     * @auth required
+     * @return object{data: object[], total: int, next: string|null}
+     */
+    public function getAlbums(): object;
+    /**
+     * @auth none
+     * @param int $id - The user's Deezer id
+     * @return object{data: object[], total: int, next: string|null}
+     */
+    public function getAlbumsById(int $id): object;
+    /**
+     * @auth required
+     * @return object{data: object[], total: int, next: string|null}
+     */
+    public function getArtists(): object;
+    /**
+     * @auth none
+     * @param int $id - The user's Deezer id
+     * @return object{data: object[], total: int, next: string|null}
+     */
+    public function getArtistsById(int $id): object;
+    /**
+     * @auth required
+     * @return object{data: object[], total: int, next: string|null}
+     */
+    public function getFlow(): object;
+    /**
+     * @auth required
+     * @return object{data: object[], total: int, next: string|null}
+     */
+    public function getFolders(): object;
+    /**
+     * @auth required
+     * @return object{data: object[], total: int, next: string|null}
+     */
+    public function getFollowings(): object;
+    /**
+     * @auth required
+     * @return object{data: object[], total: int, next: string|null}
+     */
+    public function getFollowers(): object;
+    /**
+     * @auth none
+     * @param int $id - The user's Deezer id
+     * @return object{data: object[], total: int, next: string|null}
+     */
+    public function getFollowingsById(int $id): object;
+    /**
+     * @auth none
+     * @param int $id - The user's Deezer id
+     * @return object{data: object[], total: int, next: string|null}
+     */
+    public function getFollowersById(int $id): object;
+    /**
+     * @auth required
+     * @return object{data: object[], total: int, next: string|null}
+     */
+    public function getHistory(): object;
+    /**
+     * @auth required
+     * @return object{data: object[], total: int, next: string|null}
+     */
+    public function getPermissions(): object;
+    /**
+     * @auth required
+     * @return object{data: object[], total: int, next: string|null}
+     */
+    public function getOptions(): object;
+    /**
+     * @auth required
+     * @return object{data: object[], total: int, next: string|null}
+     */
+    public function getPersonalSongs(): object;
+    /**
+     * @auth required
+     * @return object{data: object[], total: int, next: string|null}
+     */
+    public function getPlaylists(): object;
+    /**
+     * @auth none
+     * @param int $id - The user's Deezer id
+     * @return object{data: object[], total: int, next: string|null}
+     */
+    public function getPlaylistsById(int $id): object;
+    /**
+     * @auth required
+     * @return object{data: object[], total: int, next: string|null}
+     */
+    public function getRadios(): object;
+    /**
+     * @auth required
+     * @return object{data: object[], total: int, next: string|null}
+     */
+    public function getTracks(): object;
+    /**
+     * @auth required
+     * @return object{data: object[], total: int, next: string|null}
+     */
+    public function getRecommendationsAlbums(): object;
+    /**
+     * @auth required
+     * @return object{data: object[], total: int, next: string|null}
+     */
+    public function getRecommendationsReleases(): object;
+    /**
+     * @auth required
+     * @return object{data: object[], total: int, next: string|null}
+     */
+    public function getRecommendationsArtists(): object;
+    /**
+     * @auth required
+     * @return object{data: object[], total: int, next: string|null}
+     */
+    public function getRecommendationsPlaylists(): object;
+    /**
+     * @auth required
+     * @return object{data: object[], total: int, next: string|null}
+     */
+    public function getRecommendationsTracks(): object;
+    /**
+     * @auth required
+     * @return object{data: object[], total: int, next: string|null}
+     */
+    public function getRecommendationsRadios(): object;
+    /**
+     * @auth required
+     * @return object{data: object[], total: int, next: string|null}
+     */
+    public function getChartsTracks(): object;
+    /**
+     * @auth required
+     * @return object{data: object[], total: int, next: string|null}
+     */
+    public function getChartsAlbums(): object;
+    /**
+     * @auth required
+     * @return object{data: object[], total: int, next: string|null}
+     */
+    public function getChartsPlaylists(): object;
+    /**
+     * @auth required
+     * @return object{data: object[], total: int, next: string|null}
+     */
+    public function getChartsArtists(): object;
+    /**
+     * @auth required
+     * @param int $albumId - The album's Deezer id
+     * @return bool
+     */
     public function addAlbum(int $albumId): bool;
+    /**
+     * @auth required
+     * @param int $albumId - The album's Deezer id
+     * @return bool
+     */
     public function removeAlbum(int $albumId): bool;
+    /**
+     * @auth required
+     * @param int $artistId - The artist's Deezer id
+     * @return bool
+     */
     public function followArtist(int $artistId): bool;
+    /**
+     * @auth required
+     * @param int $artistId - The artist's Deezer id
+     * @return bool
+     */
     public function unfollowArtist(int $artistId): bool;
+    /**
+     * @auth required
+     * @param int $userId - The user's Deezer id to follow
+     * @return bool
+     */
     public function followUser(int $userId): bool;
+    /**
+     * @auth required
+     * @param int $userId - The user's Deezer id to unfollow
+     * @return bool
+     */
     public function unfollowUser(int $userId): bool;
+    /**
+     * @auth required
+     * @param int $trackId - The track's Deezer id
+     * @return bool
+     */
     public function addTrack(int $trackId): bool;
+    /**
+     * @auth required
+     * @param int $trackId - The track's Deezer id
+     * @return bool
+     */
     public function removeTrack(int $trackId): bool;
+    /**
+     * @auth required
+     * @param int $radioId - The radio's Deezer id
+     * @return bool
+     */
     public function addRadio(int $radioId): bool;
+    /**
+     * @auth required
+     * @param int $radioId - The radio's Deezer id
+     * @return bool
+     */
     public function removeRadio(int $radioId): bool;
-    public function createPlaylist(string $title);
+    /**
+     * @auth required
+     * @param string $title - The playlist title
+     * @return object{id: int}
+     */
+    public function createPlaylist(string $title): object;
 }

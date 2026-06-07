@@ -15,11 +15,21 @@ class UserResource extends AbstractResource implements UserResourceInterface
      * A user object
      * https://developers.deezer.com/api/user
      *
+     * @auth none
      * @param int $id - The user's Deezer id
-     * @return array|object A list of object of type user
+     * @return object{
+     *   id: int, name: string, lastname: string, firstname: string,
+     *   email: string, status: int, birthday: string,
+     *   inscription_date: string, gender: string, link: string,
+     *   picture: string, picture_small: string, picture_medium: string,
+     *   picture_big: string, picture_xl: string,
+     *   lang: string, is_kid: bool, explicit_content_level: string,
+     *   explicit_content_levels_available: string[],
+     *   tracklist: string, type: string
+     * }
      * @throws DeezerAPIException
      */
-    public function get(int $id)
+    public function get(int $id): object
     {
         $response = $this->api->sendRequest('GET', "/user/$id");
 
@@ -30,10 +40,20 @@ class UserResource extends AbstractResource implements UserResourceInterface
      * A user object
      * https://developers.deezer.com/api/user
      *
-     * @return array|object A list of object of type user
+     * @auth required
+     * @return object{
+     *   id: int, name: string, lastname: string, firstname: string,
+     *   email: string, status: int, birthday: string,
+     *   inscription_date: string, gender: string, link: string,
+     *   picture: string, picture_small: string, picture_medium: string,
+     *   picture_big: string, picture_xl: string,
+     *   lang: string, is_kid: bool, explicit_content_level: string,
+     *   explicit_content_levels_available: string[],
+     *   tracklist: string, type: string
+     * }
      * @throws DeezerAPIException
      */
-    public function me()
+    public function me(): object
     {
         $response = $this->api->sendRequest('GET', "/user/me");
 
@@ -44,10 +64,11 @@ class UserResource extends AbstractResource implements UserResourceInterface
      * Return a list of user's favorite albums. Represented by an array of Album object
      * https://developers.deezer.com/api/user/albums
      *
-     * @return array|object A list of object of type album
+     * @auth required
+     * @return object{data: object[], total: int, next: string|null}
      * @throws DeezerAPIException
      */
-    public function getAlbums()
+    public function getAlbums(): object
     {
         $response = $this->api->sendRequest('GET', "/user/me/albums");
 
@@ -58,10 +79,11 @@ class UserResource extends AbstractResource implements UserResourceInterface
      * Return a list of user's favorite artists. Represented by an array of Artist object
      * https://developers.deezer.com/api/user/artists
      *
-     * @return array|object A list of object of type album
+     * @auth required
+     * @return object{data: object[], total: int, next: string|null}
      * @throws DeezerAPIException
      */
-    public function getArtists()
+    public function getArtists(): object
     {
         $response = $this->api->sendRequest('GET', "/user/me/artists");
 
@@ -72,10 +94,11 @@ class UserResource extends AbstractResource implements UserResourceInterface
      * Returns a list of user's flow tracks, represented by an array of Track object.
      * https://developers.deezer.com/api/user/flow
      *
-     * @return array|object A list of object of type track
+     * @auth required
+     * @return object{data: object[], total: int, next: string|null}
      * @throws DeezerAPIException
      */
-    public function getFlow()
+    public function getFlow(): object
     {
         $response = $this->api->sendRequest('GET', "/user/me/flow");
 
@@ -86,10 +109,11 @@ class UserResource extends AbstractResource implements UserResourceInterface
      * Return a list of user's Folder.
      * https://developers.deezer.com/api/user/folders
      *
-     * @return array|object A list of object of type folder
+     * @auth required
+     * @return object{data: object[], total: int, next: string|null}
      * @throws DeezerAPIException
      */
-    public function getFolders()
+    public function getFolders(): object
     {
         $response = $this->api->sendRequest('GET', "/user/me/folders");
 
@@ -100,10 +124,11 @@ class UserResource extends AbstractResource implements UserResourceInterface
      * Return a list of user's Friends, represented by an array of User object
      * https://developers.deezer.com/api/user/folders
      *
-     * @return array|object A list of object of type user
+     * @auth required
+     * @return object{data: object[], total: int, next: string|null}
      * @throws DeezerAPIException
      */
-    public function getFollowings()
+    public function getFollowings(): object
     {
         $response = $this->api->sendRequest('GET', "/user/me/following");
 
@@ -114,10 +139,11 @@ class UserResource extends AbstractResource implements UserResourceInterface
      * Return a list of user's Friends, represented by an array of User object
      * https://developers.deezer.com/api/user/folders
      *
-     * @return array|object A list of object of type user
+     * @auth required
+     * @return object{data: object[], total: int, next: string|null}
      * @throws DeezerAPIException
      */
-    public function getFollowers()
+    public function getFollowers(): object
     {
         $response = $this->api->sendRequest('GET', "/user/me/followers");
 
@@ -128,10 +154,11 @@ class UserResource extends AbstractResource implements UserResourceInterface
      * Returns a list of the recently played tracks
      * https://developers.deezer.com/api/user/folders
      *
-     * @return array|object A list of object of type track
+     * @auth required
+     * @return object{data: object[], total: int, next: string|null}
      * @throws DeezerAPIException
      */
-    public function getHistory()
+    public function getHistory(): object
     {
         $response = $this->api->sendRequest('GET', "/user/me/history");
 
@@ -142,10 +169,11 @@ class UserResource extends AbstractResource implements UserResourceInterface
      * Return the user's Permissions granted to the application
      * https://developers.deezer.com/api/user/folders
      *
-     * @return array|object An object of type variable
+     * @auth required
+     * @return object{data: object[], total: int, next: string|null}
      * @throws DeezerAPIException
      */
-    public function getPermissions()
+    public function getPermissions(): object
     {
         $response = $this->api->sendRequest('GET', "/user/me/permissions");
 
@@ -157,10 +185,11 @@ class UserResource extends AbstractResource implements UserResourceInterface
      * Alias of /options
      * https://developers.deezer.com/api/user/options
      *
-     * @return array|object An object of type options
+     * @auth required
+     * @return object{data: object[], total: int, next: string|null}
      * @throws DeezerAPIException
      */
-    public function getOptions()
+    public function getOptions(): object
     {
         $response = $this->api->sendRequest('GET', "/user/me/options");
 
@@ -171,10 +200,11 @@ class UserResource extends AbstractResource implements UserResourceInterface
      * Return a list of user's personal song, represented by an array of Tracks
      * https://developers.deezer.com/api/user/personal_songs
      *
-     * @return array|object A list of object of type track
+     * @auth required
+     * @return object{data: object[], total: int, next: string|null}
      * @throws DeezerAPIException
      */
-    public function getPersonalSongs()
+    public function getPersonalSongs(): object
     {
         $response = $this->api->sendRequest('GET', "/user/me/personal_songs");
 
@@ -186,10 +216,11 @@ class UserResource extends AbstractResource implements UserResourceInterface
      * Permission is needed to return private playlists
      * https://developers.deezer.com/api/user/playslists
      *
-     * @return array|object A list of object of type playlist
+     * @auth required
+     * @return object{data: object[], total: int, next: string|null}
      * @throws DeezerAPIException
      */
-    public function getPlaylists()
+    public function getPlaylists(): object
     {
         $response = $this->api->sendRequest('GET', "/user/me/playlists");
 
@@ -200,10 +231,11 @@ class UserResource extends AbstractResource implements UserResourceInterface
      * Return a list of user's favorite Radios, represented by an array of Radio object.
      * https://developers.deezer.com/api/user/radios
      *
-     * @return array|object A list of object of type radio
+     * @auth required
+     * @return object{data: object[], total: int, next: string|null}
      * @throws DeezerAPIException
      */
-    public function getRadios()
+    public function getRadios(): object
     {
         $response = $this->api->sendRequest('GET', "/user/me/radios");
 
@@ -214,10 +246,11 @@ class UserResource extends AbstractResource implements UserResourceInterface
      * Return a list of user's favorite tracks. Represented by an array of Track object.
      * https://developers.deezer.com/api/user/tracks
      *
-     * @return array|object A list of object of type track
+     * @auth required
+     * @return object{data: object[], total: int, next: string|null}
      * @throws DeezerAPIException
      */
-    public function getTracks()
+    public function getTracks(): object
     {
         $response = $this->api->sendRequest('GET', "/user/me/tracks");
 
@@ -228,10 +261,11 @@ class UserResource extends AbstractResource implements UserResourceInterface
      * Return a list of albums recommendations represented by an array of Album objects.
      * https://developers.deezer.com/api/user/recommendations/albums
      *
-     * @return array|object A list of object of type album
+     * @auth required
+     * @return object{data: object[], total: int, next: string|null}
      * @throws DeezerAPIException
      */
-    public function getRecommendationsAlbums()
+    public function getRecommendationsAlbums(): object
     {
         $response = $this->api->sendRequest('GET', "/user/me/recommendations/albums");
 
@@ -242,10 +276,11 @@ class UserResource extends AbstractResource implements UserResourceInterface
      * Return a list of albums recommendations represented by an array of Album objects.
      * https://developers.deezer.com/api/user/recommendations/releases
      *
-     * @return array|object A list of object of type album
+     * @auth required
+     * @return object{data: object[], total: int, next: string|null}
      * @throws DeezerAPIException
      */
-    public function getRecommendationsReleases()
+    public function getRecommendationsReleases(): object
     {
         $response = $this->api->sendRequest('GET', "/user/me/recommendations/releases");
 
@@ -256,10 +291,11 @@ class UserResource extends AbstractResource implements UserResourceInterface
      * Return a list of artists recommendations represented by an array of Artist objects.
      * https://developers.deezer.com/api/user/recommendations/artists
      *
-     * @return array|object A list of object of type artist
+     * @auth required
+     * @return object{data: object[], total: int, next: string|null}
      * @throws DeezerAPIException
      */
-    public function getRecommendationsArtists()
+    public function getRecommendationsArtists(): object
     {
         $response = $this->api->sendRequest('GET', "/user/me/recommendations/artists");
 
@@ -270,10 +306,11 @@ class UserResource extends AbstractResource implements UserResourceInterface
      * Return a list of playlists recommendations represented by an array of Playlist objects.
      * https://developers.deezer.com/api/user/recommendations/playlists
      *
-     * @return array|object A list of object of type playlist
+     * @auth required
+     * @return object{data: object[], total: int, next: string|null}
      * @throws DeezerAPIException
      */
-    public function getRecommendationsPlaylists()
+    public function getRecommendationsPlaylists(): object
     {
         $response = $this->api->sendRequest('GET', "/user/me/recommendations/playlists");
 
@@ -284,10 +321,11 @@ class UserResource extends AbstractResource implements UserResourceInterface
      * Return a list of tracks recommendations represented by an array of Track objects.
      * https://developers.deezer.com/api/user/recommendations/tracks
      *
-     * @return array|object A list of object of type track
+     * @auth required
+     * @return object{data: object[], total: int, next: string|null}
      * @throws DeezerAPIException
      */
-    public function getRecommendationsTracks()
+    public function getRecommendationsTracks(): object
     {
         $response = $this->api->sendRequest('GET', "/user/me/recommendations/tracks");
 
@@ -298,10 +336,11 @@ class UserResource extends AbstractResource implements UserResourceInterface
      * Return a list of radios recommendations represented by an array of Radio objects.
      * https://developers.deezer.com/api/user/recommendations/radios
      *
-     * @return array|object A list of object of type radio
+     * @auth required
+     * @return object{data: object[], total: int, next: string|null}
      * @throws DeezerAPIException
      */
-    public function getRecommendationsRadios()
+    public function getRecommendationsRadios(): object
     {
         $response = $this->api->sendRequest('GET', "/user/me/recommendations/radios");
 
@@ -312,10 +351,11 @@ class UserResource extends AbstractResource implements UserResourceInterface
      * Returns a list of the user's top 25 tracks. Represented by an array of Track object
      * https://developers.deezer.com/api/user/charts/tracks
      *
-     * @return array|object A list of object of type track
+     * @auth required
+     * @return object{data: object[], total: int, next: string|null}
      * @throws DeezerAPIException
      */
-    public function getChartsTracks()
+    public function getChartsTracks(): object
     {
         $response = $this->api->sendRequest('GET', "/user/me/charts/tracks");
 
@@ -326,10 +366,11 @@ class UserResource extends AbstractResource implements UserResourceInterface
      * Returns a list of the user's top albums represented by an array of Album objects.
      * https://developers.deezer.com/api/user/charts/albums
      *
-     * @return array|object A list of object of type album
+     * @auth required
+     * @return object{data: object[], total: int, next: string|null}
      * @throws DeezerAPIException
      */
-    public function getChartsAlbums()
+    public function getChartsAlbums(): object
     {
         $response = $this->api->sendRequest('GET', "/user/me/charts/albums");
 
@@ -340,10 +381,11 @@ class UserResource extends AbstractResource implements UserResourceInterface
      * Returns a list of the user's top playlists, represented by an array of Playlist objects.
      * https://developers.deezer.com/api/user/charts/playlists
      *
-     * @return array|object A list of object of type playlist
+     * @auth required
+     * @return object{data: object[], total: int, next: string|null}
      * @throws DeezerAPIException
      */
-    public function getChartsPlaylists()
+    public function getChartsPlaylists(): object
     {
         $response = $this->api->sendRequest('GET', "/user/me/charts/playlists");
 
@@ -354,10 +396,11 @@ class UserResource extends AbstractResource implements UserResourceInterface
      * Returns a list of the user's top artists, represented by an array of Artists objects.
      * https://developers.deezer.com/api/user/charts/artists
      *
-     * @return array|object A list of object of type artis
+     * @auth required
+     * @return object{data: object[], total: int, next: string|null}
      * @throws DeezerAPIException
      */
-    public function getChartsArtists()
+    public function getChartsArtists(): object
     {
         $response = $this->api->sendRequest('GET', "/user/me/charts/artists");
 
@@ -368,11 +411,12 @@ class UserResource extends AbstractResource implements UserResourceInterface
      * Return a list of a user's favorite albums by user ID
      * https://developers.deezer.com/api/user/albums
      *
+     * @auth none
      * @param int $id - The user's Deezer id
-     * @return array|object A list of object of type album
+     * @return object{data: object[], total: int, next: string|null}
      * @throws DeezerAPIException
      */
-    public function getAlbumsById(int $id)
+    public function getAlbumsById(int $id): object
     {
         $response = $this->api->sendRequest('GET', "/user/$id/albums");
 
@@ -383,11 +427,12 @@ class UserResource extends AbstractResource implements UserResourceInterface
      * Return a list of a user's favorite artists by user ID
      * https://developers.deezer.com/api/user/artists
      *
+     * @auth none
      * @param int $id - The user's Deezer id
-     * @return array|object A list of object of type artist
+     * @return object{data: object[], total: int, next: string|null}
      * @throws DeezerAPIException
      */
-    public function getArtistsById(int $id)
+    public function getArtistsById(int $id): object
     {
         $response = $this->api->sendRequest('GET', "/user/$id/artists");
 
@@ -398,11 +443,12 @@ class UserResource extends AbstractResource implements UserResourceInterface
      * Return a list of a user's followings by user ID
      * https://developers.deezer.com/api/user/following
      *
+     * @auth none
      * @param int $id - The user's Deezer id
-     * @return array|object A list of object of type user
+     * @return object{data: object[], total: int, next: string|null}
      * @throws DeezerAPIException
      */
-    public function getFollowingsById(int $id)
+    public function getFollowingsById(int $id): object
     {
         $response = $this->api->sendRequest('GET', "/user/$id/following");
 
@@ -413,11 +459,12 @@ class UserResource extends AbstractResource implements UserResourceInterface
      * Return a list of a user's followers by user ID
      * https://developers.deezer.com/api/user/followers
      *
+     * @auth none
      * @param int $id - The user's Deezer id
-     * @return array|object A list of object of type user
+     * @return object{data: object[], total: int, next: string|null}
      * @throws DeezerAPIException
      */
-    public function getFollowersById(int $id)
+    public function getFollowersById(int $id): object
     {
         $response = $this->api->sendRequest('GET', "/user/$id/followers");
 
@@ -428,11 +475,12 @@ class UserResource extends AbstractResource implements UserResourceInterface
      * Return a list of a user's playlists by user ID
      * https://developers.deezer.com/api/user/playlists
      *
+     * @auth none
      * @param int $id - The user's Deezer id
-     * @return array|object A list of object of type playlist
+     * @return object{data: object[], total: int, next: string|null}
      * @throws DeezerAPIException
      */
-    public function getPlaylistsById(int $id)
+    public function getPlaylistsById(int $id): object
     {
         $response = $this->api->sendRequest('GET', "/user/$id/playlists");
 
@@ -443,8 +491,9 @@ class UserResource extends AbstractResource implements UserResourceInterface
      * Add an album to the user's library
      * https://developers.deezer.com/api/user/albums
      *
+     * @auth required
      * @param int $albumId - The album's Deezer id
-     * @return bool True if successful
+     * @return bool
      * @throws DeezerAPIException
      */
     public function addAlbum(int $albumId): bool
@@ -458,8 +507,9 @@ class UserResource extends AbstractResource implements UserResourceInterface
      * Remove an album from the user's library
      * https://developers.deezer.com/api/user/albums
      *
+     * @auth required
      * @param int $albumId - The album's Deezer id
-     * @return bool True if successful
+     * @return bool
      * @throws DeezerAPIException
      */
     public function removeAlbum(int $albumId): bool
@@ -473,8 +523,9 @@ class UserResource extends AbstractResource implements UserResourceInterface
      * Follow an artist
      * https://developers.deezer.com/api/user/artists
      *
+     * @auth required
      * @param int $artistId - The artist's Deezer id
-     * @return bool True if successful
+     * @return bool
      * @throws DeezerAPIException
      */
     public function followArtist(int $artistId): bool
@@ -488,8 +539,9 @@ class UserResource extends AbstractResource implements UserResourceInterface
      * Unfollow an artist
      * https://developers.deezer.com/api/user/artists
      *
+     * @auth required
      * @param int $artistId - The artist's Deezer id
-     * @return bool True if successful
+     * @return bool
      * @throws DeezerAPIException
      */
     public function unfollowArtist(int $artistId): bool
@@ -503,8 +555,9 @@ class UserResource extends AbstractResource implements UserResourceInterface
      * Follow a user
      * https://developers.deezer.com/api/user/following
      *
+     * @auth required
      * @param int $userId - The user's Deezer id to follow
-     * @return bool True if successful
+     * @return bool
      * @throws DeezerAPIException
      */
     public function followUser(int $userId): bool
@@ -518,8 +571,9 @@ class UserResource extends AbstractResource implements UserResourceInterface
      * Unfollow a user
      * https://developers.deezer.com/api/user/following
      *
+     * @auth required
      * @param int $userId - The user's Deezer id to unfollow
-     * @return bool True if successful
+     * @return bool
      * @throws DeezerAPIException
      */
     public function unfollowUser(int $userId): bool
@@ -533,8 +587,9 @@ class UserResource extends AbstractResource implements UserResourceInterface
      * Add a track to the user's library
      * https://developers.deezer.com/api/user/tracks
      *
+     * @auth required
      * @param int $trackId - The track's Deezer id
-     * @return bool True if successful
+     * @return bool
      * @throws DeezerAPIException
      */
     public function addTrack(int $trackId): bool
@@ -548,8 +603,9 @@ class UserResource extends AbstractResource implements UserResourceInterface
      * Remove a track from the user's library
      * https://developers.deezer.com/api/user/tracks
      *
+     * @auth required
      * @param int $trackId - The track's Deezer id
-     * @return bool True if successful
+     * @return bool
      * @throws DeezerAPIException
      */
     public function removeTrack(int $trackId): bool
@@ -563,8 +619,9 @@ class UserResource extends AbstractResource implements UserResourceInterface
      * Add a radio to the user's library
      * https://developers.deezer.com/api/user/radios
      *
+     * @auth required
      * @param int $radioId - The radio's Deezer id
-     * @return bool True if successful
+     * @return bool
      * @throws DeezerAPIException
      */
     public function addRadio(int $radioId): bool
@@ -578,8 +635,9 @@ class UserResource extends AbstractResource implements UserResourceInterface
      * Remove a radio from the user's library
      * https://developers.deezer.com/api/user/radios
      *
+     * @auth required
      * @param int $radioId - The radio's Deezer id
-     * @return bool True if successful
+     * @return bool
      * @throws DeezerAPIException
      */
     public function removeRadio(int $radioId): bool
@@ -593,11 +651,12 @@ class UserResource extends AbstractResource implements UserResourceInterface
      * Create a playlist for the current user
      * https://developers.deezer.com/api/user/playlists
      *
+     * @auth required
      * @param string $title - The playlist title
-     * @return array|object A playlist object
+     * @return object{id: int}
      * @throws DeezerAPIException
      */
-    public function createPlaylist(string $title)
+    public function createPlaylist(string $title): object
     {
         $response = $this->api->sendRequest('POST', "/user/me/playlists", ['title' => $title]);
 

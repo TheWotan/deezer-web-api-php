@@ -15,10 +15,11 @@ class GenreResource extends AbstractResource implements GenreResourceInterface
      * Get An list of genre objects
      * https://developers.deezer.com/api/genre
      *
-     * @return array|object A list of object of type genre
+     * @auth none
+     * @return object{data: object[], total: int}
      * @throws DeezerAPIException
      */
-    public function list()
+    public function list(): object
     {
         $response = $this->api->sendRequest('GET', "/genre");
 
@@ -29,11 +30,16 @@ class GenreResource extends AbstractResource implements GenreResourceInterface
      * Get An genre object
      * https://developers.deezer.com/api/genre
      *
+     * @auth none
      * @param int $id - The genre's Deezer id
-     * @return array|object An genre object
+     * @return object{
+     *   id: int, name: string,
+     *   picture: string, picture_small: string, picture_medium: string,
+     *   picture_big: string, picture_xl: string, type: string
+     * }
      * @throws DeezerAPIException
      */
-    public function get(int $id)
+    public function get(int $id): object
     {
         $response = $this->api->sendRequest('GET', "/genre/$id");
 
@@ -45,11 +51,12 @@ class GenreResource extends AbstractResource implements GenreResourceInterface
      * Returns all podcasts for a genre
      * https://developers.deezer.com/api/genre/podcasts
      *
+     * @auth none
      * @param int $id - The genre's Deezer id
-     * @return array|object A list of object of type podcast
+     * @return object{data: object[], total: int}
      * @throws DeezerAPIException
      */
-    public function getPodcasts(int $id)
+    public function getPodcasts(int $id): object
     {
         $response = $this->api->sendRequest('GET', "/genre/$id/podcasts");
 
@@ -60,11 +67,12 @@ class GenreResource extends AbstractResource implements GenreResourceInterface
      * Returns all artists for a genre
      * https://developers.deezer.com/api/genre/artists
      *
+     * @auth none
      * @param int $id - The genre's Deezer id
-     * @return array|object A list of object of type artist
+     * @return object{data: object[], total: int}
      * @throws DeezerAPIException
      */
-    public function getArtists(int $id)
+    public function getArtists(int $id): object
     {
         $response = $this->api->sendRequest('GET', "/genre/$id/artists");
 
@@ -75,11 +83,12 @@ class GenreResource extends AbstractResource implements GenreResourceInterface
      * Returns all radios for a genre
      * https://developers.deezer.com/api/genre/radios
      *
+     * @auth none
      * @param int $id - The genre's Deezer id
-     * @return array|object A list of object of type radio
+     * @return object{data: object[], total: int}
      * @throws DeezerAPIException
      */
-    public function getRadios(int $id)
+    public function getRadios(int $id): object
     {
         $response = $this->api->sendRequest('GET', "/genre/$id/radios");
 

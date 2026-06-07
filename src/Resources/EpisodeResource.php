@@ -15,11 +15,18 @@ class EpisodeResource extends AbstractResource implements EpisodeResourceInterfa
      * Get An podcast object
      * https://developers.deezer.com/api/episode
      *
+     * @auth required
      * @param int $id - The episode deezer ID
-     * @return array|object An episode object
+     * @return object{
+     *   id: int, title: string, description: string, available: bool,
+     *   release_date: string, duration: int, link: string, share: string,
+     *   picture: string, picture_small: string, picture_medium: string,
+     *   picture_big: string, picture_xl: string, md5_image: string,
+     *   podcast: object{id: int, title: string, type: string}, type: string
+     * }
      * @throws DeezerAPIException
      */
-    public function get(int $id)
+    public function get(int $id): object
     {
         $response = $this->api->sendRequest('GET', "/episode/$id");
 

@@ -15,10 +15,11 @@ class RadioResource extends AbstractResource implements RadioResourceInterface
      * Get An list of radio objects
      * https://developers.deezer.com/api/radio
      *
-     * @return array|object A list of object of type radio
+     * @auth none
+     * @return object{data: object[], total: int, next: string|null}
      * @throws DeezerAPIException
      */
-    public function list()
+    public function list(): object
     {
         $response = $this->api->sendRequest('GET', "/radio");
 
@@ -29,11 +30,17 @@ class RadioResource extends AbstractResource implements RadioResourceInterface
      * Get An radio object
      * https://developers.deezer.com/api/radio
      *
+     * @auth none
      * @param int $id - The radio deezer ID
-     * @return array|object An radio object
+     * @return object{
+     *   id: int, title: string, description: string, share: string,
+     *   picture: string, picture_small: string, picture_medium: string,
+     *   picture_big: string, picture_xl: string,
+     *   tracklist: string, md5_image: string, type: string
+     * }
      * @throws DeezerAPIException
      */
-    public function get(int $id)
+    public function get(int $id): object
     {
         $response = $this->api->sendRequest('GET', "/radio/$id");
 
@@ -44,10 +51,11 @@ class RadioResource extends AbstractResource implements RadioResourceInterface
      * Returns a list of radio split by genre
      * https://developers.deezer.com/api/radio/genres
      *
-     * @return array|object A list of object of type radio
+     * @auth none
+     * @return object{data: object[], total: int, next: string|null}
      * @throws DeezerAPIException
      */
-    public function getGenres()
+    public function getGenres(): object
     {
         $response = $this->api->sendRequest('GET', "/radio/genres");
 
@@ -58,10 +66,11 @@ class RadioResource extends AbstractResource implements RadioResourceInterface
      * Return the top radios (default to 25 radios).
      * https://developers.deezer.com/api/radio/top
      *
-     * @return array|object A list of object of type radio
+     * @auth none
+     * @return object{data: object[], total: int, next: string|null}
      * @throws DeezerAPIException
      */
-    public function getTop()
+    public function getTop(): object
     {
         $response = $this->api->sendRequest('GET', "/radio/top");
 
@@ -72,10 +81,11 @@ class RadioResource extends AbstractResource implements RadioResourceInterface
      * Returns a list of personal radio split by genre (as MIX in website)
      * https://developers.deezer.com/api/radio/lists
      *
-     * @return array|object A list of object of type radio
+     * @auth none
+     * @return object{data: object[], total: int, next: string|null}
      * @throws DeezerAPIException
      */
-    public function getLists()
+    public function getLists(): object
     {
         $response = $this->api->sendRequest('GET', "/radio/lists");
 
@@ -86,11 +96,12 @@ class RadioResource extends AbstractResource implements RadioResourceInterface
      * Returns a list of personal radio split by genre (as MIX in website)
      * https://developers.deezer.com/api/radio/lists
      *
+     * @auth none
      * @param int $id - The radio deezer ID
-     * @return array|object A list of object of type radio
+     * @return object{data: object[], total: int, next: string|null}
      * @throws DeezerAPIException
      */
-    public function getTracks(int $id)
+    public function getTracks(int $id): object
     {
         $response = $this->api->sendRequest('GET', "/radio/$id/tracks");
 

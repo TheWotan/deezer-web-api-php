@@ -246,6 +246,7 @@
     }
   ],
   "md5_image": "2e018122cb56986277102d2041a592c8",
+  "track_token": "fake_track_token_for_testing",
   "artist": {
     "id": "27",
     "name": "Daft Punk",

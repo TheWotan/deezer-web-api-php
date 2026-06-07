@@ -6,15 +6,63 @@ namespace Deezer\Resources\Interfaces;
 
 use Deezer\Resources\ResourceInterface;
 
+/**
+ * Interface SearchResourceInterface
+ */
 interface SearchResourceInterface extends ResourceInterface
 {
-    public function search(string $query);
-    public function track(string $query);
-    public function album(string $query);
-    public function artist(string $query);
-    public function playlist(string $query);
-    public function radio(string $query);
-    public function user(string $query);
-    public function podcast(string $query);
-    public function history(string $query);
+    /**
+     * @auth none
+     * @param string $query - Search query
+     * @return object{data: object[], total: int, next: string|null}
+     */
+    public function search(string $query): object;
+    /**
+     * @auth none
+     * @param string $query - Search query
+     * @return object{data: object[], total: int, next: string|null}
+     */
+    public function track(string $query): object;
+    /**
+     * @auth none
+     * @param string $query - Search query
+     * @return object{data: object[], total: int, next: string|null}
+     */
+    public function album(string $query): object;
+    /**
+     * @auth none
+     * @param string $query - Search query
+     * @return object{data: object[], total: int, next: string|null}
+     */
+    public function artist(string $query): object;
+    /**
+     * @auth none
+     * @param string $query - Search query
+     * @return object{data: object[], total: int, next: string|null}
+     */
+    public function playlist(string $query): object;
+    /**
+     * @auth none
+     * @param string $query - Search query
+     * @return object{data: object[], total: int, next: string|null}
+     */
+    public function radio(string $query): object;
+    /**
+     * @auth none
+     * @param string $query - Search query
+     * @return object{data: object[], total: int, next: string|null}
+     */
+    public function user(string $query): object;
+    /**
+     * @auth none
+     * @param string $query - Search query
+     * @return object{data: object[], total: int, next: string|null}
+     */
+    public function podcast(string $query): object;
+    /**
+     * @auth required
+     * @param string $query - Search query
+     * @return object{data: object[], total: int, next: string|null}
+     */
+    public function history(string $query): object;
 }

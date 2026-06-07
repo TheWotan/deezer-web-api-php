@@ -15,11 +15,18 @@ class ArtistResource extends AbstractResource implements ArtistResourceInterface
      * Get An artist object
      * https://developers.deezer.com/api/artist
      *
+     * @auth none
      * @param int $id - The artist's Deezer id
-     * @return array|object An artist object
+     * @return object{
+     *   id: int, name: string, link: string, share: string,
+     *   picture: string, picture_small: string, picture_medium: string,
+     *   picture_big: string, picture_xl: string,
+     *   nb_album: int, nb_fan: int, radio: bool,
+     *   tracklist: string, type: string
+     * }
      * @throws DeezerAPIException
      */
-    public function get(int $id)
+    public function get(int $id): object
     {
         $response = $this->api->sendRequest('GET', "/artist/$id");
 
@@ -30,11 +37,12 @@ class ArtistResource extends AbstractResource implements ArtistResourceInterface
      * Get the top 5 tracks of an artist
      * https://developers.deezer.com/api/artist/top
      *
+     * @auth none
      * @param int $id - The artist's Deezer id
-     * @return array|object A list of object of type track
+     * @return object{data: object[], total: int, next: string|null}
      * @throws DeezerAPIException
      */
-    public function getTop(int $id)
+    public function getTop(int $id): object
     {
         $response = $this->api->sendRequest('GET', "/artist/$id/top");
 
@@ -45,11 +53,12 @@ class ArtistResource extends AbstractResource implements ArtistResourceInterface
      * Return a list of artist's albums. Represented by an array of Album objects
      * https://developers.deezer.com/api/artist/albums
      *
+     * @auth none
      * @param int $id - The artist's Deezer id
-     * @return array|object A list of object of type album
+     * @return object{data: object[], total: int, next: string|null}
      * @throws DeezerAPIException
      */
-    public function getAlbums(int $id)
+    public function getAlbums(int $id): object
     {
         $response = $this->api->sendRequest('GET', "/artist/$id/albums");
 
@@ -60,11 +69,12 @@ class ArtistResource extends AbstractResource implements ArtistResourceInterface
      * Return a list of artist's comments. Represented by an array of Comment objects
      * https://developers.deezer.com/api/artist/comments
      *
+     * @auth none
      * @param int $id - The artist's Deezer id
-     * @return array|object A list of object of type comment
+     * @return object{data: object[], total: int, next: string|null}
      * @throws DeezerAPIException
      */
-    public function getComments(int $id)
+    public function getComments(int $id): object
     {
         $response = $this->api->sendRequest('GET', "/artist/$id/comments");
 
@@ -75,11 +85,12 @@ class ArtistResource extends AbstractResource implements ArtistResourceInterface
      * Return a list of artist's fans. Represented by an array of User objects
      * https://developers.deezer.com/api/artist/fans
      *
+     * @auth none
      * @param int $id - The artist's Deezer id
-     * @return array|object A list of object of type user
+     * @return object{data: object[], total: int, next: string|null}
      * @throws DeezerAPIException
      */
-    public function getFans(int $id)
+    public function getFans(int $id): object
     {
         $response = $this->api->sendRequest('GET', "/artist/$id/fans");
 
@@ -90,11 +101,12 @@ class ArtistResource extends AbstractResource implements ArtistResourceInterface
      * Return a list of related artists. Represented by an array of Artist objects
      * https://developers.deezer.com/api/artist/related
      *
+     * @auth none
      * @param int $id - The artist's Deezer id
-     * @return array|object A list of object of type artist
+     * @return object{data: object[], total: int, next: string|null}
      * @throws DeezerAPIException
      */
-    public function getRelated(int $id)
+    public function getRelated(int $id): object
     {
         $response = $this->api->sendRequest('GET', "/artist/$id/related");
 
@@ -105,11 +117,12 @@ class ArtistResource extends AbstractResource implements ArtistResourceInterface
      * Return a list of tracks. Represented by an array of Track object
      * https://developers.deezer.com/api/artist/radio
      *
+     * @auth none
      * @param int $id - The artist's Deezer id
-     * @return array|object A list of object of type track
+     * @return object{data: object[], total: int, next: string|null}
      * @throws DeezerAPIException
      */
-    public function getRadio(int $id)
+    public function getRadio(int $id): object
     {
         $response = $this->api->sendRequest('GET', "/artist/$id/radio");
 
@@ -120,11 +133,12 @@ class ArtistResource extends AbstractResource implements ArtistResourceInterface
      * Return a list of artist's playlists. Represented by an array of Playlist object
      * https://developers.deezer.com/api/artist/playlists
      *
+     * @auth none
      * @param int $id - The artist's Deezer id
-     * @return array|object A list of object of type playlist
+     * @return object{data: object[], total: int, next: string|null}
      * @throws DeezerAPIException
      */
-    public function getPlaylists(int $id)
+    public function getPlaylists(int $id): object
     {
         $response = $this->api->sendRequest('GET', "/artist/$id/playlists");
 

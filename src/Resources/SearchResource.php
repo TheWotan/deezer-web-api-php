@@ -15,11 +15,12 @@ class SearchResource extends AbstractResource implements SearchResourceInterface
      * Search tracks
      * https://developers.deezer.com/api/search
      *
+     * @auth none
      * @param string $query - Search query
-     * @return array|object A list of object of type track
+     * @return object{data: object[], total: int, next: string|null}
      * @throws DeezerAPIException
      */
-    public function search(string $query)
+    public function search(string $query): object
     {
         $response = $this->api->sendRequest('GET', "/search", ['q' => $query]);
 
@@ -30,11 +31,12 @@ class SearchResource extends AbstractResource implements SearchResourceInterface
      * Search tracks
      * https://developers.deezer.com/api/search/tracks
      *
+     * @auth none
      * @param string $query - Search query
-     * @return array|object A list of object of type track
+     * @return object{data: object[], total: int, next: string|null}
      * @throws DeezerAPIException
      */
-    public function track(string $query)
+    public function track(string $query): object
     {
         $response = $this->api->sendRequest('GET', "/search/track", ['q' => $query]);
 
@@ -45,11 +47,12 @@ class SearchResource extends AbstractResource implements SearchResourceInterface
      * Search albums.
      * https://developers.deezer.com/api/search/album
      *
+     * @auth none
      * @param string $query - Search query
-     * @return array|object A list of object of type album
+     * @return object{data: object[], total: int, next: string|null}
      * @throws DeezerAPIException
      */
-    public function album(string $query)
+    public function album(string $query): object
     {
         $response = $this->api->sendRequest('GET', "/search/album", ['q' => $query]);
 
@@ -60,11 +63,12 @@ class SearchResource extends AbstractResource implements SearchResourceInterface
      * Search artists.
      * https://developers.deezer.com/api/search/artist
      *
+     * @auth none
      * @param string $query - Search query
-     * @return array|object A list of object of type artist
+     * @return object{data: object[], total: int, next: string|null}
      * @throws DeezerAPIException
      */
-    public function artist(string $query)
+    public function artist(string $query): object
     {
         $response = $this->api->sendRequest('GET', "/search/artist", ['q' => $query]);
 
@@ -75,11 +79,12 @@ class SearchResource extends AbstractResource implements SearchResourceInterface
      * Search playlists.
      * https://developers.deezer.com/api/search/playlist
      *
+     * @auth none
      * @param string $query - Search query
-     * @return array|object A list of object of type playlist
+     * @return object{data: object[], total: int, next: string|null}
      * @throws DeezerAPIException
      */
-    public function playlist(string $query)
+    public function playlist(string $query): object
     {
         $response = $this->api->sendRequest('GET', "/search/playlist", ['q' => $query]);
 
@@ -90,11 +95,12 @@ class SearchResource extends AbstractResource implements SearchResourceInterface
      * Search radios.
      * https://developers.deezer.com/api/search/radio
      *
+     * @auth none
      * @param string $query - Search query
-     * @return array|object A list of object of type radio
+     * @return object{data: object[], total: int, next: string|null}
      * @throws DeezerAPIException
      */
-    public function radio(string $query)
+    public function radio(string $query): object
     {
         $response = $this->api->sendRequest('GET', "/search/radio", ['q' => $query]);
 
@@ -105,11 +111,12 @@ class SearchResource extends AbstractResource implements SearchResourceInterface
      * Search users.
      * https://developers.deezer.com/api/search/user
      *
+     * @auth none
      * @param string $query - Search query
-     * @return array|object A list of object of type user
+     * @return object{data: object[], total: int, next: string|null}
      * @throws DeezerAPIException
      */
-    public function user(string $query)
+    public function user(string $query): object
     {
         $response = $this->api->sendRequest('GET', "/search/user", ['q' => $query]);
 
@@ -120,11 +127,12 @@ class SearchResource extends AbstractResource implements SearchResourceInterface
      * Search podcasts.
      * https://developers.deezer.com/api/search/podcast
      *
+     * @auth none
      * @param string $query - Search query
-     * @return array|object A list of object of type podcast
+     * @return object{data: object[], total: int, next: string|null}
      * @throws DeezerAPIException
      */
-    public function podcast(string $query)
+    public function podcast(string $query): object
     {
         $response = $this->api->sendRequest('GET', "/search/podcast", ['q' => $query]);
 
@@ -135,11 +143,12 @@ class SearchResource extends AbstractResource implements SearchResourceInterface
      * Get user search history.
      * https://developers.deezer.com/api/search/history
      *
+     * @auth required
      * @param string $query - Search query
-     * @return array|object A list of object of type track, album, artist, playlist, podcast, radio
+     * @return object{data: object[], total: int, next: string|null}
      * @throws DeezerAPIException
      */
-    public function history(string $query)
+    public function history(string $query): object
     {
         $response = $this->api->sendRequest('GET', "/search/history", ['q' => $query]);
 
