@@ -42,7 +42,13 @@ abstract class AbstractResourceTest extends TestCase
         return $stub;
     }
 
-    protected function setupApi($expectedMethod, $expectedUri, $expectedParameters, $expectedHeaders, $fixtureName): DeezerAPI
+    protected function setupApi(
+        $expectedMethod,
+        $expectedUri,
+        $expectedParameters,
+        $expectedHeaders,
+        $fixtureName
+    ): DeezerAPI
     {
         $stub = $this->setupStub(
             $expectedMethod,
