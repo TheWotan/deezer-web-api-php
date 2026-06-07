@@ -4,10 +4,14 @@ namespace Deezer\Resources;
 
 use Deezer\DeezerAPIException;
 use Deezer\Resources\Interfaces\PlaylistResourceInterface;
+use Deezer\Types;
 
 /**
  * Class PlaylistResource
  * @package Deezer\Resources
+ *
+ * @phpstan-import-type PlaylistObject from Types
+ * @phpstan-import-type Paginated from Types
  */
 class PlaylistResource extends AbstractResource implements PlaylistResourceInterface
 {
@@ -15,11 +19,12 @@ class PlaylistResource extends AbstractResource implements PlaylistResourceInter
      * Get An playlist object
      * https://developers.deezer.com/api/playlist
      *
+     * @auth none
      * @param int $id - The playlist deezer ID
-     * @return array|object An playlist object
+     * @return PlaylistObject
      * @throws DeezerAPIException
      */
-    public function get(int $id)
+    public function get(int $id): object
     {
         $response = $this->api->sendRequest('GET', "/playlist/$id");
 
@@ -30,11 +35,12 @@ class PlaylistResource extends AbstractResource implements PlaylistResourceInter
      * Return a list of playlist's comments. Represented by an array of Comment objects
      * https://developers.deezer.com/api/playlist/comments
      *
+     * @auth none
      * @param int $id - The playlist deezer ID
-     * @return array|object A list of object of type comment
+     * @return Paginated
      * @throws DeezerAPIException
      */
-    public function getComments(int $id)
+    public function getComments(int $id): object
     {
         $response = $this->api->sendRequest('GET', "/playlist/$id/comments");
 
@@ -45,11 +51,12 @@ class PlaylistResource extends AbstractResource implements PlaylistResourceInter
      * Return a list of playlist's fans. Represented by an array of User objects
      * https://developers.deezer.com/api/playlist/fans
      *
+     * @auth none
      * @param int $id - The playlist deezer ID
-     * @return array|object A list of object of type user
+     * @return Paginated
      * @throws DeezerAPIException
      */
-    public function getFans(int $id)
+    public function getFans(int $id): object
     {
         $response = $this->api->sendRequest('GET', "/playlist/$id/fans");
 
@@ -60,11 +67,12 @@ class PlaylistResource extends AbstractResource implements PlaylistResourceInter
      * Return a list of playlist's tracks. Represented by an array of Track object
      * https://developers.deezer.com/api/playlist/tracks
      *
+     * @auth none
      * @param int $id - The playlist deezer ID
-     * @return array|object A list of object of type track
+     * @return Paginated
      * @throws DeezerAPIException
      */
-    public function getTracks(int $id)
+    public function getTracks(int $id): object
     {
         $response = $this->api->sendRequest('GET', "/playlist/$id/tracks");
 
@@ -75,11 +83,12 @@ class PlaylistResource extends AbstractResource implements PlaylistResourceInter
      * Return a list of playlist's recommendation tracks. Represented by an array of Track object
      * https://developers.deezer.com/api/playlist/tracks
      *
+     * @auth none
      * @param int $id - The playlist deezer ID
-     * @return array|object A list of object of type track
+     * @return Paginated
      * @throws DeezerAPIException
      */
-    public function getRadio(int $id)
+    public function getRadio(int $id): object
     {
         $response = $this->api->sendRequest('GET', "/playlist/$id/radio");
 
@@ -90,12 +99,13 @@ class PlaylistResource extends AbstractResource implements PlaylistResourceInter
      * Create a playlist for a user
      * https://developers.deezer.com/api/user/playlists
      *
+     * @auth required
      * @param int $userId - The user's Deezer id
      * @param string $title - The playlist title
-     * @return array|object A playlist object
+     * @return object{id: int}
      * @throws DeezerAPIException
      */
-    public function create(int $userId, string $title)
+    public function create(int $userId, string $title): object
     {
         $response = $this->api->sendRequest('POST', "/user/$userId/playlists", ['title' => $title]);
 
@@ -106,8 +116,9 @@ class PlaylistResource extends AbstractResource implements PlaylistResourceInter
      * Delete a playlist
      * https://developers.deezer.com/api/playlist
      *
+     * @auth required
      * @param int $id - The playlist deezer ID
-     * @return bool True if deleted
+     * @return bool
      * @throws DeezerAPIException
      */
     public function delete(int $id): bool
@@ -121,9 +132,10 @@ class PlaylistResource extends AbstractResource implements PlaylistResourceInter
      * Add tracks to a playlist
      * https://developers.deezer.com/api/playlist/tracks
      *
+     * @auth required
      * @param int $id - The playlist deezer ID
      * @param array $trackIds - Array of track IDs to add
-     * @return bool True if successful
+     * @return bool
      * @throws DeezerAPIException
      */
     public function addTracks(int $id, array $trackIds): bool
@@ -137,9 +149,10 @@ class PlaylistResource extends AbstractResource implements PlaylistResourceInter
      * Remove tracks from a playlist
      * https://developers.deezer.com/api/playlist/tracks
      *
+     * @auth required
      * @param int $id - The playlist deezer ID
      * @param array $trackIds - Array of track IDs to remove
-     * @return bool True if successful
+     * @return bool
      * @throws DeezerAPIException
      */
     public function removeTracks(int $id, array $trackIds): bool

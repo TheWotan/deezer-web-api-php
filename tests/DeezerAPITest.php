@@ -139,4 +139,45 @@ class DeezerAPITest extends TestCase
         $api = new \Deezer\DeezerAPI([], $provider, $stub);
         $api->infos();
     }
+
+    public function testSendRequestThrowsRateLimitWhenAutoRetryFalse(): void
+    {
+        $stub = $this->createPartialMock(Request::class, ['send', 'getLastResponse']);
+        $stub->method('send')
+            ->willThrowException(new \Deezer\DeezerRateLimitException(1));
+
+        $api = new DeezerAPI(['auto_retry' => false], null, $stub);
+
+        $this->expectException(\Deezer\DeezerRateLimitException::class);
+        $api->infos();
+    }
+
+    public function testSendRequestRetriesAndSucceedsWhenAutoRetryTrue(): void
+    {
+        $stub = $this->createPartialMock(Request::class, ['send', 'getLastResponse']);
+        $stub->expects($this->exactly(2))
+            ->method('send')
+            ->willReturnOnConsecutiveCalls(
+                $this->throwException(new \Deezer\DeezerRateLimitException(0)),
+                ['body' => json_decode('{"country_iso":"UA"}')]
+            );
+
+        $api = new DeezerAPI(['auto_retry' => true], null, $stub);
+        $result = $api->infos();
+
+        $this->assertSame('UA', $result->country_iso);
+    }
+
+    public function testSendRequestThrowsAfterAllRetriesExhausted(): void
+    {
+        $stub = $this->createPartialMock(Request::class, ['send', 'getLastResponse']);
+        $stub->expects($this->exactly(7))
+            ->method('send')
+            ->willThrowException(new \Deezer\DeezerRateLimitException(0));
+
+        $api = new DeezerAPI(['auto_retry' => true], null, $stub);
+
+        $this->expectException(\Deezer\DeezerRateLimitException::class);
+        $api->infos();
+    }
 }

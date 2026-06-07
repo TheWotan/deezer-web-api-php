@@ -11,7 +11,6 @@ class Request
     protected array $lastResponse = [];
     protected array $options = [
         'curl_options' => [],
-        'return_assoc' => false,
         'verify_ssl'   => true,
     ];
 
@@ -30,7 +29,7 @@ class Request
      * Get the latest full response from the Deezer API.
      *
      * @return array Response data.
-     * - array|object body The response body. Type is controlled by the `return_assoc` option.
+     * - object body The decoded JSON response body.
      * - array headers Response headers.
      * - int status HTTP status code.
      * - string url The requested URL.
@@ -67,7 +66,7 @@ class Request
      * @throws DeezerAPIException
      *
      * @return array Response data.
-     * - array|object body The response body. Type is controlled by the `return_assoc` option.
+     * - object body The decoded JSON response body.
      * - array headers Response headers.
      * - int status HTTP status code.
      * - string url The requested URL.
@@ -146,7 +145,7 @@ class Request
 
         [$headers, $body] = $this->splitResponse($response);
 
-        $bodyParsed = json_decode($body, $this->options['return_assoc']);
+        $bodyParsed = json_decode($body);
         if (json_last_error() !== JSON_ERROR_NONE) {
             parse_str($body, $bodyParsed);
         }
@@ -161,6 +160,11 @@ class Request
         ];
 
         curl_close($ch);
+
+        if ($status === 429) {
+            $retryAfter = (int)($headers['retry-after'] ?? 60);
+            throw new DeezerRateLimitException($retryAfter);
+        }
 
         if ($status >= 400) {
             $this->handleResponseError($bodyParsed, $status);

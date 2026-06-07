@@ -18,10 +18,13 @@ use Deezer\Resources\SearchResource;
 use Deezer\Resources\TrackResource;
 use Deezer\Resources\UserResource;
 use Deezer\TokenProviderInterface;
+use Deezer\Types;
 
 /**
  * Class DeezerAPI
  * @package Deezer
+ *
+ * @phpstan-import-type InfosObject from Types
  *
  * @property \Deezer\Resources\Interfaces\AlbumResourceInterface $album
  * @property \Deezer\Resources\Interfaces\ArtistResourceInterface $artist
@@ -39,12 +42,13 @@ use Deezer\TokenProviderInterface;
  */
 class DeezerAPI
 {
+    private const RETRY_DELAYS = [1, 2, 5, 10, 30, 60];
+
     protected string $accessToken = '';
     protected array $lastResponse = [];
     protected array $options = [
         'auto_refresh' => false,
-        'auto_retry' => false,
-        'return_assoc' => false,
+        'auto_retry'   => false,
     ];
     protected ?Request $request = null;
     private ?TokenProviderInterface $tokenProvider = null;
@@ -157,7 +161,7 @@ class DeezerAPI
      * @throws DeezerAPIException
      *
      * @return array Response data.
-     * - array|object body The response body. Type is controlled by the `return_assoc` option.
+     * - object body The decoded JSON response body.
      * - array headers Response headers.
      * - int status HTTP status code.
      * - string url The requested URL.
@@ -171,14 +175,21 @@ class DeezerAPI
             $this->accessToken = $this->tokenProvider->getToken();
         }
 
-        try {
-            if ($this->accessToken) {
-                $parameters['access_token'] = $this->accessToken;
-            }
+        if ($this->accessToken) {
+            $parameters['access_token'] = $this->accessToken;
+        }
 
-            return $this->request->send($method, Request::API_URL . $uri, $parameters, $headers);
-        } catch (DeezerAPIException $e) {
-            throw $e;
+        $attempt = 0;
+        while (true) {
+            try {
+                return $this->request->send($method, Request::API_URL . $uri, $parameters, $headers);
+            } catch (DeezerRateLimitException $e) {
+                if (!$this->options['auto_retry'] || $attempt >= count(self::RETRY_DELAYS)) {
+                    throw $e;
+                }
+                sleep(min($e->getRetryAfter(), self::RETRY_DELAYS[$attempt]));
+                $attempt++;
+            }
         }
     }
 
@@ -187,10 +198,11 @@ class DeezerAPI
      * Get the user's options
      * https://developers.deezer.com/api/options
      *
-     * @return array|object An object of type options
+     * @auth optional
+     * @return object
      * @throws DeezerAPIException
      */
-    public function options()
+    public function options(): object
     {
         $response = $this->sendRequest('GET', "/options");
 
@@ -201,10 +213,11 @@ class DeezerAPI
      * Get the information about the API in the current country
      * https://developers.deezer.com/api/infos
      *
-     * @return array|object An object of type infos
+     * @auth none
+     * @return InfosObject
      * @throws DeezerAPIException
      */
-    public function infos()
+    public function infos(): object
     {
         $response = $this->sendRequest('GET', "/infos");
 
