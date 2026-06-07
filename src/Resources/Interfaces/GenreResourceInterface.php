@@ -5,43 +5,43 @@ declare(strict_types=1);
 namespace Deezer\Resources\Interfaces;
 
 use Deezer\Resources\ResourceInterface;
-use Deezer\Types;
 
 /**
- * @phpstan-import-type GenreObject from Types
- * @phpstan-import-type PodcastObject from Types
- * @phpstan-import-type ArtistMini from Types
- * @phpstan-import-type RadioObject from Types
+ * Interface GenreResourceInterface
  */
 interface GenreResourceInterface extends ResourceInterface
 {
     /**
      * @auth none
-     * @return object{data: GenreObject[], total: int}
+     * @return object{data: object[], total: int}
      */
     public function list(): object;
     /**
      * @auth none
      * @param int $id - The genre's Deezer id
-     * @return GenreObject
+     * @return object{
+     *   id: int, name: string,
+     *   picture: string, picture_small: string, picture_medium: string,
+     *   picture_big: string, picture_xl: string, type: string
+     * }
      */
     public function get(int $id): object;
     /**
      * @auth none
      * @param int $id - The genre's Deezer id
-     * @return object{data: PodcastObject[], total: int}
+     * @return object{data: object[], total: int}
      */
     public function getPodcasts(int $id): object;
     /**
      * @auth none
      * @param int $id - The genre's Deezer id
-     * @return object{data: ArtistMini[], total: int}
+     * @return object{data: object[], total: int}
      */
     public function getArtists(int $id): object;
     /**
      * @auth none
      * @param int $id - The genre's Deezer id
-     * @return object{data: RadioObject[], total: int}
+     * @return object{data: object[], total: int}
      */
     public function getRadios(int $id): object;
 }

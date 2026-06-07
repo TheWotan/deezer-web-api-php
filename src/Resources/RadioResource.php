@@ -4,14 +4,10 @@ namespace Deezer\Resources;
 
 use Deezer\DeezerAPIException;
 use Deezer\Resources\Interfaces\RadioResourceInterface;
-use Deezer\Types;
 
 /**
  * Class RadioResource
  * @package Deezer\Resources
- *
- * @phpstan-import-type RadioObject from Types
- * @phpstan-import-type Paginated from Types
  */
 class RadioResource extends AbstractResource implements RadioResourceInterface
 {
@@ -20,7 +16,7 @@ class RadioResource extends AbstractResource implements RadioResourceInterface
      * https://developers.deezer.com/api/radio
      *
      * @auth none
-     * @return Paginated
+     * @return object{data: object[], total: int, next: string|null}
      * @throws DeezerAPIException
      */
     public function list(): object
@@ -36,7 +32,12 @@ class RadioResource extends AbstractResource implements RadioResourceInterface
      *
      * @auth none
      * @param int $id - The radio deezer ID
-     * @return RadioObject
+     * @return object{
+     *   id: int, title: string, description: string, share: string,
+     *   picture: string, picture_small: string, picture_medium: string,
+     *   picture_big: string, picture_xl: string,
+     *   tracklist: string, md5_image: string, type: string
+     * }
      * @throws DeezerAPIException
      */
     public function get(int $id): object
@@ -51,7 +52,7 @@ class RadioResource extends AbstractResource implements RadioResourceInterface
      * https://developers.deezer.com/api/radio/genres
      *
      * @auth none
-     * @return Paginated
+     * @return object{data: object[], total: int, next: string|null}
      * @throws DeezerAPIException
      */
     public function getGenres(): object
@@ -66,7 +67,7 @@ class RadioResource extends AbstractResource implements RadioResourceInterface
      * https://developers.deezer.com/api/radio/top
      *
      * @auth none
-     * @return Paginated
+     * @return object{data: object[], total: int, next: string|null}
      * @throws DeezerAPIException
      */
     public function getTop(): object
@@ -81,7 +82,7 @@ class RadioResource extends AbstractResource implements RadioResourceInterface
      * https://developers.deezer.com/api/radio/lists
      *
      * @auth none
-     * @return Paginated
+     * @return object{data: object[], total: int, next: string|null}
      * @throws DeezerAPIException
      */
     public function getLists(): object
@@ -97,7 +98,7 @@ class RadioResource extends AbstractResource implements RadioResourceInterface
      *
      * @auth none
      * @param int $id - The radio deezer ID
-     * @return Paginated
+     * @return object{data: object[], total: int, next: string|null}
      * @throws DeezerAPIException
      */
     public function getTracks(int $id): object

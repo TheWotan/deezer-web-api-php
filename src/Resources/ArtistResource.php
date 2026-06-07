@@ -4,14 +4,10 @@ namespace Deezer\Resources;
 
 use Deezer\DeezerAPIException;
 use Deezer\Resources\Interfaces\ArtistResourceInterface;
-use Deezer\Types;
 
 /**
  * Class ArtistResource
  * @package Deezer\Resources
- *
- * @phpstan-import-type ArtistMini from Types
- * @phpstan-import-type Paginated from Types
  */
 class ArtistResource extends AbstractResource implements ArtistResourceInterface
 {
@@ -21,7 +17,13 @@ class ArtistResource extends AbstractResource implements ArtistResourceInterface
      *
      * @auth none
      * @param int $id - The artist's Deezer id
-     * @return ArtistMini
+     * @return object{
+     *   id: int, name: string, link: string, share: string,
+     *   picture: string, picture_small: string, picture_medium: string,
+     *   picture_big: string, picture_xl: string,
+     *   nb_album: int, nb_fan: int, radio: bool,
+     *   tracklist: string, type: string
+     * }
      * @throws DeezerAPIException
      */
     public function get(int $id): object
@@ -37,7 +39,7 @@ class ArtistResource extends AbstractResource implements ArtistResourceInterface
      *
      * @auth none
      * @param int $id - The artist's Deezer id
-     * @return Paginated
+     * @return object{data: object[], total: int, next: string|null}
      * @throws DeezerAPIException
      */
     public function getTop(int $id): object
@@ -53,7 +55,7 @@ class ArtistResource extends AbstractResource implements ArtistResourceInterface
      *
      * @auth none
      * @param int $id - The artist's Deezer id
-     * @return Paginated
+     * @return object{data: object[], total: int, next: string|null}
      * @throws DeezerAPIException
      */
     public function getAlbums(int $id): object
@@ -69,7 +71,7 @@ class ArtistResource extends AbstractResource implements ArtistResourceInterface
      *
      * @auth none
      * @param int $id - The artist's Deezer id
-     * @return Paginated
+     * @return object{data: object[], total: int, next: string|null}
      * @throws DeezerAPIException
      */
     public function getComments(int $id): object
@@ -85,7 +87,7 @@ class ArtistResource extends AbstractResource implements ArtistResourceInterface
      *
      * @auth none
      * @param int $id - The artist's Deezer id
-     * @return Paginated
+     * @return object{data: object[], total: int, next: string|null}
      * @throws DeezerAPIException
      */
     public function getFans(int $id): object
@@ -101,7 +103,7 @@ class ArtistResource extends AbstractResource implements ArtistResourceInterface
      *
      * @auth none
      * @param int $id - The artist's Deezer id
-     * @return Paginated
+     * @return object{data: object[], total: int, next: string|null}
      * @throws DeezerAPIException
      */
     public function getRelated(int $id): object
@@ -117,7 +119,7 @@ class ArtistResource extends AbstractResource implements ArtistResourceInterface
      *
      * @auth none
      * @param int $id - The artist's Deezer id
-     * @return Paginated
+     * @return object{data: object[], total: int, next: string|null}
      * @throws DeezerAPIException
      */
     public function getRadio(int $id): object
@@ -133,7 +135,7 @@ class ArtistResource extends AbstractResource implements ArtistResourceInterface
      *
      * @auth none
      * @param int $id - The artist's Deezer id
-     * @return Paginated
+     * @return object{data: object[], total: int, next: string|null}
      * @throws DeezerAPIException
      */
     public function getPlaylists(int $id): object

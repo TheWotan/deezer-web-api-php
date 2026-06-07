@@ -4,14 +4,10 @@ namespace Deezer\Resources;
 
 use Deezer\DeezerAPIException;
 use Deezer\Resources\Interfaces\EditorialResourceInterface;
-use Deezer\Types;
 
 /**
  * Class EditorialResource
  * @package Deezer\Resources
- *
- * @phpstan-import-type EditorialObject from Types
- * @phpstan-import-type Paginated from Types
  */
 class EditorialResource extends AbstractResource implements EditorialResourceInterface
 {
@@ -20,7 +16,7 @@ class EditorialResource extends AbstractResource implements EditorialResourceInt
      * https://developers.deezer.com/api/editorial
      *
      * @auth none
-     * @return object{data: EditorialObject[], total: int}
+     * @return object{data: object[], total: int}
      * @throws DeezerAPIException
      */
     public function list(): object
@@ -36,7 +32,11 @@ class EditorialResource extends AbstractResource implements EditorialResourceInt
      *
      * @auth none
      * @param int $id - The editorial's Deezer id
-     * @return EditorialObject
+     * @return object{
+     *   id: int, name: string,
+     *   picture: string, picture_small: string, picture_medium: string,
+     *   picture_big: string, picture_xl: string, type: string
+     * }
      * @throws DeezerAPIException
      */
     public function get(int $id): object
@@ -52,7 +52,7 @@ class EditorialResource extends AbstractResource implements EditorialResourceInt
      *
      * @auth none
      * @param int $id - The editorial's Deezer id
-     * @return Paginated
+     * @return object{data: object[], total: int, next: string|null}
      * @throws DeezerAPIException
      */
     public function getSelection(int $id): object
@@ -68,7 +68,7 @@ class EditorialResource extends AbstractResource implements EditorialResourceInt
      *
      * @auth none
      * @param int $id - The editorial's Deezer id
-     * @return Paginated
+     * @return object{data: object[], total: int, next: string|null}
      * @throws DeezerAPIException
      */
     public function getCharts(int $id): object
@@ -84,7 +84,7 @@ class EditorialResource extends AbstractResource implements EditorialResourceInt
      *
      * @auth none
      * @param int $id - The editorial's Deezer id
-     * @return Paginated
+     * @return object{data: object[], total: int, next: string|null}
      * @throws DeezerAPIException
      */
     public function getReleases(int $id): object

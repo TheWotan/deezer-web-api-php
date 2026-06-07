@@ -5,168 +5,184 @@ declare(strict_types=1);
 namespace Deezer\Resources\Interfaces;
 
 use Deezer\Resources\ResourceInterface;
-use Deezer\Types;
 
 /**
- * @phpstan-import-type UserObject from Types
- * @phpstan-import-type Paginated from Types
+ * Interface UserResourceInterface
  */
 interface UserResourceInterface extends ResourceInterface
 {
     /**
      * @auth none
      * @param int $id - The user's Deezer id
-     * @return UserObject
+     * @return object{
+     *   id: int, name: string, lastname: string, firstname: string,
+     *   email: string, status: int, birthday: string,
+     *   inscription_date: string, gender: string, link: string,
+     *   picture: string, picture_small: string, picture_medium: string,
+     *   picture_big: string, picture_xl: string,
+     *   lang: string, is_kid: bool, explicit_content_level: string,
+     *   explicit_content_levels_available: string[],
+     *   tracklist: string, type: string
+     * }
      */
     public function get(int $id): object;
     /**
      * @auth required
-     * @return UserObject
+     * @return object{
+     *   id: int, name: string, lastname: string, firstname: string,
+     *   email: string, status: int, birthday: string,
+     *   inscription_date: string, gender: string, link: string,
+     *   picture: string, picture_small: string, picture_medium: string,
+     *   picture_big: string, picture_xl: string,
+     *   lang: string, is_kid: bool, explicit_content_level: string,
+     *   explicit_content_levels_available: string[],
+     *   tracklist: string, type: string
+     * }
      */
     public function me(): object;
     /**
      * @auth required
-     * @return Paginated
+     * @return object{data: object[], total: int, next: string|null}
      */
     public function getAlbums(): object;
     /**
      * @auth none
      * @param int $id - The user's Deezer id
-     * @return Paginated
+     * @return object{data: object[], total: int, next: string|null}
      */
     public function getAlbumsById(int $id): object;
     /**
      * @auth required
-     * @return Paginated
+     * @return object{data: object[], total: int, next: string|null}
      */
     public function getArtists(): object;
     /**
      * @auth none
      * @param int $id - The user's Deezer id
-     * @return Paginated
+     * @return object{data: object[], total: int, next: string|null}
      */
     public function getArtistsById(int $id): object;
     /**
      * @auth required
-     * @return Paginated
+     * @return object{data: object[], total: int, next: string|null}
      */
     public function getFlow(): object;
     /**
      * @auth required
-     * @return Paginated
+     * @return object{data: object[], total: int, next: string|null}
      */
     public function getFolders(): object;
     /**
      * @auth required
-     * @return Paginated
+     * @return object{data: object[], total: int, next: string|null}
      */
     public function getFollowings(): object;
     /**
      * @auth required
-     * @return Paginated
+     * @return object{data: object[], total: int, next: string|null}
      */
     public function getFollowers(): object;
     /**
      * @auth none
      * @param int $id - The user's Deezer id
-     * @return Paginated
+     * @return object{data: object[], total: int, next: string|null}
      */
     public function getFollowingsById(int $id): object;
     /**
      * @auth none
      * @param int $id - The user's Deezer id
-     * @return Paginated
+     * @return object{data: object[], total: int, next: string|null}
      */
     public function getFollowersById(int $id): object;
     /**
      * @auth required
-     * @return Paginated
+     * @return object{data: object[], total: int, next: string|null}
      */
     public function getHistory(): object;
     /**
      * @auth required
-     * @return Paginated
+     * @return object{data: object[], total: int, next: string|null}
      */
     public function getPermissions(): object;
     /**
      * @auth required
-     * @return Paginated
+     * @return object{data: object[], total: int, next: string|null}
      */
     public function getOptions(): object;
     /**
      * @auth required
-     * @return Paginated
+     * @return object{data: object[], total: int, next: string|null}
      */
     public function getPersonalSongs(): object;
     /**
      * @auth required
-     * @return Paginated
+     * @return object{data: object[], total: int, next: string|null}
      */
     public function getPlaylists(): object;
     /**
      * @auth none
      * @param int $id - The user's Deezer id
-     * @return Paginated
+     * @return object{data: object[], total: int, next: string|null}
      */
     public function getPlaylistsById(int $id): object;
     /**
      * @auth required
-     * @return Paginated
+     * @return object{data: object[], total: int, next: string|null}
      */
     public function getRadios(): object;
     /**
      * @auth required
-     * @return Paginated
+     * @return object{data: object[], total: int, next: string|null}
      */
     public function getTracks(): object;
     /**
      * @auth required
-     * @return Paginated
+     * @return object{data: object[], total: int, next: string|null}
      */
     public function getRecommendationsAlbums(): object;
     /**
      * @auth required
-     * @return Paginated
+     * @return object{data: object[], total: int, next: string|null}
      */
     public function getRecommendationsReleases(): object;
     /**
      * @auth required
-     * @return Paginated
+     * @return object{data: object[], total: int, next: string|null}
      */
     public function getRecommendationsArtists(): object;
     /**
      * @auth required
-     * @return Paginated
+     * @return object{data: object[], total: int, next: string|null}
      */
     public function getRecommendationsPlaylists(): object;
     /**
      * @auth required
-     * @return Paginated
+     * @return object{data: object[], total: int, next: string|null}
      */
     public function getRecommendationsTracks(): object;
     /**
      * @auth required
-     * @return Paginated
+     * @return object{data: object[], total: int, next: string|null}
      */
     public function getRecommendationsRadios(): object;
     /**
      * @auth required
-     * @return Paginated
+     * @return object{data: object[], total: int, next: string|null}
      */
     public function getChartsTracks(): object;
     /**
      * @auth required
-     * @return Paginated
+     * @return object{data: object[], total: int, next: string|null}
      */
     public function getChartsAlbums(): object;
     /**
      * @auth required
-     * @return Paginated
+     * @return object{data: object[], total: int, next: string|null}
      */
     public function getChartsPlaylists(): object;
     /**
      * @auth required
-     * @return Paginated
+     * @return object{data: object[], total: int, next: string|null}
      */
     public function getChartsArtists(): object;
     /**

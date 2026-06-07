@@ -4,14 +4,10 @@ namespace Deezer\Resources;
 
 use Deezer\DeezerAPIException;
 use Deezer\Resources\Interfaces\PodcastResourceInterface;
-use Deezer\Types;
 
 /**
  * Class PodcastResource
  * @package Deezer\Resources
- *
- * @phpstan-import-type PodcastObject from Types
- * @phpstan-import-type Paginated from Types
  */
 class PodcastResource extends AbstractResource implements PodcastResourceInterface
 {
@@ -21,7 +17,13 @@ class PodcastResource extends AbstractResource implements PodcastResourceInterfa
      *
      * @auth required
      * @param int $id - The podcast deezer ID
-     * @return PodcastObject
+     * @return object{
+     *   id: int, title: string, description: string, available: bool,
+     *   rating: int, fans: int, link: string, share: string,
+     *   picture: string, picture_small: string, picture_medium: string,
+     *   picture_big: string, picture_xl: string,
+     *   md5_image: string, type: string
+     * }
      * @throws DeezerAPIException
      */
     public function get(int $id): object
@@ -37,7 +39,7 @@ class PodcastResource extends AbstractResource implements PodcastResourceInterfa
      *
      * @auth required
      * @param int $id - The podcast deezer ID
-     * @return Paginated
+     * @return object{data: object[], total: int, next: string|null}
      * @throws DeezerAPIException
      */
     public function getEpisodes(int $id): object

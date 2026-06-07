@@ -4,14 +4,10 @@ namespace Deezer\Resources;
 
 use Deezer\DeezerAPIException;
 use Deezer\Resources\Interfaces\UserResourceInterface;
-use Deezer\Types;
 
 /**
  * Class UserResource
  * @package Deezer\Resources
- *
- * @phpstan-import-type UserObject from Types
- * @phpstan-import-type Paginated from Types
  */
 class UserResource extends AbstractResource implements UserResourceInterface
 {
@@ -21,7 +17,16 @@ class UserResource extends AbstractResource implements UserResourceInterface
      *
      * @auth none
      * @param int $id - The user's Deezer id
-     * @return UserObject
+     * @return object{
+     *   id: int, name: string, lastname: string, firstname: string,
+     *   email: string, status: int, birthday: string,
+     *   inscription_date: string, gender: string, link: string,
+     *   picture: string, picture_small: string, picture_medium: string,
+     *   picture_big: string, picture_xl: string,
+     *   lang: string, is_kid: bool, explicit_content_level: string,
+     *   explicit_content_levels_available: string[],
+     *   tracklist: string, type: string
+     * }
      * @throws DeezerAPIException
      */
     public function get(int $id): object
@@ -36,7 +41,16 @@ class UserResource extends AbstractResource implements UserResourceInterface
      * https://developers.deezer.com/api/user
      *
      * @auth required
-     * @return UserObject
+     * @return object{
+     *   id: int, name: string, lastname: string, firstname: string,
+     *   email: string, status: int, birthday: string,
+     *   inscription_date: string, gender: string, link: string,
+     *   picture: string, picture_small: string, picture_medium: string,
+     *   picture_big: string, picture_xl: string,
+     *   lang: string, is_kid: bool, explicit_content_level: string,
+     *   explicit_content_levels_available: string[],
+     *   tracklist: string, type: string
+     * }
      * @throws DeezerAPIException
      */
     public function me(): object
@@ -51,7 +65,7 @@ class UserResource extends AbstractResource implements UserResourceInterface
      * https://developers.deezer.com/api/user/albums
      *
      * @auth required
-     * @return Paginated
+     * @return object{data: object[], total: int, next: string|null}
      * @throws DeezerAPIException
      */
     public function getAlbums(): object
@@ -66,7 +80,7 @@ class UserResource extends AbstractResource implements UserResourceInterface
      * https://developers.deezer.com/api/user/artists
      *
      * @auth required
-     * @return Paginated
+     * @return object{data: object[], total: int, next: string|null}
      * @throws DeezerAPIException
      */
     public function getArtists(): object
@@ -81,7 +95,7 @@ class UserResource extends AbstractResource implements UserResourceInterface
      * https://developers.deezer.com/api/user/flow
      *
      * @auth required
-     * @return Paginated
+     * @return object{data: object[], total: int, next: string|null}
      * @throws DeezerAPIException
      */
     public function getFlow(): object
@@ -96,7 +110,7 @@ class UserResource extends AbstractResource implements UserResourceInterface
      * https://developers.deezer.com/api/user/folders
      *
      * @auth required
-     * @return Paginated
+     * @return object{data: object[], total: int, next: string|null}
      * @throws DeezerAPIException
      */
     public function getFolders(): object
@@ -111,7 +125,7 @@ class UserResource extends AbstractResource implements UserResourceInterface
      * https://developers.deezer.com/api/user/folders
      *
      * @auth required
-     * @return Paginated
+     * @return object{data: object[], total: int, next: string|null}
      * @throws DeezerAPIException
      */
     public function getFollowings(): object
@@ -126,7 +140,7 @@ class UserResource extends AbstractResource implements UserResourceInterface
      * https://developers.deezer.com/api/user/folders
      *
      * @auth required
-     * @return Paginated
+     * @return object{data: object[], total: int, next: string|null}
      * @throws DeezerAPIException
      */
     public function getFollowers(): object
@@ -141,7 +155,7 @@ class UserResource extends AbstractResource implements UserResourceInterface
      * https://developers.deezer.com/api/user/folders
      *
      * @auth required
-     * @return Paginated
+     * @return object{data: object[], total: int, next: string|null}
      * @throws DeezerAPIException
      */
     public function getHistory(): object
@@ -156,7 +170,7 @@ class UserResource extends AbstractResource implements UserResourceInterface
      * https://developers.deezer.com/api/user/folders
      *
      * @auth required
-     * @return Paginated
+     * @return object{data: object[], total: int, next: string|null}
      * @throws DeezerAPIException
      */
     public function getPermissions(): object
@@ -172,7 +186,7 @@ class UserResource extends AbstractResource implements UserResourceInterface
      * https://developers.deezer.com/api/user/options
      *
      * @auth required
-     * @return Paginated
+     * @return object{data: object[], total: int, next: string|null}
      * @throws DeezerAPIException
      */
     public function getOptions(): object
@@ -187,7 +201,7 @@ class UserResource extends AbstractResource implements UserResourceInterface
      * https://developers.deezer.com/api/user/personal_songs
      *
      * @auth required
-     * @return Paginated
+     * @return object{data: object[], total: int, next: string|null}
      * @throws DeezerAPIException
      */
     public function getPersonalSongs(): object
@@ -203,7 +217,7 @@ class UserResource extends AbstractResource implements UserResourceInterface
      * https://developers.deezer.com/api/user/playslists
      *
      * @auth required
-     * @return Paginated
+     * @return object{data: object[], total: int, next: string|null}
      * @throws DeezerAPIException
      */
     public function getPlaylists(): object
@@ -218,7 +232,7 @@ class UserResource extends AbstractResource implements UserResourceInterface
      * https://developers.deezer.com/api/user/radios
      *
      * @auth required
-     * @return Paginated
+     * @return object{data: object[], total: int, next: string|null}
      * @throws DeezerAPIException
      */
     public function getRadios(): object
@@ -233,7 +247,7 @@ class UserResource extends AbstractResource implements UserResourceInterface
      * https://developers.deezer.com/api/user/tracks
      *
      * @auth required
-     * @return Paginated
+     * @return object{data: object[], total: int, next: string|null}
      * @throws DeezerAPIException
      */
     public function getTracks(): object
@@ -248,7 +262,7 @@ class UserResource extends AbstractResource implements UserResourceInterface
      * https://developers.deezer.com/api/user/recommendations/albums
      *
      * @auth required
-     * @return Paginated
+     * @return object{data: object[], total: int, next: string|null}
      * @throws DeezerAPIException
      */
     public function getRecommendationsAlbums(): object
@@ -263,7 +277,7 @@ class UserResource extends AbstractResource implements UserResourceInterface
      * https://developers.deezer.com/api/user/recommendations/releases
      *
      * @auth required
-     * @return Paginated
+     * @return object{data: object[], total: int, next: string|null}
      * @throws DeezerAPIException
      */
     public function getRecommendationsReleases(): object
@@ -278,7 +292,7 @@ class UserResource extends AbstractResource implements UserResourceInterface
      * https://developers.deezer.com/api/user/recommendations/artists
      *
      * @auth required
-     * @return Paginated
+     * @return object{data: object[], total: int, next: string|null}
      * @throws DeezerAPIException
      */
     public function getRecommendationsArtists(): object
@@ -293,7 +307,7 @@ class UserResource extends AbstractResource implements UserResourceInterface
      * https://developers.deezer.com/api/user/recommendations/playlists
      *
      * @auth required
-     * @return Paginated
+     * @return object{data: object[], total: int, next: string|null}
      * @throws DeezerAPIException
      */
     public function getRecommendationsPlaylists(): object
@@ -308,7 +322,7 @@ class UserResource extends AbstractResource implements UserResourceInterface
      * https://developers.deezer.com/api/user/recommendations/tracks
      *
      * @auth required
-     * @return Paginated
+     * @return object{data: object[], total: int, next: string|null}
      * @throws DeezerAPIException
      */
     public function getRecommendationsTracks(): object
@@ -323,7 +337,7 @@ class UserResource extends AbstractResource implements UserResourceInterface
      * https://developers.deezer.com/api/user/recommendations/radios
      *
      * @auth required
-     * @return Paginated
+     * @return object{data: object[], total: int, next: string|null}
      * @throws DeezerAPIException
      */
     public function getRecommendationsRadios(): object
@@ -338,7 +352,7 @@ class UserResource extends AbstractResource implements UserResourceInterface
      * https://developers.deezer.com/api/user/charts/tracks
      *
      * @auth required
-     * @return Paginated
+     * @return object{data: object[], total: int, next: string|null}
      * @throws DeezerAPIException
      */
     public function getChartsTracks(): object
@@ -353,7 +367,7 @@ class UserResource extends AbstractResource implements UserResourceInterface
      * https://developers.deezer.com/api/user/charts/albums
      *
      * @auth required
-     * @return Paginated
+     * @return object{data: object[], total: int, next: string|null}
      * @throws DeezerAPIException
      */
     public function getChartsAlbums(): object
@@ -368,7 +382,7 @@ class UserResource extends AbstractResource implements UserResourceInterface
      * https://developers.deezer.com/api/user/charts/playlists
      *
      * @auth required
-     * @return Paginated
+     * @return object{data: object[], total: int, next: string|null}
      * @throws DeezerAPIException
      */
     public function getChartsPlaylists(): object
@@ -383,7 +397,7 @@ class UserResource extends AbstractResource implements UserResourceInterface
      * https://developers.deezer.com/api/user/charts/artists
      *
      * @auth required
-     * @return Paginated
+     * @return object{data: object[], total: int, next: string|null}
      * @throws DeezerAPIException
      */
     public function getChartsArtists(): object
@@ -399,7 +413,7 @@ class UserResource extends AbstractResource implements UserResourceInterface
      *
      * @auth none
      * @param int $id - The user's Deezer id
-     * @return Paginated
+     * @return object{data: object[], total: int, next: string|null}
      * @throws DeezerAPIException
      */
     public function getAlbumsById(int $id): object
@@ -415,7 +429,7 @@ class UserResource extends AbstractResource implements UserResourceInterface
      *
      * @auth none
      * @param int $id - The user's Deezer id
-     * @return Paginated
+     * @return object{data: object[], total: int, next: string|null}
      * @throws DeezerAPIException
      */
     public function getArtistsById(int $id): object
@@ -431,7 +445,7 @@ class UserResource extends AbstractResource implements UserResourceInterface
      *
      * @auth none
      * @param int $id - The user's Deezer id
-     * @return Paginated
+     * @return object{data: object[], total: int, next: string|null}
      * @throws DeezerAPIException
      */
     public function getFollowingsById(int $id): object
@@ -447,7 +461,7 @@ class UserResource extends AbstractResource implements UserResourceInterface
      *
      * @auth none
      * @param int $id - The user's Deezer id
-     * @return Paginated
+     * @return object{data: object[], total: int, next: string|null}
      * @throws DeezerAPIException
      */
     public function getFollowersById(int $id): object
@@ -463,7 +477,7 @@ class UserResource extends AbstractResource implements UserResourceInterface
      *
      * @auth none
      * @param int $id - The user's Deezer id
-     * @return Paginated
+     * @return object{data: object[], total: int, next: string|null}
      * @throws DeezerAPIException
      */
     public function getPlaylistsById(int $id): object

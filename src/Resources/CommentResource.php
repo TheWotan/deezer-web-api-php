@@ -6,10 +6,10 @@ namespace Deezer\Resources;
 
 use Deezer\DeezerAPIException;
 use Deezer\Resources\Interfaces\CommentResourceInterface;
-use Deezer\Types;
 
 /**
- * @phpstan-import-type CommentObject from Types
+ * Class CommentResource
+ * @package Deezer\Resources
  */
 class CommentResource extends AbstractResource implements CommentResourceInterface
 {
@@ -19,7 +19,11 @@ class CommentResource extends AbstractResource implements CommentResourceInterfa
      *
      * @auth none
      * @param int $id - The comment's Deezer id
-     * @return CommentObject
+     * @return object{
+     *   id: int, text: string, date: int,
+     *   author: object{id: int, name: string, tracklist: string, type: string},
+     *   type: string
+     * }
      * @throws DeezerAPIException
      */
     public function get(int $id): object

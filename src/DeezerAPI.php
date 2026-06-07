@@ -18,13 +18,10 @@ use Deezer\Resources\SearchResource;
 use Deezer\Resources\TrackResource;
 use Deezer\Resources\UserResource;
 use Deezer\TokenProviderInterface;
-use Deezer\Types;
 
 /**
  * Class DeezerAPI
  * @package Deezer
- *
- * @phpstan-import-type InfosObject from Types
  *
  * @property \Deezer\Resources\Interfaces\AlbumResourceInterface $album
  * @property \Deezer\Resources\Interfaces\ArtistResourceInterface $artist
@@ -214,7 +211,12 @@ class DeezerAPI
      * https://developers.deezer.com/api/infos
      *
      * @auth none
-     * @return InfosObject
+     * @return object{
+     *   country_iso: string, country: string, open: bool, pop: string,
+     *   upload_token: string, upload_token_lifetime: int,
+     *   user_token: string, hosts: object, ads: object,
+     *   has_podcasts: bool, offers: object[]
+     * }
      * @throws DeezerAPIException
      */
     public function infos(): object

@@ -4,14 +4,10 @@ namespace Deezer\Resources;
 
 use Deezer\DeezerAPIException;
 use Deezer\Resources\Interfaces\ChartResourceInterface;
-use Deezer\Types;
 
 /**
  * Class ChartResource
  * @package Deezer\Resources
- *
- * @phpstan-import-type ChartObject from Types
- * @phpstan-import-type Paginated from Types
  */
 class ChartResource extends AbstractResource implements ChartResourceInterface
 {
@@ -21,7 +17,13 @@ class ChartResource extends AbstractResource implements ChartResourceInterface
      *
      * @auth none
      * @param int $id - The genre's Deezer id
-     * @return ChartObject
+     * @return object{
+     *   tracks: object{data: object[], total: int},
+     *   albums: object{data: object[], total: int},
+     *   artists: object{data: object[], total: int},
+     *   playlists: object{data: object[], total: int},
+     *   podcasts: object{data: object[], total: int}
+     * }
      * @throws DeezerAPIException
      */
     public function get(int $id): object
@@ -37,7 +39,7 @@ class ChartResource extends AbstractResource implements ChartResourceInterface
      *
      * @auth none
      * @param int $id - The genre's Deezer id
-     * @return Paginated
+     * @return object{data: object[], total: int, next: string|null}
      * @throws DeezerAPIException
      */
     public function getTracks(int $id): object
@@ -53,7 +55,7 @@ class ChartResource extends AbstractResource implements ChartResourceInterface
      *
      * @auth none
      * @param int $id - The genre's Deezer id
-     * @return Paginated
+     * @return object{data: object[], total: int, next: string|null}
      * @throws DeezerAPIException
      */
     public function getAlbums(int $id): object
@@ -69,7 +71,7 @@ class ChartResource extends AbstractResource implements ChartResourceInterface
      *
      * @auth none
      * @param int $id - The genre's Deezer id
-     * @return Paginated
+     * @return object{data: object[], total: int, next: string|null}
      * @throws DeezerAPIException
      */
     public function getArtists(int $id): object
@@ -86,7 +88,7 @@ class ChartResource extends AbstractResource implements ChartResourceInterface
      *
      * @auth none
      * @param int $id - The genre's Deezer id
-     * @return Paginated
+     * @return object{data: object[], total: int, next: string|null}
      * @throws DeezerAPIException
      */
     public function getPlaylists(int $id): object
@@ -102,7 +104,7 @@ class ChartResource extends AbstractResource implements ChartResourceInterface
      *
      * @auth none
      * @param int $id - The genre's Deezer id
-     * @return Paginated
+     * @return object{data: object[], total: int, next: string|null}
      * @throws DeezerAPIException
      */
     public function getPodcasts(int $id): object

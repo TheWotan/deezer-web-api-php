@@ -4,14 +4,10 @@ namespace Deezer\Resources;
 
 use Deezer\DeezerAPIException;
 use Deezer\Resources\Interfaces\PlaylistResourceInterface;
-use Deezer\Types;
 
 /**
  * Class PlaylistResource
  * @package Deezer\Resources
- *
- * @phpstan-import-type PlaylistObject from Types
- * @phpstan-import-type Paginated from Types
  */
 class PlaylistResource extends AbstractResource implements PlaylistResourceInterface
 {
@@ -21,7 +17,18 @@ class PlaylistResource extends AbstractResource implements PlaylistResourceInter
      *
      * @auth none
      * @param int $id - The playlist deezer ID
-     * @return PlaylistObject
+     * @return object{
+     *   id: int, title: string, description: string, duration: int,
+     *   public: bool, is_loved_track: bool, collaborative: bool,
+     *   nb_tracks: int, fans: int, link: string, share: string,
+     *   picture: string, picture_small: string, picture_medium: string,
+     *   picture_big: string, picture_xl: string, checksum: string,
+     *   tracklist: string, creation_date: string,
+     *   add_date: string, mod_date: string,
+     *   md5_image: string, picture_type: string,
+     *   creator: object{id: int, name: string, tracklist: string, type: string},
+     *   type: string, tracks: object{data: object[], checksum: string}
+     * }
      * @throws DeezerAPIException
      */
     public function get(int $id): object
@@ -37,7 +44,7 @@ class PlaylistResource extends AbstractResource implements PlaylistResourceInter
      *
      * @auth none
      * @param int $id - The playlist deezer ID
-     * @return Paginated
+     * @return object{data: object[], total: int, next: string|null}
      * @throws DeezerAPIException
      */
     public function getComments(int $id): object
@@ -53,7 +60,7 @@ class PlaylistResource extends AbstractResource implements PlaylistResourceInter
      *
      * @auth none
      * @param int $id - The playlist deezer ID
-     * @return Paginated
+     * @return object{data: object[], total: int, next: string|null}
      * @throws DeezerAPIException
      */
     public function getFans(int $id): object
@@ -69,7 +76,7 @@ class PlaylistResource extends AbstractResource implements PlaylistResourceInter
      *
      * @auth none
      * @param int $id - The playlist deezer ID
-     * @return Paginated
+     * @return object{data: object[], total: int, next: string|null}
      * @throws DeezerAPIException
      */
     public function getTracks(int $id): object
@@ -85,7 +92,7 @@ class PlaylistResource extends AbstractResource implements PlaylistResourceInter
      *
      * @auth none
      * @param int $id - The playlist deezer ID
-     * @return Paginated
+     * @return object{data: object[], total: int, next: string|null}
      * @throws DeezerAPIException
      */
     public function getRadio(int $id): object

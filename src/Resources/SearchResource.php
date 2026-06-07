@@ -4,13 +4,10 @@ namespace Deezer\Resources;
 
 use Deezer\DeezerAPIException;
 use Deezer\Resources\Interfaces\SearchResourceInterface;
-use Deezer\Types;
 
 /**
  * Class SearchResource
  * @package Deezer\Resources
- *
- * @phpstan-import-type Paginated from Types
  */
 class SearchResource extends AbstractResource implements SearchResourceInterface
 {
@@ -20,7 +17,7 @@ class SearchResource extends AbstractResource implements SearchResourceInterface
      *
      * @auth none
      * @param string $query - Search query
-     * @return Paginated
+     * @return object{data: object[], total: int, next: string|null}
      * @throws DeezerAPIException
      */
     public function search(string $query): object
@@ -36,7 +33,7 @@ class SearchResource extends AbstractResource implements SearchResourceInterface
      *
      * @auth none
      * @param string $query - Search query
-     * @return Paginated
+     * @return object{data: object[], total: int, next: string|null}
      * @throws DeezerAPIException
      */
     public function track(string $query): object
@@ -52,7 +49,7 @@ class SearchResource extends AbstractResource implements SearchResourceInterface
      *
      * @auth none
      * @param string $query - Search query
-     * @return Paginated
+     * @return object{data: object[], total: int, next: string|null}
      * @throws DeezerAPIException
      */
     public function album(string $query): object
@@ -68,7 +65,7 @@ class SearchResource extends AbstractResource implements SearchResourceInterface
      *
      * @auth none
      * @param string $query - Search query
-     * @return Paginated
+     * @return object{data: object[], total: int, next: string|null}
      * @throws DeezerAPIException
      */
     public function artist(string $query): object
@@ -84,7 +81,7 @@ class SearchResource extends AbstractResource implements SearchResourceInterface
      *
      * @auth none
      * @param string $query - Search query
-     * @return Paginated
+     * @return object{data: object[], total: int, next: string|null}
      * @throws DeezerAPIException
      */
     public function playlist(string $query): object
@@ -100,7 +97,7 @@ class SearchResource extends AbstractResource implements SearchResourceInterface
      *
      * @auth none
      * @param string $query - Search query
-     * @return Paginated
+     * @return object{data: object[], total: int, next: string|null}
      * @throws DeezerAPIException
      */
     public function radio(string $query): object
@@ -116,7 +113,7 @@ class SearchResource extends AbstractResource implements SearchResourceInterface
      *
      * @auth none
      * @param string $query - Search query
-     * @return Paginated
+     * @return object{data: object[], total: int, next: string|null}
      * @throws DeezerAPIException
      */
     public function user(string $query): object
@@ -132,7 +129,7 @@ class SearchResource extends AbstractResource implements SearchResourceInterface
      *
      * @auth none
      * @param string $query - Search query
-     * @return Paginated
+     * @return object{data: object[], total: int, next: string|null}
      * @throws DeezerAPIException
      */
     public function podcast(string $query): object
@@ -148,7 +145,7 @@ class SearchResource extends AbstractResource implements SearchResourceInterface
      *
      * @auth required
      * @param string $query - Search query
-     * @return Paginated
+     * @return object{data: object[], total: int, next: string|null}
      * @throws DeezerAPIException
      */
     public function history(string $query): object

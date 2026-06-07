@@ -5,42 +5,51 @@ declare(strict_types=1);
 namespace Deezer\Resources\Interfaces;
 
 use Deezer\Resources\ResourceInterface;
-use Deezer\Types;
 
 /**
- * @phpstan-import-type PlaylistObject from Types
- * @phpstan-import-type Paginated from Types
+ * Interface PlaylistResourceInterface
  */
 interface PlaylistResourceInterface extends ResourceInterface
 {
     /**
      * @auth none
      * @param int $id - The playlist deezer ID
-     * @return PlaylistObject
+     * @return object{
+     *   id: int, title: string, description: string, duration: int,
+     *   public: bool, is_loved_track: bool, collaborative: bool,
+     *   nb_tracks: int, fans: int, link: string, share: string,
+     *   picture: string, picture_small: string, picture_medium: string,
+     *   picture_big: string, picture_xl: string, checksum: string,
+     *   tracklist: string, creation_date: string,
+     *   add_date: string, mod_date: string,
+     *   md5_image: string, picture_type: string,
+     *   creator: object{id: int, name: string, tracklist: string, type: string},
+     *   type: string, tracks: object{data: object[], checksum: string}
+     * }
      */
     public function get(int $id): object;
     /**
      * @auth none
      * @param int $id - The playlist deezer ID
-     * @return Paginated
+     * @return object{data: object[], total: int, next: string|null}
      */
     public function getComments(int $id): object;
     /**
      * @auth none
      * @param int $id - The playlist deezer ID
-     * @return Paginated
+     * @return object{data: object[], total: int, next: string|null}
      */
     public function getFans(int $id): object;
     /**
      * @auth none
      * @param int $id - The playlist deezer ID
-     * @return Paginated
+     * @return object{data: object[], total: int, next: string|null}
      */
     public function getTracks(int $id): object;
     /**
      * @auth none
      * @param int $id - The playlist deezer ID
-     * @return Paginated
+     * @return object{data: object[], total: int, next: string|null}
      */
     public function getRadio(int $id): object;
     /**

@@ -4,16 +4,10 @@ namespace Deezer\Resources;
 
 use Deezer\DeezerAPIException;
 use Deezer\Resources\Interfaces\GenreResourceInterface;
-use Deezer\Types;
 
 /**
  * Class GenreResource
  * @package Deezer\Resources
- *
- * @phpstan-import-type GenreObject from Types
- * @phpstan-import-type PodcastObject from Types
- * @phpstan-import-type ArtistMini from Types
- * @phpstan-import-type RadioObject from Types
  */
 class GenreResource extends AbstractResource implements GenreResourceInterface
 {
@@ -22,7 +16,7 @@ class GenreResource extends AbstractResource implements GenreResourceInterface
      * https://developers.deezer.com/api/genre
      *
      * @auth none
-     * @return object{data: GenreObject[], total: int}
+     * @return object{data: object[], total: int}
      * @throws DeezerAPIException
      */
     public function list(): object
@@ -38,7 +32,11 @@ class GenreResource extends AbstractResource implements GenreResourceInterface
      *
      * @auth none
      * @param int $id - The genre's Deezer id
-     * @return GenreObject
+     * @return object{
+     *   id: int, name: string,
+     *   picture: string, picture_small: string, picture_medium: string,
+     *   picture_big: string, picture_xl: string, type: string
+     * }
      * @throws DeezerAPIException
      */
     public function get(int $id): object
@@ -55,7 +53,7 @@ class GenreResource extends AbstractResource implements GenreResourceInterface
      *
      * @auth none
      * @param int $id - The genre's Deezer id
-     * @return object{data: PodcastObject[], total: int}
+     * @return object{data: object[], total: int}
      * @throws DeezerAPIException
      */
     public function getPodcasts(int $id): object
@@ -71,7 +69,7 @@ class GenreResource extends AbstractResource implements GenreResourceInterface
      *
      * @auth none
      * @param int $id - The genre's Deezer id
-     * @return object{data: ArtistMini[], total: int}
+     * @return object{data: object[], total: int}
      * @throws DeezerAPIException
      */
     public function getArtists(int $id): object
@@ -87,7 +85,7 @@ class GenreResource extends AbstractResource implements GenreResourceInterface
      *
      * @auth none
      * @param int $id - The genre's Deezer id
-     * @return object{data: RadioObject[], total: int}
+     * @return object{data: object[], total: int}
      * @throws DeezerAPIException
      */
     public function getRadios(int $id): object
