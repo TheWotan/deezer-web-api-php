@@ -180,4 +180,41 @@ class DeezerAPITest extends TestCase
         $this->expectException(\Deezer\DeezerRateLimitException::class);
         $api->infos();
     }
+
+    public function testSetAccessTokenStoresToken(): void
+    {
+        $stub = $this->createPartialMock(Request::class, ['send', 'getLastResponse']);
+        $stub->expects($this->once())
+            ->method('send')
+            ->with(
+                $this->anything(),
+                $this->anything(),
+                $this->callback(function ($params) {
+                    return isset($params['access_token']) && $params['access_token'] === 'test_token_123';
+                }),
+                $this->anything()
+            )
+            ->willReturn(['body' => json_decode('{"country_iso":"UA"}')]);
+
+        $api = new DeezerAPI([], null, $stub);
+        $api->setAccessToken('test_token_123');
+        $api->infos();
+    }
+
+    public function testGetThrowsRuntimeExceptionForInvalidResource(): void
+    {
+        $api = new DeezerAPI();
+
+        $this->expectException(\RuntimeException::class);
+        $api->nonexistentResource;
+    }
+
+    public function testSetResourceOverridesDefault(): void
+    {
+        $api = new DeezerAPI();
+        $mockResource = $this->createMock(\Deezer\Resources\ResourceInterface::class);
+        $api->setResource('album', $mockResource);
+
+        $this->assertSame($mockResource, $api->album);
+    }
 }
