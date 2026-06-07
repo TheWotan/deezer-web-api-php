@@ -49,8 +49,7 @@ class DeezerAPITest extends TestCase
         $expectedParameters,
         $expectedHeaders,
         $fixtureName
-    ): DeezerAPI
-    {
+    ): DeezerAPI {
         $stub = $this->setupStub(
             $expectedMethod,
             $expectedUri,

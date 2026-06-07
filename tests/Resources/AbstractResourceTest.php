@@ -48,8 +48,7 @@ abstract class AbstractResourceTest extends TestCase
         $expectedParameters,
         $expectedHeaders,
         $fixtureName
-    ): DeezerAPI
-    {
+    ): DeezerAPI {
         $stub = $this->setupStub(
             $expectedMethod,
             Request::API_URL . $expectedUri,
