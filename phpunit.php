@@ -4,5 +4,6 @@ error_reporting(-1);
 ini_set('display_errors', "1");
 
 require_once __DIR__ . '/vendor/autoload.php';
+require_once __DIR__ . '/tests/CurlMock.php';
 
 date_default_timezone_set('UTC');
