@@ -60,8 +60,11 @@ class DeezerAPI
      * @param TokenProviderInterface|null $tokenProvider Optional. Token provider to use.
      * @param Request|null $request Optional. The Request object to use.
      */
-    public function __construct(array $options = [], ?TokenProviderInterface $tokenProvider = null, ?Request $request = null)
-    {
+    public function __construct(
+        array $options = [],
+        ?TokenProviderInterface $tokenProvider = null,
+        ?Request $request = null
+    ) {
         $this->setOptions($options);
         $this->tokenProvider = $tokenProvider;
         $this->request = $request ?: new Request();

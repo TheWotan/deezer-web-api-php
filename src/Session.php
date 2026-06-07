@@ -29,8 +29,12 @@ class Session implements TokenProviderInterface
      * @param string $redirect_uri Optional. The redirect URI.
      * @param Request|null $request Optional. The Request object to use.
      */
-    public function __construct(string $app_id, string $secret = '', string $redirect_uri = '', ?Request $request = null)
-    {
+    public function __construct(
+        string $app_id,
+        string $secret = '',
+        string $redirect_uri = '',
+        ?Request $request = null
+    ) {
         $this->setAppId($app_id);
         $this->setSecret($secret);
         $this->setRedirectUri($redirect_uri);
