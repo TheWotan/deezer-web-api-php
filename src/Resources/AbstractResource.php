@@ -6,8 +6,7 @@ use Deezer\DeezerAPI;
 
 abstract class AbstractResource implements ResourceInterface
 {
-    /** @var DeezerAPI $api */
-    protected $api;
+    protected DeezerAPI $api;
 
     /**
      * Constructor

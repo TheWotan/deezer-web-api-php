@@ -3,12 +3,13 @@
 namespace Deezer\Resources;
 
 use Deezer\DeezerAPIException;
+use Deezer\Resources\Interfaces\SearchResourceInterface;
 
 /**
  * Class SearchResource
  * @package Deezer\Resources
  */
-class SearchResource extends AbstractResource
+class SearchResource extends AbstractResource implements SearchResourceInterface
 {
     /**
      * Search tracks
@@ -111,6 +112,21 @@ class SearchResource extends AbstractResource
     public function user(string $query)
     {
         $response = $this->api->sendRequest('GET', "/search/user", ['q' => $query]);
+
+        return $response['body'];
+    }
+
+    /**
+     * Search podcasts.
+     * https://developers.deezer.com/api/search/podcast
+     *
+     * @param string $query - Search query
+     * @return array|object A list of object of type podcast
+     * @throws DeezerAPIException
+     */
+    public function podcast(string $query)
+    {
+        $response = $this->api->sendRequest('GET', "/search/podcast", ['q' => $query]);
 
         return $response['body'];
     }

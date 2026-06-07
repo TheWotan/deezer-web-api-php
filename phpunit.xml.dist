@@ -32,4 +32,11 @@
       <directory>./tests/</directory>
     </testsuite>
   </testsuites>
+
+  <groups>
+    <exclude>
+      <group>real-api</group>
+    </exclude>
+  </groups>
+
 </phpunit>

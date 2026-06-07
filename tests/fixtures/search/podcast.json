@@ -1,0 +1,7 @@
+{
+  "data": [
+    { "id": 100, "title": "Tech Talk", "type": "podcast" }
+  ],
+  "total": 1,
+  "next": "https://api.deezer.com/search/podcast?q=tech&index=25"
+}

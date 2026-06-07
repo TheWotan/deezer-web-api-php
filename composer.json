@@ -3,23 +3,30 @@
     "description": "A PHP wrapper for Deezer Web API",
     "type": "library",
     "require": {
-        "php": ">=7.1",
+        "php": ">=7.4",
         "ext-curl": "*"
     },
     "require-dev": {
-        "php": ">=7.3",
+        "php": ">=7.4",
         "phpunit/phpunit": "^9.5",
         "php-coveralls/php-coveralls": "^2.4",
         "squizlabs/php_codesniffer": "^3.6",
         "ext-json": "*"
     },
     "autoload": {
-        "classmap": [
-            "src/"
-        ]
+        "psr-4": {
+            "Deezer\\": "src/"
+        }
+    },
+    "autoload-dev": {
+        "psr-4": {
+            "Deezer\\Tests\\": "tests/"
+        }
     },
     "scripts": {
-        "test": "phpcs src -v && phpunit"
+        "test": "phpcs src -v && phpunit",
+        "coverage": "XDEBUG_MODE=coverage phpunit --coverage-text",
+        "coverage:html": "XDEBUG_MODE=coverage phpunit --coverage-html build/logs/html"
     },
     "license": "MIT",
     "authors": [

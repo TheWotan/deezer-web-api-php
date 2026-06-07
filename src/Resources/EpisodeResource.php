@@ -3,12 +3,13 @@
 namespace Deezer\Resources;
 
 use Deezer\DeezerAPIException;
+use Deezer\Resources\Interfaces\EpisodeResourceInterface;
 
 /**
  * Class EpisodeResource
  * @package Deezer\Resources
  */
-class EpisodeResource extends AbstractResource
+class EpisodeResource extends AbstractResource implements EpisodeResourceInterface
 {
     /**
      * Get An podcast object

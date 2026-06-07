@@ -2,9 +2,11 @@
 
 declare(strict_types=1);
 
-use Deezer\DeezerAPIException;
+namespace Deezer\Tests\Resources;
 
-require_once __DIR__ . "/AbstractResourceTest.php";
+use Deezer\DeezerAPI;
+use Deezer\DeezerAPIException;
+use Deezer\Request;
 
 class UserResourceTest extends AbstractResourceTest
 {
@@ -12,6 +14,7 @@ class UserResourceTest extends AbstractResourceTest
 
     /**
      * @throws DeezerAPIException
+     * @group real-api
      */
     public function testRealGet()
     {
@@ -35,7 +38,7 @@ class UserResourceTest extends AbstractResourceTest
 
         $response = $api->user->get(self::ID);
 
-        $this->assertObjectHasAttribute("id", $response);
+        $this->assertObjectHasProperty("id", $response);
         $this->assertEquals("user", $response->type);
         $this->assertEquals(self::ID, $response->id);
     }
@@ -55,7 +58,7 @@ class UserResourceTest extends AbstractResourceTest
 
         $response = $api->user->me();
 
-        $this->assertObjectHasAttribute("id", $response);
+        $this->assertObjectHasProperty("id", $response);
         $this->assertEquals("user", $response->type);
         $this->assertEquals(self::ID, $response->id);
     }
@@ -75,7 +78,7 @@ class UserResourceTest extends AbstractResourceTest
 
         $response = $api->user->getAlbums();
 
-        $this->assertObjectHasAttribute("data", $response);
+        $this->assertObjectHasProperty("data", $response);
         foreach ($response->data as $datum) {
             $this->assertEquals("album", $datum->type);
         }
@@ -96,7 +99,7 @@ class UserResourceTest extends AbstractResourceTest
 
         $response = $api->user->getArtists();
 
-        $this->assertObjectHasAttribute("data", $response);
+        $this->assertObjectHasProperty("data", $response);
         foreach ($response->data as $datum) {
             $this->assertEquals("artist", $datum->type);
         }
@@ -117,7 +120,7 @@ class UserResourceTest extends AbstractResourceTest
 
         $response = $api->user->getFlow();
 
-        $this->assertObjectHasAttribute("data", $response);
+        $this->assertObjectHasProperty("data", $response);
         foreach ($response->data as $datum) {
             $this->assertEquals("track", $datum->type);
         }
@@ -138,7 +141,7 @@ class UserResourceTest extends AbstractResourceTest
 
         $response = $api->user->getFollowings();
 
-        $this->assertObjectHasAttribute("data", $response);
+        $this->assertObjectHasProperty("data", $response);
         foreach ($response->data as $datum) {
             $this->assertEquals("user", $datum->type);
         }
@@ -160,7 +163,7 @@ class UserResourceTest extends AbstractResourceTest
 
         $response = $api->user->getFollowers();
 
-        $this->assertObjectHasAttribute("data", $response);
+        $this->assertObjectHasProperty("data", $response);
         foreach ($response->data as $datum) {
             $this->assertEquals("user", $datum->type);
         }
@@ -181,7 +184,7 @@ class UserResourceTest extends AbstractResourceTest
 
         $response = $api->user->getOptions();
 
-        $this->assertObjectHasAttribute("type", $response);
+        $this->assertObjectHasProperty("type", $response);
         $this->assertEquals("options", $response->type);
     }
 
@@ -200,8 +203,8 @@ class UserResourceTest extends AbstractResourceTest
 
         $response = $api->user->getPermissions();
 
-        $this->assertObjectHasAttribute("permissions", $response);
-        $this->assertObjectHasAttribute("basic_access", $response->permissions);
+        $this->assertObjectHasProperty("permissions", $response);
+        $this->assertObjectHasProperty("basic_access", $response->permissions);
     }
 
     /**
@@ -219,7 +222,7 @@ class UserResourceTest extends AbstractResourceTest
 
         $response = $api->user->getPersonalSongs();
 
-        $this->assertObjectHasAttribute("data", $response);
+        $this->assertObjectHasProperty("data", $response);
         foreach ($response->data as $datum) {
             $this->assertEquals("track", $datum->type);
         }
@@ -240,7 +243,7 @@ class UserResourceTest extends AbstractResourceTest
 
         $response = $api->user->getPlaylists();
 
-        $this->assertObjectHasAttribute("data", $response);
+        $this->assertObjectHasProperty("data", $response);
         foreach ($response->data as $datum) {
             $this->assertEquals("playlist", $datum->type);
         }
@@ -261,7 +264,7 @@ class UserResourceTest extends AbstractResourceTest
 
         $response = $api->user->getRecommendationsArtists();
 
-        $this->assertObjectHasAttribute("data", $response);
+        $this->assertObjectHasProperty("data", $response);
         foreach ($response->data as $datum) {
             $this->assertEquals("artist", $datum->type);
         }
@@ -282,7 +285,7 @@ class UserResourceTest extends AbstractResourceTest
 
         $response = $api->user->getRecommendationsAlbums();
 
-        $this->assertObjectHasAttribute("data", $response);
+        $this->assertObjectHasProperty("data", $response);
         foreach ($response->data as $datum) {
             $this->assertEquals("album", $datum->type);
         }
@@ -303,7 +306,7 @@ class UserResourceTest extends AbstractResourceTest
 
         $response = $api->user->getRecommendationsReleases();
 
-        $this->assertObjectHasAttribute("data", $response);
+        $this->assertObjectHasProperty("data", $response);
         foreach ($response->data as $datum) {
             $this->assertEquals("album", $datum->type);
         }
@@ -324,7 +327,7 @@ class UserResourceTest extends AbstractResourceTest
 
         $response = $api->user->getRecommendationsPlaylists();
 
-        $this->assertObjectHasAttribute("data", $response);
+        $this->assertObjectHasProperty("data", $response);
         foreach ($response->data as $datum) {
             $this->assertEquals("playlist", $datum->type);
         }
@@ -345,7 +348,7 @@ class UserResourceTest extends AbstractResourceTest
 
         $response = $api->user->getRecommendationsRadios();
 
-        $this->assertObjectHasAttribute("data", $response);
+        $this->assertObjectHasProperty("data", $response);
         foreach ($response->data as $datum) {
             $this->assertEquals("radio", $datum->type);
         }
@@ -366,7 +369,7 @@ class UserResourceTest extends AbstractResourceTest
 
         $response = $api->user->getRecommendationsTracks();
 
-        $this->assertObjectHasAttribute("data", $response);
+        $this->assertObjectHasProperty("data", $response);
         foreach ($response->data as $datum) {
             $this->assertEquals("track", $datum->type);
         }
@@ -387,7 +390,7 @@ class UserResourceTest extends AbstractResourceTest
 
         $response = $api->user->getTracks();
 
-        $this->assertObjectHasAttribute("data", $response);
+        $this->assertObjectHasProperty("data", $response);
         foreach ($response->data as $datum) {
             $this->assertEquals("track", $datum->type);
         }
@@ -408,7 +411,7 @@ class UserResourceTest extends AbstractResourceTest
 
         $response = $api->user->getChartsTracks();
 
-        $this->assertObjectHasAttribute("data", $response);
+        $this->assertObjectHasProperty("data", $response);
         foreach ($response->data as $datum) {
             $this->assertEquals("track", $datum->type);
         }
@@ -429,7 +432,7 @@ class UserResourceTest extends AbstractResourceTest
 
         $response = $api->user->getChartsArtists();
 
-        $this->assertObjectHasAttribute("data", $response);
+        $this->assertObjectHasProperty("data", $response);
         foreach ($response->data as $datum) {
             $this->assertEquals("artist", $datum->type);
         }
@@ -450,7 +453,7 @@ class UserResourceTest extends AbstractResourceTest
 
         $response = $api->user->getChartsAlbums();
 
-        $this->assertObjectHasAttribute("data", $response);
+        $this->assertObjectHasProperty("data", $response);
         foreach ($response->data as $datum) {
             $this->assertEquals("album", $datum->type);
         }
@@ -471,7 +474,7 @@ class UserResourceTest extends AbstractResourceTest
 
         $response = $api->user->getChartsPlaylists();
 
-        $this->assertObjectHasAttribute("data", $response);
+        $this->assertObjectHasProperty("data", $response);
         foreach ($response->data as $datum) {
             $this->assertEquals("playlist", $datum->type);
         }
@@ -492,7 +495,7 @@ class UserResourceTest extends AbstractResourceTest
 
         $response = $api->user->getHistory();
 
-        $this->assertObjectHasAttribute("data", $response);
+        $this->assertObjectHasProperty("data", $response);
         foreach ($response->data as $datum) {
             $this->assertEquals("track", $datum->type);
         }
@@ -513,7 +516,7 @@ class UserResourceTest extends AbstractResourceTest
 
         $response = $api->user->getFolders();
 
-        $this->assertObjectHasAttribute("data", $response);
+        $this->assertObjectHasProperty("data", $response);
         foreach ($response->data as $datum) {
             $this->assertEquals("folder", $datum->type);
         }
@@ -534,9 +537,213 @@ class UserResourceTest extends AbstractResourceTest
 
         $response = $api->user->getRadios();
 
-        $this->assertObjectHasAttribute("data", $response);
+        $this->assertObjectHasProperty("data", $response);
         foreach ($response->data as $datum) {
             $this->assertEquals("radio", $datum->type);
         }
+    }
+
+    public function testGetAlbumsById(): void
+    {
+        $stub = $this->createPartialMock(Request::class, ['send', 'getLastResponse']);
+        $return = ['body' => json_decode(file_get_contents('tests/fixtures/user/albums.json'))];
+        $stub->method('send')
+            ->with('GET', Request::API_URL . '/user/12345/albums', [], [])
+            ->willReturn($return);
+        $stub->method('getLastResponse')->willReturn($return);
+        $api = new DeezerAPI([], null, $stub);
+
+        $result = $api->user->getAlbumsById(12345);
+        $this->assertObjectHasProperty('data', $result);
+    }
+
+    public function testGetArtistsById(): void
+    {
+        $stub = $this->createPartialMock(Request::class, ['send', 'getLastResponse']);
+        $return = ['body' => json_decode(file_get_contents('tests/fixtures/user/artists.json'))];
+        $stub->method('send')
+            ->with('GET', Request::API_URL . '/user/12345/artists', [], [])
+            ->willReturn($return);
+        $stub->method('getLastResponse')->willReturn($return);
+        $api = new DeezerAPI([], null, $stub);
+
+        $result = $api->user->getArtistsById(12345);
+        $this->assertObjectHasProperty('data', $result);
+    }
+
+    public function testGetFollowersById(): void
+    {
+        $stub = $this->createPartialMock(Request::class, ['send', 'getLastResponse']);
+        $return = ['body' => json_decode(file_get_contents('tests/fixtures/user/followers.json'))];
+        $stub->method('send')
+            ->with('GET', Request::API_URL . '/user/12345/followers', [], [])
+            ->willReturn($return);
+        $stub->method('getLastResponse')->willReturn($return);
+        $api = new DeezerAPI([], null, $stub);
+
+        $result = $api->user->getFollowersById(12345);
+        $this->assertObjectHasProperty('data', $result);
+    }
+
+    public function testGetFollowingsById(): void
+    {
+        $stub = $this->createPartialMock(Request::class, ['send', 'getLastResponse']);
+        $return = ['body' => json_decode(file_get_contents('tests/fixtures/user/following.json'))];
+        $stub->method('send')
+            ->with('GET', Request::API_URL . '/user/12345/following', [], [])
+            ->willReturn($return);
+        $stub->method('getLastResponse')->willReturn($return);
+        $api = new DeezerAPI([], null, $stub);
+
+        $result = $api->user->getFollowingsById(12345);
+        $this->assertObjectHasProperty('data', $result);
+    }
+
+    public function testGetPlaylistsById(): void
+    {
+        $stub = $this->createPartialMock(Request::class, ['send', 'getLastResponse']);
+        $return = ['body' => json_decode(file_get_contents('tests/fixtures/user/playlists.json'))];
+        $stub->method('send')
+            ->with('GET', Request::API_URL . '/user/12345/playlists', [], [])
+            ->willReturn($return);
+        $stub->method('getLastResponse')->willReturn($return);
+        $api = new DeezerAPI([], null, $stub);
+
+        $result = $api->user->getPlaylistsById(12345);
+        $this->assertObjectHasProperty('data', $result);
+    }
+
+    public function testAddAlbum(): void
+    {
+        $stub = $this->createPartialMock(Request::class, ['send', 'getLastResponse']);
+        $return = ['body' => true];
+        $stub->method('send')
+            ->with('POST', Request::API_URL . '/user/me/albums', ['album_id' => 302127], [])
+            ->willReturn($return);
+        $stub->method('getLastResponse')->willReturn($return);
+        $api = new DeezerAPI([], null, $stub);
+        $this->assertTrue($api->user->addAlbum(302127));
+    }
+
+    public function testRemoveAlbum(): void
+    {
+        $stub = $this->createPartialMock(Request::class, ['send', 'getLastResponse']);
+        $return = ['body' => true];
+        $stub->method('send')
+            ->with('DELETE', Request::API_URL . '/user/me/albums', ['album_id' => 302127], [])
+            ->willReturn($return);
+        $stub->method('getLastResponse')->willReturn($return);
+        $api = new DeezerAPI([], null, $stub);
+        $this->assertTrue($api->user->removeAlbum(302127));
+    }
+
+    public function testFollowArtist(): void
+    {
+        $stub = $this->createPartialMock(Request::class, ['send', 'getLastResponse']);
+        $return = ['body' => true];
+        $stub->method('send')
+            ->with('POST', Request::API_URL . '/user/me/artists', ['artist_id' => 27], [])
+            ->willReturn($return);
+        $stub->method('getLastResponse')->willReturn($return);
+        $api = new DeezerAPI([], null, $stub);
+        $this->assertTrue($api->user->followArtist(27));
+    }
+
+    public function testUnfollowArtist(): void
+    {
+        $stub = $this->createPartialMock(Request::class, ['send', 'getLastResponse']);
+        $return = ['body' => true];
+        $stub->method('send')
+            ->with('DELETE', Request::API_URL . '/user/me/artists', ['artist_id' => 27], [])
+            ->willReturn($return);
+        $stub->method('getLastResponse')->willReturn($return);
+        $api = new DeezerAPI([], null, $stub);
+        $this->assertTrue($api->user->unfollowArtist(27));
+    }
+
+    public function testFollowUser(): void
+    {
+        $stub = $this->createPartialMock(Request::class, ['send', 'getLastResponse']);
+        $return = ['body' => true];
+        $stub->method('send')
+            ->with('POST', Request::API_URL . '/user/me/following', ['user_id' => 5], [])
+            ->willReturn($return);
+        $stub->method('getLastResponse')->willReturn($return);
+        $api = new DeezerAPI([], null, $stub);
+        $this->assertTrue($api->user->followUser(5));
+    }
+
+    public function testUnfollowUser(): void
+    {
+        $stub = $this->createPartialMock(Request::class, ['send', 'getLastResponse']);
+        $return = ['body' => true];
+        $stub->method('send')
+            ->with('DELETE', Request::API_URL . '/user/me/following', ['user_id' => 5], [])
+            ->willReturn($return);
+        $stub->method('getLastResponse')->willReturn($return);
+        $api = new DeezerAPI([], null, $stub);
+        $this->assertTrue($api->user->unfollowUser(5));
+    }
+
+    public function testAddTrack(): void
+    {
+        $stub = $this->createPartialMock(Request::class, ['send', 'getLastResponse']);
+        $return = ['body' => true];
+        $stub->method('send')
+            ->with('POST', Request::API_URL . '/user/me/tracks', ['track_id' => 3135556], [])
+            ->willReturn($return);
+        $stub->method('getLastResponse')->willReturn($return);
+        $api = new DeezerAPI([], null, $stub);
+        $this->assertTrue($api->user->addTrack(3135556));
+    }
+
+    public function testRemoveTrack(): void
+    {
+        $stub = $this->createPartialMock(Request::class, ['send', 'getLastResponse']);
+        $return = ['body' => true];
+        $stub->method('send')
+            ->with('DELETE', Request::API_URL . '/user/me/tracks', ['track_id' => 3135556], [])
+            ->willReturn($return);
+        $stub->method('getLastResponse')->willReturn($return);
+        $api = new DeezerAPI([], null, $stub);
+        $this->assertTrue($api->user->removeTrack(3135556));
+    }
+
+    public function testAddRadio(): void
+    {
+        $stub = $this->createPartialMock(Request::class, ['send', 'getLastResponse']);
+        $return = ['body' => true];
+        $stub->method('send')
+            ->with('POST', Request::API_URL . '/user/me/radios', ['radio_id' => 23], [])
+            ->willReturn($return);
+        $stub->method('getLastResponse')->willReturn($return);
+        $api = new DeezerAPI([], null, $stub);
+        $this->assertTrue($api->user->addRadio(23));
+    }
+
+    public function testRemoveRadio(): void
+    {
+        $stub = $this->createPartialMock(Request::class, ['send', 'getLastResponse']);
+        $return = ['body' => true];
+        $stub->method('send')
+            ->with('DELETE', Request::API_URL . '/user/me/radios', ['radio_id' => 23], [])
+            ->willReturn($return);
+        $stub->method('getLastResponse')->willReturn($return);
+        $api = new DeezerAPI([], null, $stub);
+        $this->assertTrue($api->user->removeRadio(23));
+    }
+
+    public function testCreatePlaylist(): void
+    {
+        $stub = $this->createPartialMock(Request::class, ['send', 'getLastResponse']);
+        $return = ['body' => json_decode('{"id": 999}')];
+        $stub->method('send')
+            ->with('POST', Request::API_URL . '/user/me/playlists', ['title' => 'My List'], [])
+            ->willReturn($return);
+        $stub->method('getLastResponse')->willReturn($return);
+        $api = new DeezerAPI([], null, $stub);
+
+        $result = $api->user->createPlaylist('My List');
+        $this->assertSame(999, $result->id);
     }
 }

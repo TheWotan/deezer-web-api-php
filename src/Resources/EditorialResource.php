@@ -3,12 +3,13 @@
 namespace Deezer\Resources;
 
 use Deezer\DeezerAPIException;
+use Deezer\Resources\Interfaces\EditorialResourceInterface;
 
 /**
  * Class EditorialResource
  * @package Deezer\Resources
  */
-class EditorialResource extends AbstractResource
+class EditorialResource extends AbstractResource implements EditorialResourceInterface
 {
     /**
      * Get An list of editorial objects

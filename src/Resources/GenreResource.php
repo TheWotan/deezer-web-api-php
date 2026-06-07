@@ -3,12 +3,13 @@
 namespace Deezer\Resources;
 
 use Deezer\DeezerAPIException;
+use Deezer\Resources\Interfaces\GenreResourceInterface;
 
 /**
  * Class GenreResource
  * @package Deezer\Resources
  */
-class GenreResource extends AbstractResource
+class GenreResource extends AbstractResource implements GenreResourceInterface
 {
     /**
      * Get An list of genre objects

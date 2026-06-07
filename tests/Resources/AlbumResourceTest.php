@@ -2,9 +2,11 @@
 
 declare(strict_types=1);
 
-use Deezer\DeezerAPIException;
+namespace Deezer\Tests\Resources;
 
-require_once __DIR__ . "/AbstractResourceTest.php";
+use Deezer\DeezerAPI;
+use Deezer\DeezerAPIException;
+use Deezer\Request;
 
 class AlbumResourceTest extends AbstractResourceTest
 {
@@ -13,6 +15,7 @@ class AlbumResourceTest extends AbstractResourceTest
 
     /**
      * @throws DeezerAPIException
+     * @group real-api
      */
     public function testRealGet()
     {
@@ -37,7 +40,7 @@ class AlbumResourceTest extends AbstractResourceTest
 
         $response = $api->album->get(self::ID);
 
-        $this->assertObjectHasAttribute("id", $response);
+        $this->assertObjectHasProperty("id", $response);
         $this->assertEquals("album", $response->type);
     }
 
@@ -56,7 +59,7 @@ class AlbumResourceTest extends AbstractResourceTest
 
         $response = $api->album->getFans(self::ID);
 
-        $this->assertObjectHasAttribute("data", $response);
+        $this->assertObjectHasProperty("data", $response);
         foreach ($response->data as $datum) {
             $this->assertEquals("user", $datum->type);
         }
@@ -77,9 +80,26 @@ class AlbumResourceTest extends AbstractResourceTest
 
         $response = $api->album->getTracks(self::ID);
 
-        $this->assertObjectHasAttribute("data", $response);
+        $this->assertObjectHasProperty("data", $response);
         foreach ($response->data as $datum) {
             $this->assertEquals("track", $datum->type);
         }
+    }
+
+    /**
+     * @throws DeezerAPIException
+     */
+    public function testGetComments(): void
+    {
+        $stub = $this->createPartialMock(Request::class, ['send', 'getLastResponse']);
+        $return = ['body' => json_decode(file_get_contents('tests/fixtures/album/comments.json'))];
+        $stub->method('send')
+            ->with('GET', Request::API_URL . '/album/302127/comments', [], [])
+            ->willReturn($return);
+        $stub->method('getLastResponse')->willReturn($return);
+        $api = new DeezerAPI([], null, $stub);
+
+        $result = $api->album->getComments(302127);
+        $this->assertObjectHasProperty('data', $result);
     }
 }

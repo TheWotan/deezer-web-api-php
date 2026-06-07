@@ -3,12 +3,13 @@
 namespace Deezer\Resources;
 
 use Deezer\DeezerAPIException;
+use Deezer\Resources\Interfaces\TrackResourceInterface;
 
 /**
  * Class TrackResource
  * @package Deezer\Resources
  */
-class TrackResource extends AbstractResource
+class TrackResource extends AbstractResource implements TrackResourceInterface
 {
     /**
      * Get An track object

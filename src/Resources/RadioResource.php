@@ -3,12 +3,13 @@
 namespace Deezer\Resources;
 
 use Deezer\DeezerAPIException;
+use Deezer\Resources\Interfaces\RadioResourceInterface;
 
 /**
  * Class RadioResource
  * @package Deezer\Resources
  */
-class RadioResource extends AbstractResource
+class RadioResource extends AbstractResource implements RadioResourceInterface
 {
     /**
      * Get An list of radio objects

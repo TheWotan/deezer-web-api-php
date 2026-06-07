@@ -2,16 +2,19 @@
 
 declare(strict_types=1);
 
-use Deezer\DeezerAPIException;
+namespace Deezer\Tests\Resources;
 
-require_once __DIR__ . "/AbstractResourceTest.php";
+use Deezer\DeezerAPI;
+use Deezer\DeezerAPIException;
+use Deezer\Request;
 
 class PlaylistResourceTest extends AbstractResourceTest
 {
-    private const ID = 8955895882;
+    private const ID = 1362526495;
 
     /**
      * @throws DeezerAPIException
+     * @group real-api
      */
     public function testRealGet()
     {
@@ -35,7 +38,7 @@ class PlaylistResourceTest extends AbstractResourceTest
 
         $response = $api->playlist->get(self::ID);
 
-        $this->assertObjectHasAttribute("id", $response);
+        $this->assertObjectHasProperty("id", $response);
         $this->assertEquals(self::ID, $response->id);
         $this->assertEquals('playlist', $response->type);
     }
@@ -55,7 +58,7 @@ class PlaylistResourceTest extends AbstractResourceTest
 
         $response = $api->playlist->getTracks(self::ID);
 
-        $this->assertObjectHasAttribute("data", $response);
+        $this->assertObjectHasProperty("data", $response);
         foreach ($response->data as $datum) {
             $this->assertEquals("track", $datum->type);
         }
@@ -76,7 +79,7 @@ class PlaylistResourceTest extends AbstractResourceTest
 
         $response = $api->playlist->getFans(self::ID);
 
-        $this->assertObjectHasAttribute("data", $response);
+        $this->assertObjectHasProperty("data", $response);
         foreach ($response->data as $datum) {
             $this->assertEquals("user", $datum->type);
         }
@@ -97,9 +100,76 @@ class PlaylistResourceTest extends AbstractResourceTest
 
         $response = $api->playlist->getRadio(self::ID);
 
-        $this->assertObjectHasAttribute("data", $response);
+        $this->assertObjectHasProperty("data", $response);
         foreach ($response->data as $datum) {
             $this->assertEquals("track", $datum->type);
         }
+    }
+
+    /**
+     * @throws DeezerAPIException
+     */
+    public function testGetComments(): void
+    {
+        $stub = $this->createPartialMock(Request::class, ['send', 'getLastResponse']);
+        $return = ['body' => json_decode(file_get_contents('tests/fixtures/playlist/comments.json'))];
+        $stub->method('send')
+            ->with('GET', Request::API_URL . '/playlist/908622995/comments', [], [])
+            ->willReturn($return);
+        $stub->method('getLastResponse')->willReturn($return);
+        $api = new DeezerAPI([], null, $stub);
+
+        $result = $api->playlist->getComments(908622995);
+        $this->assertObjectHasProperty('data', $result);
+    }
+
+    public function testCreate(): void
+    {
+        $stub = $this->createPartialMock(Request::class, ['send', 'getLastResponse']);
+        $return = ['body' => json_decode('{"id": 888}')];
+        $stub->method('send')
+            ->with('POST', Request::API_URL . '/user/42/playlists', ['title' => 'New Playlist'], [])
+            ->willReturn($return);
+        $stub->method('getLastResponse')->willReturn($return);
+        $api = new DeezerAPI([], null, $stub);
+
+        $result = $api->playlist->create(42, 'New Playlist');
+        $this->assertSame(888, $result->id);
+    }
+
+    public function testDelete(): void
+    {
+        $stub = $this->createPartialMock(Request::class, ['send', 'getLastResponse']);
+        $return = ['body' => true];
+        $stub->method('send')
+            ->with('DELETE', Request::API_URL . '/playlist/888', [], [])
+            ->willReturn($return);
+        $stub->method('getLastResponse')->willReturn($return);
+        $api = new DeezerAPI([], null, $stub);
+        $this->assertTrue($api->playlist->delete(888));
+    }
+
+    public function testAddTracks(): void
+    {
+        $stub = $this->createPartialMock(Request::class, ['send', 'getLastResponse']);
+        $return = ['body' => true];
+        $stub->method('send')
+            ->with('POST', Request::API_URL . '/playlist/888/tracks', ['songs' => '1,2,3'], [])
+            ->willReturn($return);
+        $stub->method('getLastResponse')->willReturn($return);
+        $api = new DeezerAPI([], null, $stub);
+        $this->assertTrue($api->playlist->addTracks(888, [1, 2, 3]));
+    }
+
+    public function testRemoveTracks(): void
+    {
+        $stub = $this->createPartialMock(Request::class, ['send', 'getLastResponse']);
+        $return = ['body' => true];
+        $stub->method('send')
+            ->with('DELETE', Request::API_URL . '/playlist/888/tracks', ['songs' => '1,2,3'], [])
+            ->willReturn($return);
+        $stub->method('getLastResponse')->willReturn($return);
+        $api = new DeezerAPI([], null, $stub);
+        $this->assertTrue($api->playlist->removeTracks(888, [1, 2, 3]));
     }
 }

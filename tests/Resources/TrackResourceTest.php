@@ -2,9 +2,9 @@
 
 declare(strict_types=1);
 
-use Deezer\DeezerAPIException;
+namespace Deezer\Tests\Resources;
 
-require_once __DIR__ . "/AbstractResourceTest.php";
+use Deezer\DeezerAPIException;
 
 class TrackResourceTest extends AbstractResourceTest
 {
@@ -12,6 +12,7 @@ class TrackResourceTest extends AbstractResourceTest
 
     /**
      * @throws DeezerAPIException
+     * @group real-api
      */
     public function testRealGet()
     {
@@ -35,7 +36,7 @@ class TrackResourceTest extends AbstractResourceTest
 
         $response = $api->track->get(self::ID);
 
-        $this->assertObjectHasAttribute("id", $response);
+        $this->assertObjectHasProperty("id", $response);
         $this->assertEquals(self::ID, $response->id);
         $this->assertEquals("track", $response->type);
     }

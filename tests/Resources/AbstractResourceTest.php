@@ -2,6 +2,8 @@
 
 declare(strict_types=1);
 
+namespace Deezer\Tests\Resources;
+
 use Deezer\DeezerAPI;
 use Deezer\Request;
 use PHPUnit\Framework\TestCase;
@@ -12,12 +14,12 @@ abstract class AbstractResourceTest extends TestCase
 
     protected function setUp(): void
     {
-        $this->apiReal = new Deezer\DeezerAPI();
+        $this->apiReal = new DeezerAPI([], null);
     }
 
     protected function setupStub($expectedMethod, $expectedUri, $expectedParameters, $expectedHeaders, $fixtureName)
     {
-        $stub = $this->createPartialMock(Deezer\Request::class, ["send", "getLastResponse"]);
+        $stub = $this->createPartialMock(Request::class, ["send", "getLastResponse"]);
 
         $expectedReturn = [
             "body" => json_decode(file_get_contents(__DIR__ . "/../fixtures/$fixtureName.json"))
@@ -40,8 +42,13 @@ abstract class AbstractResourceTest extends TestCase
         return $stub;
     }
 
-    protected function setupApi($expectedMethod, $expectedUri, $expectedParameters, $expectedHeaders, $fixtureName): DeezerAPI
-    {
+    protected function setupApi(
+        $expectedMethod,
+        $expectedUri,
+        $expectedParameters,
+        $expectedHeaders,
+        $fixtureName
+    ): DeezerAPI {
         $stub = $this->setupStub(
             $expectedMethod,
             Request::API_URL . $expectedUri,
@@ -50,6 +57,6 @@ abstract class AbstractResourceTest extends TestCase
             $fixtureName
         );
 
-        return new Deezer\DeezerAPI([], $stub);
+        return new DeezerAPI([], null, $stub);
     }
 }

@@ -1,0 +1,12 @@
+{
+  "id": 12345,
+  "text": "Great album!",
+  "date": 1621352235,
+  "author": {
+    "id": 67890,
+    "name": "Deezer User",
+    "tracklist": "https://api.deezer.com/user/67890/flow",
+    "type": "user"
+  },
+  "type": "comment"
+}

@@ -4,19 +4,21 @@ declare(strict_types=1);
 
 namespace Deezer;
 
-class Session
+use Deezer\TokenProviderInterface;
+
+class Session implements TokenProviderInterface
 {
     public const AUTH_URL = 'https://connect.deezer.com';
 
-    protected $app_id = '';
-    protected $secret = '';
-    protected $redirect_uri = '';
-    protected $perms = '';
+    protected string $app_id = '';
+    protected string $secret = '';
+    protected string $redirect_uri = '';
+    protected string $perms = '';
 
-    protected $access_token = '';
-    protected $expires = 0;
+    protected string $access_token = '';
+    protected int $expires = 0;
 
-    protected $request = null;
+    protected ?Request $request = null;
 
     /**
      * Constructor
@@ -27,8 +29,12 @@ class Session
      * @param string $redirect_uri Optional. The redirect URI.
      * @param Request|null $request Optional. The Request object to use.
      */
-    public function __construct(string $app_id, string $secret = '', string $redirect_uri = '', Request $request = null)
-    {
+    public function __construct(
+        string $app_id,
+        string $secret = '',
+        string $redirect_uri = '',
+        ?Request $request = null
+    ) {
         $this->setAppId($app_id);
         $this->setSecret($secret);
         $this->setRedirectUri($redirect_uri);
@@ -117,10 +123,26 @@ class Session
 
         if (isset($response['access_token']) && isset($response['expires'])) {
             $this->access_token = $response['access_token'];
-            $this->expires = (int)$response['expires'];
+            $expiresIn = (int)$response['expires'];
+            $this->expires = $expiresIn > 0 ? time() + $expiresIn : 1;
             return true;
         }
 
+        return false;
+    }
+
+    public function getToken(): string
+    {
+        return $this->access_token;
+    }
+
+    public function isExpired(): bool
+    {
+        return $this->expires > 0 && time() > $this->expires;
+    }
+
+    public function refresh(): bool
+    {
         return false;
     }
 

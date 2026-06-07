@@ -2,10 +2,13 @@
 
 declare(strict_types=1);
 
+namespace Deezer\Tests;
+
 use Deezer\Request;
+use PHPUnit\Framework\TestCase;
 use Deezer\Session;
 
-class SessionTest extends PHPUnit\Framework\TestCase
+class SessionTest extends TestCase
 {
     private $app_id = '501282';
     private $secret = '4ebcfc1c71578fcb493fc64d01b968e5';
@@ -114,5 +117,69 @@ class SessionTest extends PHPUnit\Framework\TestCase
         $result = $session->requestAccessToken($code);
 
         $this->assertFalse($result);
+    }
+
+    public function testGetAuthorizeUrlContainsAppId(): void
+    {
+        $session = new Session('my_app_id', 'secret', 'https://example.com/cb');
+        $url = $session->getAuthorizeUrl(['perms' => ['basic_access']]);
+
+        $this->assertStringContainsString('app_id=my_app_id', $url);
+        $this->assertStringContainsString('basic_access', $url);
+    }
+
+    public function testRequestAccessTokenStoresExpiresAsUnixTimestamp(): void
+    {
+        $stub = $this->createPartialMock(Request::class, ['send']);
+        $stub->method('send')->willReturn([
+            'body' => ['access_token' => 'test_token', 'expires' => '3600']
+        ]);
+
+        $before = time();
+        $session = new Session('app_id', 'secret', '', $stub);
+        $result = $session->requestAccessToken('code123');
+        $after = time();
+
+        $this->assertTrue($result);
+        $this->assertGreaterThanOrEqual($before + 3600, $session->getExpires());
+        $this->assertLessThanOrEqual($after + 3600, $session->getExpires());
+    }
+
+    public function testSessionImplementsTokenProviderInterface(): void
+    {
+        $session = new Session('app_id');
+        $this->assertInstanceOf(\Deezer\TokenProviderInterface::class, $session);
+    }
+
+    public function testSessionGetTokenReturnsAccessToken(): void
+    {
+        $stub = $this->createPartialMock(Request::class, ['send']);
+        $stub->method('send')->willReturn([
+            'body' => ['access_token' => 'tok123', 'expires' => '3600']
+        ]);
+
+        $session = new Session('app_id', 'secret', '', $stub);
+        $session->requestAccessToken('code');
+
+        $this->assertSame('tok123', $session->getToken());
+    }
+
+    public function testSessionIsExpiredWhenTokenExpired(): void
+    {
+        $stub = $this->createPartialMock(Request::class, ['send']);
+        $stub->method('send')->willReturn([
+            'body' => ['access_token' => 'tok', 'expires' => '0']
+        ]);
+
+        $session = new Session('app_id', 'secret', '', $stub);
+        $session->requestAccessToken('code');
+
+        $this->assertTrue($session->isExpired());
+    }
+
+    public function testSessionRefreshReturnsFalse(): void
+    {
+        $session = new Session('app_id');
+        $this->assertFalse($session->refresh());
     }
 }
