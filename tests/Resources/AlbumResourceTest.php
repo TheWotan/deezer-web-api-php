@@ -2,11 +2,11 @@
 
 declare(strict_types=1);
 
+namespace Deezer\Tests\Resources;
+
 use Deezer\DeezerAPI;
 use Deezer\DeezerAPIException;
 use Deezer\Request;
-
-require_once __DIR__ . "/AbstractResourceTest.php";
 
 class AlbumResourceTest extends AbstractResourceTest
 {

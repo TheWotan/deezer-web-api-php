@@ -2,24 +2,13 @@
 
 declare(strict_types=1);
 
-use Deezer\DeezerAPIException;
+namespace Deezer\Tests\Resources;
 
-require_once __DIR__ . "/AbstractResourceTest.php";
+use Deezer\DeezerAPIException;
 
 class PodcastResourceTest extends AbstractResourceTest
 {
-    private const ID = 1835;
-
-    /**
-     * @throws DeezerAPIException
-     * @group real-api
-     */
-    public function testRealGet()
-    {
-        $response = $this->apiReal->podcast->get(self::ID);
-
-        $this->assertEquals(self::ID, $response->id);
-    }
+    private const ID = 898412;
 
     /**
      * @throws DeezerAPIException

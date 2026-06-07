@@ -1,5 +1,8 @@
 <?php
+
 declare(strict_types=1);
+
+namespace Deezer\Tests;
 
 use PHPUnit\Framework\TestCase;
 use Deezer\Providers\StaticTokenProvider;

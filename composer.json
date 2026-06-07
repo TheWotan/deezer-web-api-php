@@ -18,6 +18,11 @@
             "Deezer\\": "src/"
         }
     },
+    "autoload-dev": {
+        "psr-4": {
+            "Deezer\\Tests\\": "tests/"
+        }
+    },
     "scripts": {
         "test": "phpcs src -v && phpunit",
         "coverage": "XDEBUG_MODE=coverage phpunit --coverage-text",

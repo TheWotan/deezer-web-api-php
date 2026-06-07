@@ -2,10 +2,13 @@
 
 declare(strict_types=1);
 
+namespace Deezer\Tests;
+
 use Deezer\Request;
+use PHPUnit\Framework\TestCase;
 use Deezer\Session;
 
-class SessionTest extends PHPUnit\Framework\TestCase
+class SessionTest extends TestCase
 {
     private $app_id = '501282';
     private $secret = '4ebcfc1c71578fcb493fc64d01b968e5';

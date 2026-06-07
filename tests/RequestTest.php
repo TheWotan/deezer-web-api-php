@@ -1,5 +1,8 @@
 <?php
+
 declare(strict_types=1);
+
+namespace Deezer\Tests;
 
 use PHPUnit\Framework\TestCase;
 use Deezer\Request;
@@ -10,8 +13,10 @@ class RequestTest extends TestCase
     public function testParseHeadersSkipsLinesWithoutColon(): void
     {
         $request = new Request();
-        $method = new ReflectionMethod(Request::class, 'parseHeaders');
-        $method->setAccessible(true);
+        $method = new \ReflectionMethod(Request::class, 'parseHeaders');
+        if (PHP_VERSION_ID < 80100) {
+            $method->setAccessible(true);
+        }
 
         $raw = "HTTP/1.1 200 OK\r\nContent-Type: application/json\r\n\r\n";
         $result = $method->invoke($request, $raw);
@@ -23,8 +28,10 @@ class RequestTest extends TestCase
     public function testHandleResponseErrorThrowsWithParsedBody(): void
     {
         $request = new Request();
-        $method = new ReflectionMethod(Request::class, 'handleResponseError');
-        $method->setAccessible(true);
+        $method = new \ReflectionMethod(Request::class, 'handleResponseError');
+        if (PHP_VERSION_ID < 80100) {
+            $method->setAccessible(true);
+        }
 
         $body = json_decode(file_get_contents('tests/fixtures/error.json'));
 

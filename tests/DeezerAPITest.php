@@ -2,22 +2,25 @@
 
 declare(strict_types=1);
 
+namespace Deezer\Tests;
+
 use Deezer\DeezerAPI;
+use PHPUnit\Framework\TestCase;
 use Deezer\DeezerAPIException;
 use Deezer\Request;
 
-class DeezerAPITest extends PHPUnit\Framework\TestCase
+class DeezerAPITest extends TestCase
 {
     protected $apiReal;
 
     protected function setUp(): void
     {
-        $this->apiReal = new Deezer\DeezerAPI([], null);
+        $this->apiReal = new DeezerAPI([], null);
     }
 
     protected function setupStub($expectedMethod, $expectedUri, $expectedParameters, $expectedHeaders, $fixtureName)
     {
-        $stub = $this->createPartialMock(Deezer\Request::class, ["send", "getLastResponse"]);
+        $stub = $this->createPartialMock(Request::class, ["send", "getLastResponse"]);
 
         $expectedReturn = [
             "body" => json_decode(file_get_contents("tests/fixtures/$fixtureName.json"))
@@ -50,7 +53,7 @@ class DeezerAPITest extends PHPUnit\Framework\TestCase
             $fixtureName
         );
 
-        return new Deezer\DeezerAPI([], null, $stub);
+        return new DeezerAPI([], null, $stub);
     }
 
     /**
